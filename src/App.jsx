@@ -1,15 +1,33 @@
+import "./index.css";
+import { Routes, Route } from "react-router-dom";
+
+import SignUp from "./pages/SignUpPage";
+
+import CreateRide  from "./components/CreateRide";
+import DeleteRide from "./components/DeleteRide";
+import DetailsRide from "./components/DetailsRide";
+import SearchRide from "./components/SearchRide";
+import UpdateRide from "./components/UpdateRide";
+import Footer from "./components/Footer";
 
 
-import './App.css'
 
 function App() {
-  
-
   return (
-    
-      <h1>Ridelin App</h1>
+    <div className="App">
+      <Routes>
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/createride" element={<CreateRide />} />
+        <Route path="/deleteride" element={<DeleteRide />} />
+        <Route path="/detailsride" element={<DetailsRide />} />
+        <Route path="/searchride" element={<SearchRide />} />
+        <Route path="/updateride" element={<UpdateRide />} />
+       
+      </Routes>
+      <Footer />
       
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
