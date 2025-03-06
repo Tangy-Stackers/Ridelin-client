@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import CreateBooking from "./components/CreateBooking";
 import Navbar from "./components/Navbar";
 import ListOfBooking from "./components/ListOfBooking";
+import UpdateBooking from "./components/UpdateBooking";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           <Route path="/detailsride" element={<DetailsRide />} />
           <Route path="/searchride" element={<SearchRide />} />
           <Route path="/updateride" element={<UpdateRide />} />
-          <Route path="/updateride" element={<UpdateRide />} />
+          <Route path="/api/bookings/:bookingId" element={<UpdateBooking />} />
           <Route path="/api/book" element={<CreateBooking />} />
           <Route path="/api/bookings" element={<ListOfBooking />} />
         </Routes>

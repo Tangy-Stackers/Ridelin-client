@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { API_URL } from "../config/api";
 import axios from "axios";
+import "./Booking.css";
+import { useNavigate } from "react-router-dom";
 
 function ListOfBooking() {
   const [bookings, setBookings] = useState([]);
+  const navigate = useNavigate();
+
 
   const getAllBookings = () => {
     const storedToken = localStorage.getItem("authToken");
@@ -15,7 +19,9 @@ function ListOfBooking() {
       .then((response) => setBookings(response.data))
       .catch((error) => console.log(error));
   };
-
+const handleEdit = (bookingId) => {
+  navigate(`/api/bookings/${bookingId}`);
+};
   useEffect(() => {
     getAllBookings();
   }, []);
@@ -29,13 +35,13 @@ function ListOfBooking() {
         <div key={booking._id}>
             <label className="booking">
           <h3>Passenger_Id:{booking.passengerId}</h3> 
-          <p>Date:{booking.bookingDate}</p>
+          <p>Date:{new Date(booking.bookingDate).toLocaleString()}</p>
           <p>seatsBooked:{booking.seatsBooked}</p>
-          </label>
+        
          
           {booking.ride && (
             <label className="rideInfo">
-            <p>Ride_id:{booking.ride.rideId}</p> 
+            <p>Ride_id:{booking.ride._id}</p> 
             <p>Origin:{booking.ride.origin}</p> 
             <p>Destination:{booking.ride.destination}</p> 
             <p>Travel Date:{booking.ride.travelDate}</p> 
@@ -43,11 +49,15 @@ function ListOfBooking() {
             <p>End Time:{booking.ride.EndTime}</p> 
             <p>Driver_id:{booking.ride.driverId}</p> 
             </label>
+           
           )}
-          <label>Status:{booking.status}</label>
+          <label className={booking.status}>Status:{booking.status}</label>
+          <button onClick={() => handleEdit(booking._id)}>Edit Booking </button>
+          </label>
         </div>
       ))
       )}
+    
     </div>
   );
 }

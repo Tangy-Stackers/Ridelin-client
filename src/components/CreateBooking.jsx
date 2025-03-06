@@ -9,7 +9,7 @@ function CreateBooking() {
     const [status, setStatus] = useState("pending");
     const [bookingDate, setBookingDate] = useState("");
     const [seatsBooked, setSeatsBooked] = useState("");
-    const navigate = useNavigate();
+   
 
 
     const handleSubmit = (e) => {
@@ -44,7 +44,7 @@ function CreateBooking() {
                 <label>seatsBooked:
                     <input type="text" name="seatsBooked" placeholder="Enter the seatsBooked" onChange={(e) => { setSeatsBooked(e.target.value) }} />
                 </label>
-                <button type="submit">Submit</button>
+                <button type="submit">Create Booking ✏️</button>
             </form>
       
         </div>
