@@ -1,7 +1,8 @@
 import { useContext, useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
 import { AuthContext } from "../context/auth.context";
+import axios from "axios";
 
 
 
@@ -21,7 +22,7 @@ function Loginpage() {
 
         axios.post(`${API_URL}/auth/login`, requestBody)
             .then((response) => {
-                console.log('JWT token', response.datat.authToken);
+                console.log('JWT token', response.data.authToken);
                 storeToken(response.data.authToken);
                 authenticateUser();
                 navigate('/');
@@ -45,6 +46,7 @@ function Loginpage() {
                 </form>
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <p>Don't have an account yet?</p>
+                
                 <Link to={"/signup"}> Sign Up</Link>
             </div>
         </>

@@ -1,8 +1,8 @@
 import "./index.css";
-
-import { Route, Routes } from 'react-router-dom'
+import { Routes, Route } from "react-router-dom";
 
 import SignUp from "./pages/SignUpPage";
+import HomePage from './pages/Homepage';
 import HomePage from './pages/Homepage'
 import LoginPage from './pages/Loginpage'
 import CreateRide from "./components/CreateRide";
@@ -28,8 +28,8 @@ function App() {
           <Route path="/detailsride" element={<DetailsRide />} />
           <Route path="/searchride" element={<SearchRide />} />
           <Route path="/updateride" element={<UpdateRide />} />
-          <Route path="/api/book" element = {<CreateBooking />} />
-
+          <Route path="/updateride" element={<UpdateRide />} />
+          <Route path="/book" element={<CreateBooking />} />
         </Routes>
         <Footer />
 
