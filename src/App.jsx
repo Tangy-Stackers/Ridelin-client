@@ -28,7 +28,7 @@ function App() {
           <Route path="/searchride" element={<SearchRide />} />
           <Route path="/updateride" element={<UpdateRide />} />
           <Route path="/updateride" element={<UpdateRide />} />
-          <Route path="/book" element={<CreateBooking />} />
+          <Route path="/api/book" element={<CreateBooking />} />
         </Routes>
         <Footer />
 

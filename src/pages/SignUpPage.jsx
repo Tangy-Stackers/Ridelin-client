@@ -75,8 +75,9 @@ function SignUp(){
             </div>
             <div className="mb-4">
             <label className="block text-sm font-medium">Password:</label>
-            <textarea
+            <input
                 name="password"
+                type="password"
                 value={SignUpData.message}
                 onChange={handleChange}
                 className="w-full border p-2 rounded"
