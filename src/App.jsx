@@ -27,7 +27,6 @@ function App() {
           <Route path="/detailsride" element={<DetailsRide />} />
           <Route path="/searchride" element={<SearchRide />} />
           <Route path="/updateride" element={<UpdateRide />} />
-          <Route path="/updateride" element={<UpdateRide />} />
           <Route path="/book" element={<CreateBooking />} />
         </Routes>
         <Footer />
