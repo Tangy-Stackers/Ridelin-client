@@ -39,7 +39,7 @@ function SignUp(){
         }
         //Creating account on API
         axios.post(`${API_URL}/auth/signup`, SignUpData)
-            .then(respones =>{ navigate("/")})
+            .then(respond =>{ navigate("/")})
             .catch(e => console.log(" Error creating the new account ...",e));
       
           

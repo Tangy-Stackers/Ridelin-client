@@ -1,68 +1,93 @@
-
+import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config/api";
 
 
 function CreateRide(){
+
+    const navigate = useNavigate()
     const [CreateRideData, SetCreateRideData] = useState({
-        name: "",
-        email: "",
-        password: "",
+        origin: " ",
+        destination: " ",
+        seatsAvailable:" ",
+        price: " ",
+        driverId: " ",
       });
+
+    
     const handleChange = (e) => {
+
         SetCreateRideData({
-          ...CreateRideData,
+          ...CreateRideData, 
+        //   driverId: UserId, add userid to become the driver id
           [e.target.name]: e.target.value,
         });
       };
 
+   
     const handleSubmit = (e) => {
         e.preventDefault();
 
-         // Validate email format
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!emailPattern.test(CreateRideData.email)) {
-            alert("Please enter a valid email address.");
-        return;
-
-        // Validate password format temporay format
+        //Creating Ride on API
        
+            axios.post(`${API_URL}/api/ride`, CreateRideData)
+            .then((response) =>{
+                console.log('Succeful ride created',response.data)
+                const newRideId = response.data._id; 
+                navigate('/ride/${newRideId}')})
+
+            .catch(e => console.log(" Error creating the new ride ...", e) )
 
         
-  }
-        console.log("Form Submitted:", CreateRideData);
-      };
+    };
+    console.log("Form Submitted:", CreateRideData);
+       
+        
+      
     
     return (
         <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 border rounded shadow">
             <h1>Create a Ride</h1>
             <div className="mb-4">
-            <label className="block text-sm font-medium">Name:</label>
+            <label className="block text-sm font-medium">Where the ride will start?:</label>
             <input
                 type="text"
-                name="name"
-                value={CreateRideData.name}
+                name="origin"
+                value={CreateRideData.origin}
                 onChange={handleChange}
                 className="w-full border p-2 rounded"
                 required
             />
             </div>
             <div className="mb-4">
-            <label className="block text-sm font-medium">Email:</label>
+            <label className="block text-sm font-medium">Where the ride will finish?</label>
             <input
-                type="email"
-                name="email"
-                value={CreateRideData.email}
+                type="text"
+                name="destination"
+                value={CreateRideData.destination}
                 onChange={handleChange}
                 className="w-full border p-2 rounded"
                 required
             />
             </div>
             <div className="mb-4">
-            <label className="block text-sm font-medium">Password:</label>
-            <textarea
-                name="password"
-                value={CreateRideData.message}
+            <label className="block text-sm font-medium">How many seat do you have available:</label>
+            <input
+                type="number"
+                name="seatsAvailable"
+                value={CreateRideData.seatsAvailable}
+                onChange={handleChange}
+                className="w-full border p-2 rounded"
+                required
+            />
+            </div>
+            <div className="mb-4">
+            <label className="block text-sm font-medium">What is the price of the ride:</label>
+            <input
+                type="number"
+                name="price"
+                value={CreateRideData.price}
                 onChange={handleChange}
                 className="w-full border p-2 rounded"
                 required
