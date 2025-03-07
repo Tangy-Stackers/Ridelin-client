@@ -29,9 +29,9 @@ function App() {
           <Route path="/detailsride" element={<DetailsRide />} />
           <Route path="/searchride" element={<SearchRide />} />
           <Route path="/updateride" element={<UpdateRide />} />
-          <Route path="/api/bookings/:bookingId" element={<UpdateBooking />} />
-          <Route path="/api/book" element={<CreateBooking />} />
-          <Route path="/api/bookings" element={<ListOfBooking />} />
+          <Route path="/bookings/:bookingId" element={<UpdateBooking />} />
+          <Route path="/book" element={<CreateBooking />} />
+          <Route path="/bookings" element={<ListOfBooking />} />
         </Routes>
         <Footer />
 
