@@ -2,17 +2,24 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
+import { useForm } from "react-hook-form";
 
 
-function CreateRide(){
 
+
+
+
+function CreateRide() {
+    const userId = localStorage.getItem('userId')
+    const storedToken = localStorage.getItem("authToken");
+    
     const navigate = useNavigate()
     const [CreateRideData, SetCreateRideData] = useState({
         origin: " ",
         destination: " ",
         seatsAvailable:" ",
         price: " ",
-        driverId: " ",
+        driverId: userId,//userid
       });
 
     
@@ -31,7 +38,10 @@ function CreateRide(){
 
         //Creating Ride on API
        
-            axios.post(`${API_URL}/api/ride`, CreateRideData)
+            axios.post(`${API_URL}/api/ride`, CreateRideData,
+                { headers: { Authorization: `Bearer ${storedToken}`} }
+            )
+            
             .then((response) =>{
                 console.log('Succeful ride created',response.data)
                 const newRideId = response.data._id; 

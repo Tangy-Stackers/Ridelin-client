@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { API_URL } from "../config/api";
-import "./Booking.css";
+// import "./Booking.css";
 
 function UpdateBooking() {
     const [passengerId, setPassengerId] = useState("");
