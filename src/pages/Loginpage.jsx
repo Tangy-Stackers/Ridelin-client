@@ -19,16 +19,19 @@ function Loginpage() {
     const handleLoginSubmit = (e) => {
         e.preventDefault();
         const requestBody = { email, password };
-
+        console.log(email);
+        console.log(password);
         axios.post(`${API_URL}/auth/login`, requestBody)
             .then((response) => {
                 console.log('JWT token', response.data.authToken);
                 storeToken(response.data.authToken);
+                console.log("helloooo");
                 authenticateUser();
                 navigate('/');
             })
             .catch((error) => {
-                const errorDescription = error.response.data.message;
+                let errorDescription = "Something went wrong. Please try again.";
+                console.log(error);
                 setErrorMessage(errorDescription);
             })
     };

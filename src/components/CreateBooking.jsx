@@ -9,13 +9,13 @@ function CreateBooking() {
     const [status, setStatus] = useState("pending");
     const [bookingDate, setBookingDate] = useState("");
     const [seatsBooked, setSeatsBooked] = useState("");
-    const navigate = useNavigate();
+   
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const requestBody = { passengerId, ride, status, bookingDate, seatsBooked };
-        axios.post(`${API_URL}/book`, requestBody)
+        axios.post(`${API_URL}/api/book`, requestBody)
             .then((response) => {
                 console.log("Sucess");
                 navigate("/");
@@ -44,7 +44,9 @@ function CreateBooking() {
                 <label>seatsBooked:
                     <input type="text" name="seatsBooked" placeholder="Enter the seatsBooked" onChange={(e) => { setSeatsBooked(e.target.value) }} />
                 </label>
+                <button type="submit">Create Booking ✏️</button>
             </form>
+      
         </div>
     )
 }
