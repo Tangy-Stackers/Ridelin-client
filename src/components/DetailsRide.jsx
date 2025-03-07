@@ -1,38 +1,49 @@
-// import { useEffect,useState } from "react";
-// import {}
-// import axios from 'axios';
 
-function DetailsRide(){
-//     const userId = localStorage.getItem('userId')
-//     const storedToken = localStorage.getItem("authToken");
-//     const navigate = useNavigate();
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { API_URL } from "../config/api";
+import { useParams } from "react-router-dom";
 
-//     const [profileDetails, setProfileDetails] = useState();
-    
 
-//     useEffect(()=>{
-//         axios.get(`${API_URL}/`,
-//             { headers: { Authorization: `Bearer ${storedToken}`} 
-//         })
-        
-        
-//         .then((response)=>{
-//             console.log('user details found',response.data)
-//             setProfileDetails(response.data)
-//                 navigate(`/user/${userId}`)})
-//         .catch(e=>{console.log('Error getting the user data',e)})
-//     },[storedToken])
 
-//     if (!profileDetails) return <p>Loading...</p>;
-        
-    
-    return(
+const DetailsRide = () => {
+    const [userId, setUserId] = useState(localStorage.getItem('userId'));
+    const [storedToken, setStoredToken] = useState(localStorage.getItem("authToken"));
+    const [rideDetails, setRideDetails] = useState(null);
+    const params = useParams()
+    const rideId =params.rideId
+
+
+    useEffect(() => {
+        if (!userId || !storedToken) {
+            console.log("No userId or token found");
+            return;
+        }
+        axios.get(`${API_URL}/api/ride/${rideId}`,
+            { headers: { Authorization: `Bearer ${storedToken}`} }
+        )
+
+        .then((response) => {
+            console.log(response.data);
+            setRideDetails(response.data);
+        })
+        .catch(e => {
+            console.log('Error getting the user data', e);
+        });
+    }, [rideId, storedToken]); // Ensure `userId` is included
+
+    return (
         <div>
-            <h2 className="text-xl font-semibold"> Ride Details</h2>
-            
+            {rideDetails ? (
+                <div>
+                    <p>{rideDetails.origin}</p>
+                    <p>Email: {rideDetails.destination}</p>
+                </div>
+            ) : (
+                <p>Loading...</p>
+            )}
         </div>
-    )
-
-}
+    );
+};
 
 export default DetailsRide;

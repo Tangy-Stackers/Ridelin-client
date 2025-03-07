@@ -2,7 +2,7 @@ import "./index.css";
 import { Routes, Route } from "react-router-dom";
 
 import SignUp from "./pages/SignUpPage";
-import HomePage from './pages/Homepage'
+import HomePage from './pages/HomePage'
 import LoginPage from './pages/Loginpage'
 import CreateRide from "./components/CreateRide";
 import DeleteRide from "./components/DeleteRide";
