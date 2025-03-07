@@ -10,6 +10,7 @@ function UpdateBooking() {
     const [status, setStatus] = useState("pending");
     const [bookingDate, setBookingDate] = useState("");
     const [seatsBooked, setSeatsBooked] = useState("");
+
     const navigate = useNavigate();
     const { bookingId } = useParams();
 
@@ -20,7 +21,7 @@ function UpdateBooking() {
             .then((response) => {
                 const booking = response.data;
                 setPassengerId(booking.passengerId);
-                setRide(booking.ride);
+                setRide(booking.ride._id);
                 setStatus(booking.status);
                 setBookingDate(booking.bookingDate);
                 setSeatsBooked(booking.seatsBooked);
@@ -37,7 +38,7 @@ function UpdateBooking() {
 
         axios.patch(`${API_URL}/api/bookings/${bookingId}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` }, })
             .then((response) => {
-                navigate(`/api/bookings`)
+                navigate(`/bookings`)
             }) .catch((error) => console.log(error));
     };
 
@@ -45,7 +46,7 @@ function UpdateBooking() {
     const deleteBooking = () => {
         const storedToken = localStorage.getItem('authToken');
 
-        axios.delete(`${API_URL}/api/bookings/bookingId`, { headers: { Authorization: `Bearer ${storedToken}` } })
+        axios.delete(`${API_URL}/api/bookings/${bookingId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
             .then(() => navigate("/bookings"))
             .catch((error) => console.log(error));
     };
@@ -60,7 +61,7 @@ function UpdateBooking() {
                     <input type="text" value={passengerId} onChange={(e) => { setPassengerId(e.target.value) }} />
                 </label>
                 <label>Ride:
-                    <input type="text" value={ride._id} onChange={(e) => { setRide(e.target.value) }} />
+                    <input type="text" value={ride} onChange={(e) => { setRide(e.target.value) }} />
                 </label>
                 <label>Booking Date:
                     <input type="text"  value={bookingDate ? new Date(bookingDate).toLocaleString() : ""}  onChange={(e) => { setBookingDate(e.target.value) }} />
