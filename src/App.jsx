@@ -14,6 +14,7 @@ import CreateBooking from "./components/CreateBooking";
 import Navbar from "./components/Navbar";
 import ListOfBooking from "./components/ListOfBooking";
 import UpdateBooking from "./components/UpdateBooking";
+import ProfileDetails from "./components/ProfileDetails";
 
 function App() {
   return (
@@ -24,14 +25,15 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/user/:userId" element={<ProfileDetails />}/>
           <Route path="/createride" element={<CreateRide />} />
           <Route path="/deleteride" element={<DeleteRide />} />
-          <Route path="/detailsride" element={<DetailsRide />} />
+          <Route path="/ride/:rideId" element={<DetailsRide />} />
           <Route path="/searchride" element={<SearchRide />} />
           <Route path="/updateride" element={<UpdateRide />} />
-          <Route path="/api/bookings/:bookingId" element={<UpdateBooking />} />
-          <Route path="/api/book" element={<CreateBooking />} />
-          <Route path="/api/bookings" element={<ListOfBooking />} />
+          <Route path="/bookings/:bookingId" element={<UpdateBooking />} />
+          <Route path="/book" element={<CreateBooking />} />
+          <Route path="/bookings" element={<ListOfBooking />} />
         </Routes>
         <Footer />
 
