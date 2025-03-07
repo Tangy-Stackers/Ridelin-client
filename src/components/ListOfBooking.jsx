@@ -20,7 +20,7 @@ function ListOfBooking() {
       .catch((error) => console.log(error));
   };
 const handleEdit = (bookingId) => {
-  navigate(`/api/bookings/${bookingId}`);
+  navigate(`/bookings/${bookingId}`);
 };
   useEffect(() => {
     getAllBookings();
@@ -34,6 +34,7 @@ const handleEdit = (bookingId) => {
       bookings.map((booking) => (
         <div key={booking._id}>
             <label className="booking">
+              <h3> Booking_id: {booking._id} </h3>
           <h3>Passenger_Id:{booking.passengerId}</h3> 
           <p>Date:{new Date(booking.bookingDate).toLocaleString()}</p>
           <p>seatsBooked:{booking.seatsBooked}</p>

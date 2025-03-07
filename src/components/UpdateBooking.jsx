@@ -38,7 +38,7 @@ function UpdateBooking() {
 
         axios.patch(`${API_URL}/api/bookings/${bookingId}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` }, })
             .then((response) => {
-                navigate(`/api/bookings`)
+                navigate(`/bookings`)
             }) .catch((error) => console.log(error));
     };
 
@@ -46,7 +46,7 @@ function UpdateBooking() {
     const deleteBooking = () => {
         const storedToken = localStorage.getItem('authToken');
 
-        axios.delete(`${API_URL}/api/bookings/bookingId`, { headers: { Authorization: `Bearer ${storedToken}` } })
+        axios.delete(`${API_URL}/api/bookings/${bookingId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
             .then(() => navigate("/bookings"))
             .catch((error) => console.log(error));
     };

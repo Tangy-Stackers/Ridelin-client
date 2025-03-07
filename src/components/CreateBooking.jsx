@@ -9,7 +9,7 @@ function CreateBooking() {
     const [status, setStatus] = useState("pending");
     const [bookingDate, setBookingDate] = useState("");
     const [seatsBooked, setSeatsBooked] = useState("");
-   
+    const navigate = useNavigate();
 
 
     const handleSubmit = (e) => {
