@@ -4,15 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
 
 
-function CreateRide(){
-
+function CreateRide() {
+    const userId = localStorage.getItem('userId')
+    const storedToken = localStorage.getItem("authToken");
+    
     const navigate = useNavigate()
     const [CreateRideData, SetCreateRideData] = useState({
         origin: " ",
         destination: " ",
         seatsAvailable:" ",
         price: " ",
-        driverId: " ",
+        driverId: userId,//userid
       });
 
     
@@ -31,21 +33,21 @@ function CreateRide(){
 
         //Creating Ride on API
        
-            axios.post(`${API_URL}/api/ride`, CreateRideData)
+            axios.post(`${API_URL}/api/ride`, CreateRideData,
+                { headers: { Authorization: `Bearer ${storedToken}`} }
+            )
+            
             .then((response) =>{
                 console.log('Succeful ride created',response.data)
                 const newRideId = response.data._id; 
-                navigate('/ride/${newRideId}')})
+                navigate(`/ride/${newRideId}`)})
 
             .catch(e => console.log(" Error creating the new ride ...", e) )
 
         
     };
     console.log("Form Submitted:", CreateRideData);
-       
-        
-      
-    
+
     return (
         <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 border rounded shadow">
             <h1>Create a Ride</h1>

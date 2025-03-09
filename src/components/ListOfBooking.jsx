@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { API_URL } from "../config/api";
 import axios from "axios";
-import "./Booking.css";
+// import "./Booking.css";
 import { useNavigate } from "react-router-dom";
 
 function ListOfBooking() {
