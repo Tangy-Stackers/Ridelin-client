@@ -3,6 +3,7 @@ import { API_URL } from "../config/api";
 import { Button } from "@mantine/core";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+//import Loader from "../pages/Loader";
 
 function SearchRide() {
 
@@ -11,8 +12,7 @@ function SearchRide() {
     const [origin, setOrigin] = useState("");
     const [destination, setDestination] = useState("");
     const [sortOrder, setSortOrder] = useState("asc");
-    const navigate = useNavigate();
-    
+const navigate = useNavigate();
     useEffect(() => {
         const storedToken = localStorage.getItem('authToken');
         axios.get(`${API_URL}/api/ride`, { headers: { Authorization: `Bearer ${storedToken}` } })
@@ -26,17 +26,21 @@ function SearchRide() {
 
     const handleSearch = () => {
         const results = rides
-            .filter(ride =>
-                ride.origin.toLowerCase().includes(origin.toLowerCase()) &&
-                ride.destination.toLowerCase().includes(destination.toLowerCase())
-            )
-            .sort((a, b) =>
-                sortOrder === "asc"
-                    ? new Date(a.travelDate) - new Date(b.travelDate)
-                    : new Date(b.travelDate) - new Date(a.travelDate)
-            );
+        .filter(ride => 
+            ride.origin.toLowerCase().includes(origin.toLowerCase()) &&
+            ride.destination.toLowerCase().includes(destination.toLowerCase())
+        )
+        .sort((a, b) => 
+            sortOrder === "asc" 
+                ? new Date(a.travelDate) - new Date(b.travelDate) 
+                : new Date(b.travelDate) - new Date(a.travelDate)
+        );
+        console.log(results);
         setFilteredRides(results);
     };
+  /*  if (rides === null) {
+        return <Load />;
+    }*/
     return (
         <div className="searchRide">
             <h3>Search for a Ride</h3>
@@ -46,25 +50,25 @@ function SearchRide() {
                 <Button onClick={handleSearch}>Search</Button>
             </div>
             <label>Sort by Date:</label>
-            <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
-                <option value="asc">Earliest First</option>
-                <option value="desc">Latest First</option>
-            </select>
+      <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
+        <option value="asc">Earliest First</option>
+        <option value="desc">Latest First</option>
+      </select> 
 
-            <div className="rideResults">
-                {filteredRides.length === 0 ? (
-                    <p>No rides found.</p>) : (
-                    filteredRides.map((ride) => (
-                        <div key={ride._id} className="rideCard">
-                            <h3>Ride ID: {ride._id}</h3>
-                            <p>Origin: {ride.origin}</p>
-                            <p>Destination: {ride.destination}</p>
-                            <p>Travel Date: {new Date(ride.travelDate).toLocaleString()}</p>
-                            <p>Driver:{ride.driverId}</p>
-                        </div>
-                    ))
-                )}
+<div className="rideResults">
+        {filteredRides.length === 0 ? (
+          <p>No rides found.</p> ) : (
+            filteredRides.map((ride) => (
+                <div key={ride._id} className="rideCard">
+                  <h3>Ride ID: {ride._id}</h3>
+                  <p>Origin: {ride.origin}</p>
+              <p>Destination: {ride.destination}</p>
+              <p>Travel Date: {new Date(ride.travelDate).toLocaleString()}</p>
+              <p>Driver:{ride.driverId}</p>
             </div>
+          ))
+        )}
+      </div>
 
 
         </div>

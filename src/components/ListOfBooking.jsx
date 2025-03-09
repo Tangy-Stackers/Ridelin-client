@@ -8,7 +8,7 @@ function ListOfBooking() {
   const [bookings, setBookings] = useState([]);
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
-
+  const userId = localStorage.getItem('userId');
 
   const getAllBookings = () => {
     const storedToken = localStorage.getItem("authToken");
@@ -20,23 +20,24 @@ function ListOfBooking() {
       .then((response) => setBookings(response.data))
       .catch((error) => console.log(error));
   };
-/*
+
   const getAllUsers = () => {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .get(`${API_URL}/api/user`, {
+      .get(`${API_URL}/api/user/${userId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
-      .then((response) => setUsers(response.data))
+      .then((response) => { console.log(response.data) 
+        setUsers(response.data)})
       .catch((error) => console.log(error));
-  };*/
+  };
   const handleEdit = (bookingId) => {
     navigate(`/bookings/${bookingId}`);
   };
   useEffect(() => {
     getAllBookings();
-   /* getAllUsers();*/
+    getAllUsers();
   }, []);
 
   return (
@@ -48,15 +49,10 @@ function ListOfBooking() {
           <div key={booking._id}>
             <label className="booking">
               <h3> Booking_id: {booking._id} </h3>
-              {/* <label>Passenger:
-                <p>  {users.map((user) => (
-                  <option key={user._id} value={user._id}> {user.name} </option>
-                ))}
-                </p>*/}
-               <h3>Passenger_Id:{booking.passengerId}</h3> 
+              <label>Passenger:  {users.name} 
                 <p>Date:{new Date(booking.bookingDate).toLocaleString()}</p>
                 <p>Seats Booked:{booking.seatsBooked}</p>
-                {/*   </label>*/}
+                </label>
 
               {booking.ride && (
                 <label className="rideInfo">
