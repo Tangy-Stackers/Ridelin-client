@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
+import { Button } from "@mantine/core";
 
 
 
@@ -13,20 +14,23 @@ function Navbar() {
         <>
             <nav>
                 <Link to="/">
-                    <button>Home</button></Link>
+                    <Button variant="gradient" gradient={{ from: 'blue', to: 'pink', deg: 300 }}> Home</Button>
+                </Link>
                 {isLoggedIn && (
                     <>
                         <Link to="/ride">
-                            <button>Create a Ride</button>
+                            <Button variant="gradient" gradient={{ from: 'blue', to: 'pink', deg: 300 }}> Create Ride</Button>
                         </Link>
-                        <button onClick={logOutUser}>Logout</button>
+                        <Button variant="gradient" gradient={{ from: 'blue', to: 'pink', deg: 300 }} onClick={logOutUser}> Logout</Button>
                         <span>{user && user.name}</span>
+                        
                     </>
                 )}
                 {!isLoggedIn && (
                     <>
-                        <Link to="/signup"> <button>Sign Up</button> </Link>
-                        <Link to="/login"> <button>Login</button> </Link>
+                        <Link to="/signup">
+                            <Button variant="gradient" gradient={{ from: 'red', to: 'grape', deg: 300 }}> Sign Up</Button> </Link>
+                        <Link to="/login"> <Button variant="gradient" gradient={{ from: 'red', to: 'grape', deg: 300 }}> Login </Button> </Link>
                     </>
                 )}
             </nav>

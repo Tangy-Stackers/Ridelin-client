@@ -1,0 +1,172 @@
+.BookingsList {
+    padding: 40px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200%;
+    max-width: 1200px;
+    margin: 0 auto; 
+  }
+  
+  .booking {
+    background-color: #add0e4;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    transition: transform 0.2s ease;
+  }
+  
+  .booking:hover {
+    transform: scale(1.02);
+  }
+  
+  h3 {
+    font-size: 15px;
+    color: #333;
+  }
+  
+  p {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  .rideInfo {
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rideInfo p {
+    font-size: 12px;
+    color: #444;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .pending {
+    background-color: rgb(163, 120, 219);
+    color:white;
+    font-size: 15px;
+    font-weight: bold;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .confirmed {
+    background-color: green;
+    color:white;
+    font-size: 15px;
+    font-weight: bold;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .cancelled {
+    background-color: red;
+    color:white;
+    font-size: 15px;
+    font-weight: bold;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .NoBookings {
+    font-size: 1.2em;
+    color: #999;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .BookingsList {
+      padding: 10px;
+    }
+  
+    .booking {
+      width: 100%;
+      margin: 10px 0;
+    }
+  }
+  -------Update Booking------------
+  .updateBooking {
+    width: 400px;
+    margin: 50px auto; /* Centers the form horizontally */
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content inside */
+  }
+  
+  .updateBooking h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .updateBooking form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .updateBooking label {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .updateBooking input,
+  .updateBooking select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .updateBooking button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .updateBooking button[type="submit"] {
+    background: #4caf50;
+    color: white;
+  }
+  
+  .updateBooking button[type="submit"]:hover {
+    background: #45a049;
+  }
+  
+  .updateBooking button:last-child {
+    background: #ff4d4d;
+    color: white;
+  }
+  
+  .updateBooking button:last-child:hover {
+    background: #cc0000;
+  }
+  

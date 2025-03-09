@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { API_URL } from "../config/api";
 import "./Booking.css";
+import { Button } from "@mantine/core";
 
 function UpdateBooking() {
     const [passengerId, setPassengerId] = useState("");
@@ -39,7 +40,7 @@ function UpdateBooking() {
         axios.patch(`${API_URL}/api/bookings/${bookingId}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` }, })
             .then((response) => {
                 navigate(`/bookings`)
-            }) .catch((error) => console.log(error));
+            }).catch((error) => console.log(error));
     };
 
 
@@ -57,14 +58,14 @@ function UpdateBooking() {
         <div className="updateBooking">
             <h3>Update Booking</h3>
             <form onSubmit={handleUpdate}>
-                <label>PassengerId:
-                    <input type="text" value={passengerId} onChange={(e) => { setPassengerId(e.target.value) }} />
+                <label>Passenger:
+                <input type="text" value={passengerId} onChange={(e) => setPassengerId(e.target.value)} />
                 </label>
                 <label>Ride:
                     <input type="text" value={ride} onChange={(e) => { setRide(e.target.value) }} />
                 </label>
                 <label>Booking Date:
-                    <input type="text"  value={bookingDate ? new Date(bookingDate).toLocaleString() : ""}  onChange={(e) => { setBookingDate(e.target.value) }} />
+                    <input type="text" value={bookingDate ? new Date(bookingDate).toLocaleString() : ""} onChange={(e) => { setBookingDate(e.target.value) }} />
                 </label>
                 <label>Seats Booked:
                     <input type="text" value={seatsBooked} onChange={(e) => { setSeatsBooked(e.target.value) }} />
@@ -78,7 +79,8 @@ function UpdateBooking() {
                 </label>
                 <button type="submit">Update Booking 🛠️ </button>
             </form>
-            <button onClick={deleteBooking}>Delete Booking 🗑️ </button>
+            <Button variant="filled" color="red" onClick={deleteBooking}> Delete Booking 🗑️ </Button>
+           
         </div>
     )
 }
