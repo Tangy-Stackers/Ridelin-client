@@ -8,7 +8,7 @@ import { Button } from "@mantine/core";
 function Navbar() {
 
     const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
-   ;
+
 
     return (
         <>
