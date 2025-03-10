@@ -14,7 +14,13 @@ function SearchRide() {
     const navigate = useNavigate();
 
     const handleSearch = () => {
-        navigate(`/rides?origin=${origin}&destination=${destination}&date=${selectedDate ? selectedDate.toISOString() : ""}`);
+        const isLoggedIn = localStorage.getItem('authToken')
+        if(isLoggedIn){
+            navigate(`/rides?origin=${origin}&destination=${destination}&date=${selectedDate ? selectedDate.toISOString() : ""}`);
+        }else {
+            alert("Login to continue");
+            navigate('/login');
+        }
     };
 
 
