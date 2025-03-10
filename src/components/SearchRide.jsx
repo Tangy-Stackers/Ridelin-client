@@ -66,7 +66,7 @@ function SearchRide() {
                     </Popover.Dropdown>
                 </Popover>
             </div>
-            <Button onClick={handleSearch}>Search</Button>
+            <Button onClick={handleSearch} color="indigo" radius="md" mt="lg">Search</Button>
         </div>
 
     );
