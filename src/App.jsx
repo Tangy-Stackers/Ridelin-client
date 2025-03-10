@@ -16,8 +16,8 @@ import ListOfBooking from "./components/ListOfBooking";
 import UpdateBooking from "./components/UpdateBooking";
 import ProfileDetails from "./components/ProfileDetails";
 import HomePage from "./pages/Homepage";
+import SearchResultsPage from "./pages/SearchResultsPage";
 import '../src/index.css';
-import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -37,7 +37,7 @@ function App() {
           <Route path="/bookings/:bookingId" element={<UpdateBooking />} />
           <Route path="/book" element={<CreateBooking />} />
           <Route path="/bookings" element={<ListOfBooking />} />
-          <Route path="/rides" element={<Dashboard />} />
+          <Route path="/rides" element={<SearchResultsPage />} />
         </Routes>
         <Footer />
 

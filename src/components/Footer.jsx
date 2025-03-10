@@ -13,7 +13,7 @@ function Footer(){
         navigate(`/user/${userId}`);
     };
     const goToRides = () => {
-        navigate(`/`);
+        navigate(`/rides`);
     };
 
 
