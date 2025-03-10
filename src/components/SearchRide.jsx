@@ -1,7 +1,9 @@
 import {  useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, TextInput,Popover } from "@mantine/core";
+import { Alert, Button, TextInput,Popover } from "@mantine/core";
 import { DatePicker } from '@mantine/dates';
+import { format } from 'date-fns';
+import { IconInfoCircle } from '@tabler/icons-react';
 
 
 function SearchRide() {
@@ -10,23 +12,38 @@ function SearchRide() {
     const [destination, setDestination] = useState("");
     const [selectedDate, setSelectedDate] = useState(null); 
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState("");
 
     const navigate = useNavigate();
+    const icon = <IconInfoCircle />;
 
     const handleSearch = () => {
         const isLoggedIn = localStorage.getItem('authToken')
+
+        if (!origin || !destination) {
+            setAlertMessage("Please enter both Origin and Destination");
+            setShowAlert(true);
+            return;
+          }
+
         if(isLoggedIn){
-            navigate(`/rides?origin=${origin}&destination=${destination}&date=${selectedDate ? selectedDate.toISOString() : ""}`);
+            navigate(`/rides?origin=${origin}&destination=${destination}&date=${selectedDate ? format (selectedDate, 'MM/dd/yyyy') : ""}`);
         }else {
-            alert("Login to continue");
-            navigate('/login');
+            setAlertMessage("Login to continue");
+            setShowAlert(true);
+            setTimeout(() => {
+                setShowAlert(false);
+            ;
+        }, 5000);
         }
     };
 
 
     return (
+        <>
+        {/*  <h3>Search for a Ride</h3>*/}
         <div className="searchRide">
-            <h3>Search for a Ride</h3>
             <div className="searchInputs">
                 <TextInput
                     label="Origin"
@@ -49,7 +66,7 @@ function SearchRide() {
                     <Popover.Target>
                         <TextInput
                             label="Travel Date"
-                            value={selectedDate ? selectedDate.toLocaleDateString() : ""}
+                            value={selectedDate ? format (selectedDate, 'MM/dd/yyyy') : ""}
                             placeholder="Select a Date"
                             onClick={() => setIsDatePickerOpen(true)} // Open on click
                             readOnly
@@ -73,8 +90,20 @@ function SearchRide() {
                 </Popover>
             </div>
             <Button onClick={handleSearch} color="indigo" radius="md" mt="lg">Search</Button>
+            {showAlert && (
+                <Alert
+                variant="light" 
+                color="red" 
+                radius="lg"
+                icon={icon}
+                withCloseButton title="Alert!"
+                    onClose={() => {setShowAlert(false); navigate('/login');}}
+                >
+                    {alertMessage}
+                </Alert>
+            )}
         </div>
-
+        </>
     );
 }
 
