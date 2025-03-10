@@ -16,6 +16,8 @@ import ListOfBooking from "./components/ListOfBooking";
 import UpdateBooking from "./components/UpdateBooking";
 import ProfileDetails from "./components/ProfileDetails";
 import HomePage from "./pages/Homepage";
+import '../src/index.css';
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -27,7 +29,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/user/:userId" element={<ProfileDetails />}/>
-          <Route path="/ride" element={<CreateRide />} />
+          <Route path="/createride" element={<CreateRide />} />
           <Route path="/deleteride" element={<DeleteRide />} />
           <Route path="/ride/:rideId" element={<DetailsRide />} />
           <Route path="/searchride" element={<SearchRide />} />
@@ -35,6 +37,7 @@ function App() {
           <Route path="/bookings/:bookingId" element={<UpdateBooking />} />
           <Route path="/book" element={<CreateBooking />} />
           <Route path="/bookings" element={<ListOfBooking />} />
+          <Route path="/rides" element={<Dashboard />} />
         </Routes>
         <Footer />
 
