@@ -70,7 +70,6 @@ function SearchRide() {
                             }}
                         />
                     </Popover.Dropdown>
-                    <Button onClick={() => navigate(`/ride/${ride._id}`)}>View Details</Button>
                 </Popover>
             </div>
             <Button onClick={handleSearch} color="indigo" radius="md" mt="lg">Search</Button>
