@@ -53,11 +53,13 @@ function Dashboard() {
 
     // Handle manual search when the user types a new origin or destination and presses the search button
     const handleSearch = () => {
-
         filteredResult(rides, origin, destination);
-
         navigate(`/rides?origin=${origin}&destination=${destination}`);
     };
+
+    const handleGoToDetails = () => {
+        navigate(`/ride/${rideId}`);
+    }
 
     return (
         <div className="searchRide">
@@ -125,11 +127,14 @@ function Dashboard() {
                             <p>Destination: {ride.destination}</p>
                             <p>Travel Date: {new Date(ride.travelDate).toLocaleString()}</p>
                             <p>Driver: {ride.driverId}</p>
-                            <Button onClick={navigate(<RideDetails />)}>Read Details</Button>
+                            <button onClick={handleGoToDetails}> More Details </button>
                         </Card>
                     ))
                 )}
+                        
+
             </div>
+           
         </div>
     );
 

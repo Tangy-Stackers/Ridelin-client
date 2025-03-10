@@ -2,89 +2,100 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
+import { Eye, EyeOff } from "lucide-react";
+import { Button, Group, TextInput } from "@mantine/core";
 
 
-function SignUp(){
+function SignUp() {
     const navigate = useNavigate();
 
-    const [SignUpData, SetSignUpData] = useState({
+    const [showPassword, setShowPassword] = useState(false);
+    const [SignUpData, setSignUpData] = useState({
         name: "",
         email: "",
         password: "",
-      });
+    });
     const handleChange = (e) => {
-        SetSignUpData({
-          ...SignUpData,
-          [e.target.name]: e.target.value,
+        setSignUpData({
+            ...SignUpData,
+            [e.target.name]: e.target.value,
         });
-      };
+    };
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-         // Validate email format
+        // Validate email format
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!emailPattern.test(SignUpData.email)) {
             alert("Please enter a valid email address.");
-        return;
+            return;
         }
 
         // Validate password format
         const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
         if (!passwordPattern.test(SignUpData.password)) {
-            alert ("password needs at least 8 characters and simbols");
-        return;
+            alert("password needs at least 8 characters and symbols");
+            return;
         }
         //Creating account on API
         axios.post(`${API_URL}/auth/signup`, SignUpData)
-            .then(respond =>{ navigate("/login")})
-            .catch(e => console.log(" Error creating the new account ...",e));
-      
-          
-    }
-        console.log("Form Submitted:", SignUpData);
+            .then(respond => { navigate("/login") })
+            .catch(e => console.log(" Error creating the new account ...", e));
 
-    
+
+    }
+    console.log("Form Submitted:", SignUpData);
+
+
     return (
-  
+
         <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 border rounded shadow">
             <h1>Signup</h1>
             <div className="mb-4">
-            <label className="block text-sm font-medium">Name:</label>
-            <input
-                type="text"
-                name="name"
-                value={SignUpData.name}
-                onChange={handleChange}
-                className="w-full border p-2 rounded"
-                required
-            />
+
+                <label className="block text-sm font-medium">
+                    <TextInput
+                        withAsterisk
+                        label="Email"
+                        placeholder="your@email.com"
+                        value={SignUpData.email}
+                        onChange={handleChange}
+                        required />
+
+                    <TextInput
+                        withAsterisk
+                        label="Name"
+                        placeholder="John Doe"
+                        value={SignUpData.name}
+                        onChange={handleChange}
+                        required />
+
+                    <TextInput
+                        withAsterisk
+                        label="Password"
+                        type={showPassword ? "text" : "password"}
+                        placeholder="********"
+                        value={SignUpData.password}
+                        onChange={handleChange}
+                        required />
+
+                    {/* Show/Hide Password Button */}
+                    <Button
+                        type="button"
+                        size="xs"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-2 text-gray-500"
+                    >
+                        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                    </Button>
+                    <Group justify="center" mt="xl">
+                        <Button variant="filled" color="indigo" size="md" radius="md">Submit</Button> </Group>
+                </label>
             </div>
-            <div className="mb-4">
-            <label className="block text-sm font-medium">Email:</label>
-            <input
-                type="email"
-                name="email"
-                value={SignUpData.email}
-                onChange={handleChange}
-                className="w-full border p-2 rounded"
-                required
-            />
-            </div>
-            <div className="mb-4">
-            <label className="block text-sm font-medium">Password:</label>
-            <input
-                name="password"
-                type="password"
-                value={SignUpData.message}
-                onChange={handleChange}
-                className="w-full border p-2 rounded"
-                required
-            />
-            </div>
-            <button type="submit" className="bg-blue-500 text-white p-2 rounded">Submit</button>
         </form>
     );
 }

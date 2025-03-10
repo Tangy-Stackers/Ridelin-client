@@ -8,7 +8,7 @@ import { Button } from "@mantine/core";
 function Navbar() {
 
     const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
-
+   ;
 
     return (
         <>
@@ -21,7 +21,7 @@ function Navbar() {
                         <Link to="/createride">
                             <Button variant="filled" color="red" radius="xl"> Create Ride</Button>
                         </Link>
-                        <Button variant="filled" color="red" radius="xl"> Logout</Button>
+                        <Button onClick={logOutUser} variant="filled" color="red" radius="xl"> Logout</Button>
                         <span><b><i>Hi {user && user.name}!</i></b></span>
                         
                     </>

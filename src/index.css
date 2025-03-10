@@ -1,5 +1,6 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Ari
+  font-family: system-ui, Avenir, Helvetica, Ari;
+  width:100%;
 }
 
 body {
@@ -8,8 +9,7 @@ body {
   background: url('../assets/background.jpg');
   background-repeat: no-repeat;
   background-size: fill;
-  display: flex;
-  justify-content: center;
+ 
 }
  
 a {

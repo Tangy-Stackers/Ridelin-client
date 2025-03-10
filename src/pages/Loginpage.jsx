@@ -71,12 +71,13 @@ function Loginpage() {
                         required
                         mt="md"
                     />
-                     <Button type="submit" fullWidth color="blue" mt="lg">Login</Button>
+                     <Button type="submit" color="indigo" radius="md" mt="lg">Login</Button>
             </form>
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <p>Don't have an account yet?</p>
                 
-                <Link to={"/signup"}> Sign Up</Link>
+                <Link to={"/signup"}><Button type="submit" color="orange" radius="md" mt="lg"> Sign Up </Button>
+              </Link>
             </div>
         </>
     )
