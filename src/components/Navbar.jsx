@@ -14,23 +14,23 @@ function Navbar() {
         <>
             <nav>
                 <Link to="/">
-                    <Button variant="gradient" gradient={{ from: 'blue', to: 'pink', deg: 300 }}> Home</Button>
+                    <Button variant="filled" color="red" radius="xl"> Home</Button>
                 </Link>
                 {isLoggedIn && (
                     <>
                         <Link to="/ride">
-                            <Button variant="gradient" gradient={{ from: 'blue', to: 'pink', deg: 300 }}> Create Ride</Button>
+                            <Button variant="filled" color="red" radius="xl"> Create Ride</Button>
                         </Link>
-                        <Button variant="gradient" gradient={{ from: 'blue', to: 'pink', deg: 300 }} onClick={logOutUser}> Logout</Button>
-                        <span>{user && user.name}</span>
+                        <Button variant="filled" color="red" radius="xl"> Logout</Button>
+                        <span><b><i>Hi {user && user.name}!</i></b></span>
                         
                     </>
                 )}
                 {!isLoggedIn && (
                     <>
                         <Link to="/signup">
-                            <Button variant="gradient" gradient={{ from: 'red', to: 'grape', deg: 300 }}> Sign Up</Button> </Link>
-                        <Link to="/login"> <Button variant="gradient" gradient={{ from: 'red', to: 'grape', deg: 300 }}> Login </Button> </Link>
+                            <Button variant="filled" color="red" radius="xl"> Sign Up</Button> </Link>
+                        <Link to="/login"> <Button variant="filled" color="red" radius="xl"> Login </Button> </Link>
                     </>
                 )}
             </nav>

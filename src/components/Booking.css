@@ -170,3 +170,37 @@
     background: #cc0000;
   }
   
+.searchInputs {
+  display:flex;
+
+}
+
+/* Reduce the overall calendar size */
+.mantine-DatePicker-dropdown {
+  transform: scale(0.8); /* Adjust scale as needed */
+  width: auto !important; /* Ensure it adapts to content */
+}
+
+/* Reduce the size of the month calendar */
+.mantine-DatePicker-month {
+  font-size: 12px !important; /* Adjust text size */
+}
+
+/* Reduce day button size */
+.mantine-DatePicker-day {
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 12px !important;
+  padding: 0 !important;
+}
+
+/* Adjust header buttons (prev/next month) */
+.mantine-DatePicker-calendarHeaderControl {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Adjust the month/year header */
+.mantine-DatePicker-calendarHeaderLevel {
+  font-size: 14px !important;
+}
