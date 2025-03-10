@@ -14,8 +14,9 @@ function SearchRide() {
     const navigate = useNavigate();
 
     const handleSearch = () => {
-        navigate(`/rides?origin=${origin}&destination=${destination}&date=${selectedDate ? selectedDate.toISOString() : ""}`);
-    };
+        navigate(`/rides/details?origin=${origin}&destination=${destination}&date=${selectedDate ? selectedDate.toISOString() : ""}`);};
+        
+
 
 
     return (
@@ -64,9 +65,9 @@ function SearchRide() {
                             }}
                         />
                     </Popover.Dropdown>
+                    <Button onClick={() => navigate(`/ride/${ride._id}`)}>View Details</Button>
                 </Popover>
             </div>
-            <Button onClick={handleSearch}>Search</Button>
         </div>
 
     );

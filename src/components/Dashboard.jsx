@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { API_URL } from "../config/api";
 import axios from "axios";
 import "./Booking.css";
+import RideDetails from "./DetailsRide";
 
 
 function Dashboard() {
@@ -124,6 +125,7 @@ function Dashboard() {
                             <p>Destination: {ride.destination}</p>
                             <p>Travel Date: {new Date(ride.travelDate).toLocaleString()}</p>
                             <p>Driver: {ride.driverId}</p>
+                            <Button onClick={navigate(<RideDetails />)}>Read Details</Button>
                         </Card>
                     ))
                 )}

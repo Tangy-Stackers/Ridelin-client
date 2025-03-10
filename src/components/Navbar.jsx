@@ -18,7 +18,7 @@ function Navbar() {
                 </Link>
                 {isLoggedIn && (
                     <>
-                        <Link to="/ride">
+                        <Link to="/createride">
                             <Button variant="filled" color="red" radius="xl"> Create Ride</Button>
                         </Link>
                         <Button variant="filled" color="red" radius="xl"> Logout</Button>
