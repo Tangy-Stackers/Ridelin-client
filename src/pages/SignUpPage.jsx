@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
 import { Eye, EyeOff } from "lucide-react";
-import { Button, Group, TextInput } from "@mantine/core";
+import { Button, Group,PasswordInput, TextInput } from "@mantine/core";
 
 
 function SignUp() {
@@ -74,7 +74,7 @@ function SignUp() {
                         onChange={handleChange}
                         required />
 
-                    <TextInput
+                    <PasswordInput
                         withAsterisk
                         label="Password"
                         type={showPassword ? "text" : "password"}
@@ -83,15 +83,7 @@ function SignUp() {
                         onChange={handleChange}
                         required />
 
-                    {/* Show/Hide Password Button */}
-                    <Button
-                        type="button"
-                        size="xs"
-                        onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-2 text-gray-500"
-                    >
-                        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                    </Button>
+                   
                     <Group justify="center" mt="xl">
                         <Button variant="filled" color="indigo" size="md" radius="md">Submit</Button> </Group>
                 </label>

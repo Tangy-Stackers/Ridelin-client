@@ -52,7 +52,7 @@ function CreateRide() {
         <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 border rounded shadow">
             <h1>Create a Ride</h1>
             <div className="mb-4">
-            <label className="block text-sm font-medium">Where the ride will start?:</label>
+            <label className="cs">Start location:</label>
             <input
                 type="text"
                 name="origin"
@@ -63,7 +63,7 @@ function CreateRide() {
             />
             </div>
             <div className="mb-4">
-            <label className="block text-sm font-medium">Where the ride will finish?</label>
+            <label className="block text-sm font-medium">End location:</label>
             <input
                 type="text"
                 name="destination"
@@ -74,7 +74,7 @@ function CreateRide() {
             />
             </div>
             <div className="mb-4">
-            <label className="block text-sm font-medium">How many seat do you have available:</label>
+            <label className="block text-sm font-medium">Seats Available:</label>
             <input
                 type="number"
                 name="seatsAvailable"
@@ -85,9 +85,9 @@ function CreateRide() {
             />
             </div>
             <div className="mb-4">
-            <label className="block text-sm font-medium">What is the price of the ride:</label>
+            <label className="block text-sm font-medium">Price(per person):</label>
             <input
-                type="number"
+                type="text"
                 name="price"
                 value={CreateRideData.price}
                 onChange={handleChange}

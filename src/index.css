@@ -9,7 +9,8 @@ body {
   background: url('../assets/background.jpg');
   background-repeat: no-repeat;
   background-size: fill;
- 
+  display: flex;
+  justify-content:center ;
 }
  
 a {
@@ -24,18 +25,8 @@ select {
   margin: 5px;
   font-size: 18px;
 }
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
 
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+
 
 @media (prefers-color-scheme: light) {
   :root {

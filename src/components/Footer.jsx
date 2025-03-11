@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../config/api";
+import { Button } from "@mantine/core";
 
 function Footer(){
     const userId = localStorage.getItem('userId')
@@ -18,18 +19,10 @@ function Footer(){
 
     return (
         <div className="p-4 bg-gray-200 text-center">
-            <button 
-                onClick={goToProfile} 
-                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-                Go to Profile
-            </button>
-            <button 
-                onClick={goToRides} 
-                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-                Available rides
-            </button>
+            
+             <Button onClick={goToProfile} color="indigo" radius="md" mt="lg">  Go to Profile </Button>
+             <Button onClick={goToRides} color="indigo" radius="md" mt="lg">  Available rides </Button>
+        
         </div>
     );
 }
