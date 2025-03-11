@@ -13,9 +13,12 @@ function Navbar() {
     return (
         <>
             <nav>
-                <Link to="/dashboard">
+                {isLoggedIn ?   <Link to="/dashboard">
+                    <Button variant="filled" color="red" radius="xl"> Dashboard</Button>
+                </Link> :   <Link to="/">
                     <Button variant="filled" color="red" radius="xl"> Home</Button>
-                </Link>
+                </Link> }
+              
                 {isLoggedIn && (
                     <>
                         <Link to="/createride">

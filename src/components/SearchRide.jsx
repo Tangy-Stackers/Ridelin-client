@@ -4,36 +4,27 @@ import { Alert, Button, TextInput,Popover } from "@mantine/core";
 import { DatePicker } from '@mantine/dates';
 import { dateFormatter } from "../utils/dateFormatter";
 // import { IconInfoCircle } from '@tabler/icons-react';
-
-
 function SearchRide({ originValue, destinationValue, dateValue, navigateCallback = (origin, destination) => {} }) {
-
     const [origin, setOrigin] = useState("");
     const [destination, setDestination] = useState("");
-    const [selectedDate, setSelectedDate] = useState(null); 
+    const [selectedDate, setSelectedDate] = useState(null);
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
-
     const navigate = useNavigate();
     // const icon = <IconInfoCircle />;
-
     const handleSearch = () => {
         const isLoggedIn = localStorage.getItem('authToken')
-
         if (!origin || !destination) {
             setAlertMessage("Please enter both Origin and Destination");
             setShowAlert(true);
             return;
           }
-
         const date = selectedDate ? selectedDate.toLocaleDateString() : ""
         if(isLoggedIn){
             navigateCallback(origin, destination, date);
             navigate(`/rides?origin=${origin}&destination=${destination}&date=${date}`);
-            
         }else {
-           
             setAlertMessage("Login to continue");
             setShowAlert(true);
             setTimeout(() => {
@@ -43,7 +34,6 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
         }, 5000);
         }
     };
-
     useEffect(() => {
         if (originValue != null){
             setOrigin(originValue)
@@ -51,11 +41,10 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
         if (destinationValue != null){
             setDestination(destinationValue)
         }
-        if (dateValue != null){ 
+        if (dateValue != null){
             const dateObj = new Date(dateValue);
             setSelectedDate(dateObj)
         }
-        
     },[originValue, destinationValue, dateValue]);
 
     console.log("selected date:",selectedDate)
@@ -114,8 +103,8 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
             <Button onClick={()=>handleSearch()} color="indigo" radius="md" mt="lg">Search</Button>
             {showAlert && (
                 <Alert
-                variant="light" 
-                color="red" 
+                variant="light"
+                color="red"
                 radius="lg"
                 withCloseButton title="Alert!"
                     onClose={() => {setShowAlert(false); navigate('/login');}}
@@ -127,5 +116,4 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
         </>
     );
 }
-
 export default SearchRide;

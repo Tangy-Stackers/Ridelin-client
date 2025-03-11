@@ -3,6 +3,7 @@ import { API_URL } from "../config/api";
 import axios from "axios";
 // import "./Booking.css";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mantine/core";
 
 function ListOfBooking() {
   const [bookings, setBookings] = useState([]);
@@ -66,8 +67,10 @@ function ListOfBooking() {
                 </label>
 
               )}
+              
               <label className={booking.status}>Status:{booking.status}</label>
-              <button onClick={() => handleEdit(booking._id)}>Edit Booking </button>
+              <Button  variant="filled" color="red" radius="xl"
+               onClick={() => handleEdit(booking._id)}>Edit Booking</Button>
             </label>
           </div>
         ))

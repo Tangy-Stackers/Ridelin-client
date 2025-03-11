@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link,useParams,useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
 import axios from "axios";
-import { useParams,useNavigate } from "react-router-dom";
+import { Button } from "@mantine/core";
 
 function RideDetails() {
   const [ride, setRide] = useState([]);
@@ -50,13 +51,19 @@ function RideDetails() {
         {/* <button >Book this ride</button> needs to handlesumitbooking */}
 
         {userId === ride.driverId && (
-            <button onClick={()=>{handleDelete()}}>Delete this ride</button>
-          )}
-        
+    <button onClick={()=>{handleDelete()}}>Delete this ride</button>
+  )}
+ <Link to="/book">
+    <Button variant="filled" color="red" radius="xl">
+      Book ride</Button>
+  </Link>
       </div>
       )}
     </div>
   );
 }
+
+
+
 
 export default RideDetails;

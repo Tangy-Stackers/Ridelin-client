@@ -6,13 +6,9 @@ import { API_URL } from "../config/api";
 import axios from "axios";
 import "../assets/Booking.css"
 import SearchRide from "./SearchRide";
-
-
 function SearchResults() {
     const location = useLocation();
     const navigate = useNavigate();
-
-
     const [searchParams, setSearchParams] = useSearchParams();
     const [origin, setOrigin] = useState("");
     const [destination, setDestination] = useState("");
@@ -20,11 +16,9 @@ function SearchResults() {
     const [filteredRides, setFilteredRides] = useState([]);
     const [selectedDate, setSelectedDate] = useState(null);
     const [sortOrder, setSortOrder] = useState("asc");
-
     useEffect(() => {
         doSearch();
     }, [origin, destination]);
-
     const doSearch = (origin, destination, date) => {
         if (origin === undefined && destination === undefined && date === undefined) {
             setOrigin(searchParams.get("origin"))
@@ -34,7 +28,6 @@ function SearchResults() {
             setSelectedDate(searchParams.get('date'))
             date = searchParams.get('date')
         }
-        
         const storedToken = localStorage.getItem('authToken');
         axios.get(`${API_URL}/api/ride`, { headers: { Authorization: `Bearer ${storedToken}` } })
             .then((response) => {
@@ -45,10 +38,8 @@ function SearchResults() {
                 console.log(error);
             });
     };
-
     const filteredResult = (rides, originFilter = "", destinationFilter = "", dateFilter = undefined) => {
         const filtered = rides
-      
             .filter(ride =>
                 ride.origin && ride.destination && // Ensure origin and destination exist
                 ride.origin.toLowerCase().includes(originFilter.toLowerCase()) &&
@@ -62,17 +53,12 @@ function SearchResults() {
             );
         setFilteredRides(filtered);
     };
-    
-
     const handleGoToDetails = (rideId) => {
         navigate(`/ride/${rideId}`);
     }
-
     return (
         <div className="searchRide">
-
             <SearchRide originValue={origin} destinationValue={destination} dateValue={selectedDate} navigateCallback={doSearch} />
-
             <div>
                 <label>Sort by Date:</label>
                 <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
@@ -95,11 +81,8 @@ function SearchResults() {
                         </Card>
                     ))
                 )}
-                        
             </div>
-           
         </div>
     );
-
 }
 export default SearchResults;

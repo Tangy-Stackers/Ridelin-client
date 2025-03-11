@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
+import { Button, TextInput } from "@mantine/core";
 
 function CreateBooking() {
     const [passengerId, setPassengerId] = useState("");
@@ -29,22 +30,38 @@ function CreateBooking() {
         <div className="createBooking">
             <h1>Create Booking</h1>
             <form onSubmit={handleSubmit}>
-                <label>PassengerId:
-                    <input type="text" name="PassengerIe" placeholder="Enter the passengerId" onChange={(e) => { setPassengerId(e.target.value) }} />
-                </label>
-                <label>ride:
-                    <input type="text" name="ride" placeholder="Enter the ride" onChange={(e) => { setRide(e.target.value) }} />
-                </label>
-                <label>status:
-                    <input type="text" name="status" placeholder="Enter the status" onChange={(e) => { setStatus(e.target.value) }} />
-                </label>
-                <label>bookingDate:
-                    <input type="text" name="bookingDate" placeholder="Enter the bookingDate" onChange={(e) => { setBookingDate(e.target.value) }} />
-                </label>
-                <label>seatsBooked:
-                    <input type="text" name="seatsBooked" placeholder="Enter the seatsBooked" onChange={(e) => { setSeatsBooked(e.target.value) }} />
-                </label>
-                <button type="submit">Create Booking ✏️</button>
+            <TextInput
+                    withAsterisk
+                    label="Passenger ID"
+                    placeholder="Enter Passenger ID"
+                    value={passengerId}
+                    onChange={(e) => setPassengerId(e.target.value)}
+                    required
+                />
+                
+                <TextInput
+                    label="Ride"
+                    placeholder="Enter Ride ID"
+                    value={ride}
+                    onChange={(e) => setRide(e.target.value)}
+                />
+
+                <TextInput
+                    label="Booking Date"
+                    placeholder="YYYY-MM-DD"
+                    value={bookingDate}
+                    onChange={(e) => setBookingDate(e.target.value)}
+                />
+
+                <TextInput
+                    label="Seats Booked"
+                    placeholder="Number of Seats"
+                    value={seatsBooked}
+                    onChange={(e) => setSeatsBooked(e.target.value)}
+                />
+
+                
+                <Button  variant="filled" color="red" radius="xl"> Create Booking ✏️</Button>
             </form>
       
         </div>

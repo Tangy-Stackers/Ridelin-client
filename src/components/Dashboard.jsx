@@ -9,6 +9,10 @@ import SearchRide from "./SearchRide";
 
 
 function Dashboard() {
+
+
+
+    
     // This is meant to show details about ongoing rides, profile
     return
     <>
