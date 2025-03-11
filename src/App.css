@@ -45,10 +45,21 @@ h2,h3 {
     gap: 20px;
 
 }
-
 .searchInputs {
     background-color: darkseagreen;
     gap: 10px;
     padding: 20px;
     border-radius: 5px;
+}
+.UserDetails{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    height: 80vh;
+}
+.img{
+    width:250px;
+    height:200px;
+    border-radius: 8px;
 }

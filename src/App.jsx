@@ -16,6 +16,8 @@ import HomePage from "./pages/Homepage";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import '../src/index.css';
 import DashboardPage from "./pages/DashboardPage";
+import UserProfileUpdate from "./components/UpdateUserProfile";
+import UpdateUserProfile from "./components/UpdateUserProfile";
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/user/:userId" element={<ProfileDetails />}/>
+          <Route path="/user/:userId/edit" element={<UpdateUserProfile/>}/>
           <Route path="/createride" element={<CreateRide />} />
           <Route path="/ride/:rideId" element={<DetailsRide />} />
           <Route path="/searchride" element={<SearchRide />} />
