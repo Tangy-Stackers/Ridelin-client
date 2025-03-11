@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Alert, Button, TextInput,Popover } from "@mantine/core";
 import { DatePicker } from '@mantine/dates';
 import { dateFormatter } from "../utils/dateFormatter";
-// import { IconInfoCircle } from '@tabler/icons-react';
+
 function SearchRide({ originValue, destinationValue, dateValue, navigateCallback = (origin, destination) => {} }) {
     const [origin, setOrigin] = useState("");
     const [destination, setDestination] = useState("");
@@ -12,7 +12,7 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
     const [showAlert, setShowAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
     const navigate = useNavigate();
-    // const icon = <IconInfoCircle />;
+    
     const handleSearch = () => {
         const isLoggedIn = localStorage.getItem('authToken')
         if (!origin || !destination) {
@@ -31,7 +31,7 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
                 setShowAlert(false);
                 navigate('/login');
             ;
-        }, 5000);
+        }, 2000);
         }
     };
     useEffect(() => {

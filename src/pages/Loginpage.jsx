@@ -1,5 +1,5 @@
-import { useContext, useState } from "react"
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react"
+import { Link, useNavigate,useSearchParams } from "react-router-dom";
 import { API_URL } from "../config/api";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
@@ -15,8 +15,16 @@ function Loginpage() {
     const [errorMessage, setErrorMessage] = useState(undefined);
     const { storeToken, authenticateUser } = useContext(AuthContext);
 
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [isSuccess,setIsSuccess] =useState(undefined);
+
     const handleEmail = (e) => setEmail(e.target.value);
     const handlePassword = (e) => setPassword(e.target.value);
+
+
+    useEffect(()=>{
+        setIsSuccess(searchParams.get("success"))
+    })
 
     const form = useForm({
         initialValues: {
@@ -52,6 +60,9 @@ function Loginpage() {
     return (
         <>
             <div className="LoginPage">
+                <div>
+                    { isSuccess ==1 && <p>Account Successfully Created! You can Log In now</p> }
+                </div>
                 <h1>Login</h1>
 
                 <form onSubmit={handleLoginSubmit}>
