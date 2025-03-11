@@ -44,9 +44,9 @@ function CreateRide() {
 
             .catch(e => console.log(" Error creating the new ride ...", e) )
 
-        
+            console.log("Form Submitted:", CreateRideData);
     };
-    console.log("Form Submitted:", CreateRideData);
+   
 
     return (
         <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 border rounded shadow">
