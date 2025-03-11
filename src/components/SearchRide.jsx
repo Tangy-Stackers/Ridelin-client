@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Alert, Button, TextInput,Popover } from "@mantine/core";
 import { DatePicker } from '@mantine/dates';
 import { format } from 'date-fns';
-import { IconInfoCircle } from '@tabler/icons-react';
+// import { IconInfoCircle } from '@tabler/icons-react';
 
 
 function SearchRide({ originValue, destinationValue, dateValue, navigateCallback = (origin, destination) => {} }) {
@@ -16,7 +16,7 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
     const [alertMessage, setAlertMessage] = useState("");
 
     const navigate = useNavigate();
-    const icon = <IconInfoCircle />;
+    // const icon = <IconInfoCircle />;
 
     const handleSearch = () => {
         const isLoggedIn = localStorage.getItem('authToken')
@@ -113,7 +113,6 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
                 variant="light" 
                 color="red" 
                 radius="lg"
-                icon={icon}
                 withCloseButton title="Alert!"
                     onClose={() => {setShowAlert(false); navigate('/login');}}
                 >
