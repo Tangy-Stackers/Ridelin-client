@@ -1,5 +1,5 @@
-import { useContext, useState } from "react"
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react"
+import { Link, useNavigate,useSearchParams } from "react-router-dom";
 import { API_URL } from "../config/api";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
@@ -15,8 +15,16 @@ function Loginpage() {
     const [errorMessage, setErrorMessage] = useState(undefined);
     const { storeToken, authenticateUser } = useContext(AuthContext);
 
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [isSuccess,setIsSuccess] =useState(undefined);
+
     const handleEmail = (e) => setEmail(e.target.value);
     const handlePassword = (e) => setPassword(e.target.value);
+
+
+    useEffect(()=>{
+        setIsSuccess(searchParams.get("success"))
+    })
 
     const form = useForm({
         initialValues: {
@@ -32,18 +40,18 @@ function Loginpage() {
            e.preventDefault();
            const { email, password } = form.values;
            const requestBody = { email, password };
-           console.log(email);
-           console.log(password);
+        //    console.log(email);
+        //    console.log(password);
            axios.post(`${API_URL}/auth/login`, requestBody)
                .then((response) => {
-                   console.log('JWT token', response.data.authToken);
+                //    console.log('JWT token', response.data.authToken);
                    storeToken(response.data.authToken);
                    authenticateUser();
                    navigate('/dashboard');
                })
                .catch((error) => {
                    let errorDescription = "Something went wrong. Please try again.";
-                   console.log(error);
+                //    console.log(error);
                    setErrorMessage(errorDescription);
                })
        };
@@ -52,6 +60,9 @@ function Loginpage() {
     return (
         <>
             <div className="LoginPage">
+                <div>
+                    { isSuccess ==1 && <p>Account Successfully Created! You can Log In now</p> }
+                </div>
                 <h1>Login</h1>
 
                 <form onSubmit={handleLoginSubmit}>

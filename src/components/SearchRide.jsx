@@ -6,6 +6,8 @@ import { dateFormatter } from "../utils/dateFormatter";
 
 
 
+
+
 function SearchRide({ originValue, destinationValue, dateValue, navigateCallback = (origin, destination) => { } }) {
     const [origin, setOrigin] = useState("");
     const [destination, setDestination] = useState("");
@@ -14,8 +16,7 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
     const [showAlert, setShowAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
     const navigate = useNavigate();
-
-
+    
     const handleSearch = () => {
         const isLoggedIn = localStorage.getItem('authToken')
         if (!origin || !destination) {
@@ -33,8 +34,8 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
             setTimeout(() => {
                 setShowAlert(false);
                 navigate('/login');
-                ;
-            }, 5000);
+            ;
+        }, 5000);
         }
     };
 
