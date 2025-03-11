@@ -8,8 +8,6 @@ import SearchResults from "../components/SearchResults";
     return(
         <>
         
-          
-
          
         <SearchResults /> 
         </>

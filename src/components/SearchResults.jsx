@@ -1,3 +1,4 @@
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Button, Card, TextInput, Popover } from "@mantine/core";
 import { DatePicker } from '@mantine/dates';
@@ -12,6 +13,8 @@ function Dashboard() {
     const location = useLocation();
     const navigate = useNavigate();
 
+
+    const [searchParams, setSearchParams] = useSearchParams();
     const [origin, setOrigin] = useState("");
     const [destination, setDestination] = useState("");
     const [rides, setRides] = useState([]);
@@ -26,11 +29,24 @@ function Dashboard() {
     const destinationQuery = queryParams.get("destination");
 
     useEffect(() => {
+        doSearch();
+    }, [origin, destination]);
+
+    const doSearch = (origin, destination, date) => {
+        if (origin === undefined && destination === undefined && date === undefined) {
+            setOrigin(searchParams.get("origin"))
+            origin = searchParams.get("origin")
+            setDestination(searchParams.get("destination"))
+            destination = searchParams.get("destination")
+            setSelectedDate(searchParams.get('date'))
+            date = searchParams.get('date')
+        }
+        
         const storedToken = localStorage.getItem('authToken');
         axios.get(`${API_URL}/api/ride`, { headers: { Authorization: `Bearer ${storedToken}` } })
             .then((response) => {
                 setRides(response.data);
-                filteredResult(response.data, originQuery, destinationQuery);
+                filteredResult(response.data, origin, destination);
             })
             .catch((error) => {
                 console.log(error);
@@ -40,9 +56,10 @@ function Dashboard() {
     const filteredResult = (ridesData, originFilter, destinationFilter) => {
         const filtered = ridesData
             .filter(ride =>
+                ride.origin && ride.destination && // Ensure origin and destination exist
                 ride.origin.toLowerCase().includes(originFilter.toLowerCase()) &&
                 ride.destination.toLowerCase().includes(destinationFilter.toLowerCase()) &&
-                (selectedDate ? new Date(ride.travelDate) >= new Date(selectedDate) : true)
+                (dateFilter ? new Date(ride.travelDate) >= new Date(dateFilter) : true)
             )
             .sort((a, b) =>
                 sortOrder === "asc"

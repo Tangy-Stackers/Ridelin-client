@@ -13,7 +13,7 @@ function Navbar() {
     return (
         <>
             <nav>
-                <Link to="/">
+                <Link to="/dashboard">
                     <Button variant="filled" color="red" radius="xl"> Home</Button>
                 </Link>
                 {isLoggedIn && (
