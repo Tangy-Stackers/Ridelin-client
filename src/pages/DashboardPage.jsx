@@ -34,7 +34,7 @@ function DashBoardPage() {
     }
 
     return (
-        <div className="searchRide">
+        <div className="">
 
             <SearchRide />
 

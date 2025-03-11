@@ -2,7 +2,7 @@ import {  useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Alert, Button, TextInput,Popover } from "@mantine/core";
 import { DatePicker } from '@mantine/dates';
-import { format } from 'date-fns';
+import { dateFormatter } from "../utils/dateFormatter";
 // import { IconInfoCircle } from '@tabler/icons-react';
 
 
@@ -58,6 +58,9 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
         
     },[originValue, destinationValue, dateValue]);
 
+    console.log("selected date:",selectedDate)
+
+  
     return (
         <>
         {/*  <h3>Search for a Ride</h3>*/}
@@ -84,7 +87,8 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
                     <Popover.Target>
                         <TextInput
                             label="Travel Date"
-                            value={selectedDate ? format (selectedDate, 'MM/dd/yyyy') : ""}
+                            value={selectedDate ? dateFormatter(selectedDate) : ""}
+                            
                             placeholder="Select a Date"
                             onClick={() => setIsDatePickerOpen(true)} // Open on click
                             readOnly
