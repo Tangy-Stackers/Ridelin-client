@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { API_URL } from "../config/api";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { Button } from "@mantine/core";
 
 function RideDetails() {
   const [ride, setRide] = useState([]);
-  const {rideId} =useParams();
+  const { rideId } = useParams();
 
   useEffect(() => {
     const storedToken = localStorage.getItem("authToken");
@@ -24,11 +25,14 @@ function RideDetails() {
       {ride === null ? (
         <p>ride not found </p>
       ) : (
-      <div key={ride._id}>
-        <h3>Origin: {ride.origin}</h3>
-        <h3>Destination: {ride.destination}</h3>
-        <button>Book this ride</button>
-      </div>
+        <div key={ride._id}>
+          <h3>Origin: {ride.origin}</h3>
+          <h3>Destination: {ride.destination}</h3>
+          <Link to="/book">
+            <Button variant="filled" color="red" radius="xl">
+              Book ride</Button>
+          </Link>
+        </div>
       )}
     </div>
   );

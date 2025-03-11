@@ -1,5 +1,4 @@
 import { Card, Text } from "@mantine/core";
-import Dashboard from "../components/Dashboard";
 import SearchRide from "../components/SearchRide";
 import "../App.css";
 
@@ -17,15 +16,8 @@ function HomePage() {
 
       <h2>Tired of commuting alone?</h2>
       <h3><b>Meet Ridelin, the carpooling app that makes sharing rides easy, affordable, and eco-friendly.</b> </h3>
-      <h3><b>Whether you're commuting to work, running errands or embarking on a road trip, join trusted riders and drivers to share costs, cut emissions and make every ride more enjoyable!
-
-
-
-
-
-
-
-</b></h3>
+      <h3><b>Whether you're commuting to work, running errands or embarking on a road trip, join trusted riders and drivers to share costs, 
+        cut emissions and make every ride more enjoyable!</b></h3>
 
    
 

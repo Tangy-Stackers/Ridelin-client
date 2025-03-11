@@ -1,14 +1,14 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Button, Card, TextInput, Popover } from "@mantine/core";
 import { DatePicker } from '@mantine/dates';
 import { useEffect, useState } from "react";
 import { API_URL } from "../config/api";
 import axios from "axios";
-import "../assets/Booking.css"
-import SearchRide from "./SearchRide";
+import "./Booking.css";
 
 
-function SearchResults() {
+
+function Dashboard() {
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -18,6 +18,8 @@ function SearchResults() {
     const [filteredRides, setFilteredRides] = useState([]);
     const [selectedDate, setSelectedDate] = useState(null);
     const [sortOrder, setSortOrder] = useState("asc");
+    const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+    const { rideId }= useParams();
 
     const queryParams = new URLSearchParams(location.search);
     const originQuery = queryParams.get("origin");
@@ -36,7 +38,6 @@ function SearchResults() {
     }, []);
 
     const filteredResult = (ridesData, originFilter, destinationFilter) => {
-        console.log(ridesData)
         const filtered = ridesData
             .filter(ride =>
                 ride.origin.toLowerCase().includes(originFilter.toLowerCase()) &&
@@ -48,21 +49,68 @@ function SearchResults() {
                     ? new Date(a.travelDate) - new Date(b.travelDate)
                     : new Date(b.travelDate) - new Date(a.travelDate)
             );
-            console.log(filtered)
         setFilteredRides(filtered);
-
     };
 
-    
+    // Handle manual search when the user types a new origin or destination and presses the search button
+    const handleSearch = () => {
 
-    const handleGoToDetails = (rideId) => {
+        filteredResult(rides, origin, destination);
+
+        navigate(`/rides?origin=${origin}&destination=${destination}`);
+    };
+
+    const handleGoToDetails = () => {
         navigate(`/ride/${rideId}`);
     }
 
     return (
         <div className="searchRide">
+            <div className="searchInputs">
+                <TextInput
+                    label="Origin"
+                    value={origin || originQuery}
+                    placeholder="Enter Origin"
+                    onChange={(e) => setOrigin(e.target.value)} />
+                <TextInput
+                    label="Destination"
+                    value={destination || destinationQuery}
+                    placeholder="Enter Destination"
+                    onChange={(e) => setDestination(e.target.value)} />
+                  <Popover
+                    opened={isDatePickerOpen}
+                    onClose={() => setIsDatePickerOpen(false)}
+                    position="bottom"
+                    withArrow
+                >
+                    <Popover.Target>
+                        <TextInput
+                            label="Travel Date"
+                            value={selectedDate ? selectedDate.toLocaleDateString() : ""}
+                            placeholder="Select a Date"
+                            onClick={() => setIsDatePickerOpen(true)} // Open on click
+                            readOnly
+                        />
+                    </Popover.Target>
+                    <Popover.Dropdown>
+                        <DatePicker
+                            value={selectedDate}
+                            onChange={(date) => {
+                                setSelectedDate(date);
+                                setIsDatePickerOpen(false); // Close when date is selected
+                            }}
+                            classNames={{
+                                calendarBase: "small-calendar",
+                                day: "small-calendar-day",
+                                month: "small-calendar-month",
+                                weekday: "small-calendar-weekday"
+                            }}
+                        />
+                    </Popover.Dropdown>
+                </Popover>
+            </div>
 
-            <SearchRide />
+            <Button onClick={handleSearch}>Search</Button>
 
             <div>
                 <label>Sort by Date:</label>
@@ -82,15 +130,16 @@ function SearchResults() {
                             <p>Destination: {ride.destination}</p>
                             <p>Travel Date: {new Date(ride.travelDate).toLocaleString()}</p>
                             <p>Driver: {ride.driverId}</p>
-                            <button onClick={()=>{handleGoToDetails(ride._id)}}> More Details </button>
+                            <button onClick={handleGoToDetails}> More Details </button>
                         </Card>
                     ))
                 )}
                         
+
             </div>
            
         </div>
     );
 
 }
-export default SearchResults;
+export default Dashboard;

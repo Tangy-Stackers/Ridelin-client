@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
-import { Eye, EyeOff } from "lucide-react";
 import { Button, Group,PasswordInput, TextInput } from "@mantine/core";
 
 
