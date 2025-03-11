@@ -40,18 +40,18 @@ function Loginpage() {
            e.preventDefault();
            const { email, password } = form.values;
            const requestBody = { email, password };
-           console.log(email);
-           console.log(password);
+        //    console.log(email);
+        //    console.log(password);
            axios.post(`${API_URL}/auth/login`, requestBody)
                .then((response) => {
-                   console.log('JWT token', response.data.authToken);
+                //    console.log('JWT token', response.data.authToken);
                    storeToken(response.data.authToken);
                    authenticateUser();
                    navigate('/dashboard');
                })
                .catch((error) => {
                    let errorDescription = "Something went wrong. Please try again.";
-                   console.log(error);
+                //    console.log(error);
                    setErrorMessage(errorDescription);
                })
        };
