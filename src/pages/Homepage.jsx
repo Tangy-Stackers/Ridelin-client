@@ -1,11 +1,24 @@
 import { Card, Text } from "@mantine/core";
 import SearchRide from "../components/SearchRide";
 import "../App.css";
+import { AuthContext } from "../context/auth.context";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 
   
 
 function HomePage() {
+  const navigate = useNavigate()
+  const { user } = useContext(AuthContext);
+
+
+  if(user){
+    navigate("/dashboard")
+  }
+
+
+
   return (
     <>
    

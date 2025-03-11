@@ -1,17 +1,20 @@
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { Button, Card, TextInput, Popover } from "@mantine/core";
 import { DatePicker } from '@mantine/dates';
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { API_URL } from "../config/api";
 import axios from "axios";
-import "../assets/Booking.css"
+import "../assets/Booking.css";
 import SearchRide from "../components/SearchRide";
+import { AuthContext } from "../context/auth.context";
 
 
 
 //show booking rides
 
 function DashBoardPage() {
+    const { user } = useContext(AuthContext);
+  
     const location = useLocation();
     const navigate = useNavigate();
     const [rides, setRides] = useState([]);
@@ -32,6 +35,13 @@ function DashBoardPage() {
     const handleGoToDetails = (rideId) => {
         navigate(`/ride/${rideId}`);
     }
+
+
+    
+    
+      if(!user){
+        navigate("/")
+      }
 
     return (
         <div className="searchRide">
