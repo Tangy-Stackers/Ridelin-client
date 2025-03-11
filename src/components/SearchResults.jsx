@@ -6,6 +6,7 @@ import { API_URL } from "../config/api";
 import axios from "axios";
 import "../assets/Booking.css"
 import SearchRide from "./SearchRide";
+
 function SearchResults() {
     const location = useLocation();
     const navigate = useNavigate();
@@ -16,9 +17,11 @@ function SearchResults() {
     const [filteredRides, setFilteredRides] = useState([]);
     const [selectedDate, setSelectedDate] = useState(null);
     const [sortOrder, setSortOrder] = useState("asc");
+
     useEffect(() => {
         doSearch();
     }, [origin, destination]);
+
     const doSearch = (origin, destination, date) => {
         if (origin === undefined && destination === undefined && date === undefined) {
             setOrigin(searchParams.get("origin"))
@@ -28,6 +31,7 @@ function SearchResults() {
             setSelectedDate(searchParams.get('date'))
             date = searchParams.get('date')
         }
+
         const storedToken = localStorage.getItem('authToken');
         axios.get(`${API_URL}/api/ride`, { headers: { Authorization: `Bearer ${storedToken}` } })
             .then((response) => {
@@ -38,6 +42,7 @@ function SearchResults() {
                 console.log(error);
             });
     };
+
     const filteredResult = (rides, originFilter = "", destinationFilter = "", dateFilter = undefined) => {
         const filtered = rides
             .filter(ride =>
@@ -53,9 +58,11 @@ function SearchResults() {
             );
         setFilteredRides(filtered);
     };
+
     const handleGoToDetails = (rideId) => {
         navigate(`/ride/${rideId}`);
     }
+    
     return (
         <div className="searchRide">
             <SearchRide originValue={origin} destinationValue={destination} dateValue={selectedDate} navigateCallback={doSearch} />
@@ -77,7 +84,7 @@ function SearchResults() {
                             <p>Destination: {ride.destination}</p>
                             <p>Travel Date: {new Date(ride.travelDate).toLocaleString()}</p>
                             <p>Driver: {ride.driverId}</p>
-                            <button onClick={()=>{handleGoToDetails(ride._id)}}> More Details </button>
+                            <button onClick={() => { handleGoToDetails(ride._id) }}> More Details </button>
                         </Card>
                     ))
                 )}

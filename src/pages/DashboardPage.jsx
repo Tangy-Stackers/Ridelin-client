@@ -52,12 +52,11 @@ function DashBoardPage() {
             <div className="rideResults">
                 {rides.length === 0 ? (
                     <p>No rides found for your search.</p>
-                ) : (
+                ) : ( 
                     rides.map((ride) => (
                         <Card key={ride._id} className="rideCard">
                             <h3>Ride ID: {ride._id}</h3>
-                            <p>Origin: {ride.origin}</p>
-                            <p>Destination: {ride.destination}</p>
+                            <p>Origin: {ride.origin}-----Destination: {ride.destination}</p>
                             <p>Travel Date: {new Date(ride.travelDate).toLocaleString()}</p>
                             <p>Driver: {ride.driverId}</p>
                             <button onClick={()=>{handleGoToDetails(ride._id)}}> More Details </button>

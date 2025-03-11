@@ -8,14 +8,13 @@ function RideDetails() {
   const [ride, setRide] = useState([]);
   const [successMessage, setSuccessMessage] = useState(""); 
   const {rideId} =useParams();
-  const userId = localStorage.getItem('userId');
   const navigate = useNavigate();
-  const storedToken = localStorage.getItem("authToken");
+
+  const userId = localStorage.getItem('userId');
+   const storedToken = localStorage.getItem("authToken");
 
   useEffect(() => {
-    
-
-    axios
+        axios
       .get(`${API_URL}/api/ride/${rideId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
@@ -24,8 +23,7 @@ function RideDetails() {
   }, [rideId]);
 
   const handleDelete = () => {
-    
-    axios.delete(`${API_URL}/api/ride/${rideId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+        axios.delete(`${API_URL}/api/ride/${rideId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
         .then(() => {
           setSuccessMessage("Ride successfully deleted!"); // Set success message
           setTimeout(() => navigate("/"), 2000); // Redirect after 2s
@@ -33,11 +31,10 @@ function RideDetails() {
         .catch((error) => console.log(error));
     };
 
+    const handleBookRide = (rideId) => {
+      navigate("/book", { state: { rideId } });
+  };
 
-  //booking
-//   const handleGoToDetails = (rideId) => {
-//     navigate(`/ride/${rideId}`);
-// }
 
   return (
     <div>
@@ -46,17 +43,19 @@ function RideDetails() {
         <p>ride not found </p>
       ) : (
       <div key={ride._id}>
-        <h3>Origin: {ride.origin}</h3>
-        <h3>Destination: {ride.destination}</h3>
-        {/* <button >Book this ride</button> needs to handlesumitbooking */}
-
+        <h3>Origin: {ride.origin} ----------------- Destination: {ride.destination}</h3>
+        
+        <h3>Driver Details:</h3>
+        <p>Name: {ride.driverId?.name || "N/A"}</p>
+          <p>Email: {ride.driverId?.email || "N/A"}</p>
+          <p>Phone: {ride.driverId?.phone || "N/A"}</p>
         {userId === ride.driverId && (
     <button onClick={()=>{handleDelete()}}>Delete this ride</button>
   )}
- <Link to="/book">
-    <Button variant="filled" color="red" radius="xl">
+ 
+    <Button variant="filled" color="red" radius="xl" onClick={() => handleBookRide(ride._id)}>
       Book ride</Button>
-  </Link>
+ 
       </div>
       )}
     </div>
