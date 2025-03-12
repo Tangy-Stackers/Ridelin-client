@@ -11,10 +11,10 @@ function RideDetails() {
   const { rideId } = useParams();
   const navigate = useNavigate();
 
-
   const userId = localStorage.getItem('userId');
   const storedToken = localStorage.getItem("authToken");
-  const userName = localStorage.getItem('userName')
+  const userName = localStorage.getItem('userName');
+  
   useEffect(() => {
     console.log('cosa')
     axios
@@ -48,7 +48,7 @@ function RideDetails() {
   return (
     <Container size="md" mt={20} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
       <Title align="center" mb={20}>Ride Details</Title>
-      <Text>Where are we traveling today, <strong> {userName}</strong>?</Text>
+      <Text>Where are we traveling today, <strong>{userName}</strong>?</Text>
       <br />
 
       {ride === null ? (
@@ -57,11 +57,17 @@ function RideDetails() {
         <>
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'bottom', gap: '1rem' }}>
             <Title order={1}>{ride.origin} → {ride.destination}</Title>
-            <Button variant="filled" color="green" radius="xl" onClick={() => handleBookRide(ride._id)}>
-              Book ride
-            </Button>
+            {/* Show Book Ride button only if userId does not match the driverId */}
+            {userId === ride.driverId && (
+              <Button variant="filled" color="green" radius="xl" onClick={() => handleBookRide(ride._id)}>
+                Book ride
+              </Button>
+            )}
+            {userId !== ride.driverId && (
+            <Button onClick={handleDelete} color="red" radius="xl">Delete this ride</Button>
+          )}
           </div>
-          <br/>
+          <br />
           <Flex gap="lg" direction="row" align="flex-start" justify="space-between" style={{ width: "100%" }}>
             {/* Left Column */}
             <div style={{ flex: 1 }}>
@@ -108,16 +114,16 @@ function RideDetails() {
           </Flex>
           <br />
 
-          <Button variant="filled" color="green" radius="xl" onClick={() => handleBookRide(ride._id)}>
-            Book ride
-          </Button>
-
-          {userId === ride.driverId && (
-            <Button onClick={handleDelete}>Delete this ride</Button>
+          {/* Delete button appears only if userId is the driver */}
+          {userId !== ride.driverId && (
+            <Button onClick={handleDelete} color="red" radius="xl">Delete this ride</Button>
           )}
-
+           {userId === ride.driverId && (
+              <Button variant="filled" color="green" radius="xl" onClick={() => handleBookRide(ride._id)}>
+                Book ride
+              </Button>
+            )}
         </>
-
       )}
     </Container>
   );
