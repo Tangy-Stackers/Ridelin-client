@@ -15,7 +15,7 @@ function ListOfBooking() {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .get(`${API_URL}/api/bookings/${userId}`, {
+      .get(`${API_URL}/api/bookings`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => setBookings(response.data))
