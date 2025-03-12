@@ -1,9 +1,8 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
 import axios from "axios";
-import { Flex, Button, Container, Card, Text, Title, Divider, Center } from "@mantine/core";
-import { AuthContext } from "../context/auth.context";
+import { Flex, Button, Container, Card, Text, Title, Divider } from "@mantine/core";
 
 function RideDetails() {
   const [ride, setRide] = useState(null);
@@ -14,7 +13,7 @@ function RideDetails() {
   const userId = localStorage.getItem('userId');
   const storedToken = localStorage.getItem("authToken");
   const userName = localStorage.getItem('userName');
-  
+
   useEffect(() => {
     console.log('cosa')
     axios
@@ -38,6 +37,11 @@ function RideDetails() {
     navigate("/book", { state: { rideId } });
   };
 
+  const handleUpdateRide = () => {
+    // Navigate to the update ride page
+    navigate("/updateride"); // Change this to the appropriate route path
+  };
+
   // Check if the travelDate is valid
   const isValidDate = ride ? !isNaN(new Date(ride.travelDate)) : false;
   const travelDate = isValidDate ? new Date(ride?.travelDate) : null;
@@ -58,14 +62,11 @@ function RideDetails() {
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'bottom', gap: '1rem' }}>
             <Title order={1}>{ride.origin} → {ride.destination}</Title>
             {/* Show Book Ride button only if userId does not match the driverId */}
-            {userId === ride.driverId && (
+            {userId !== ride.driverId && (
               <Button variant="filled" color="green" radius="xl" onClick={() => handleBookRide(ride._id)}>
                 Book ride
               </Button>
             )}
-            {userId !== ride.driverId && (
-            <Button onClick={handleDelete} color="red" radius="xl">Delete this ride</Button>
-          )}
           </div>
           <br />
           <Flex gap="lg" direction="row" align="flex-start" justify="space-between" style={{ width: "100%" }}>
@@ -114,15 +115,21 @@ function RideDetails() {
           </Flex>
           <br />
 
-          {/* Delete button appears only if userId is the driver */}
-          {userId !== ride.driverId && (
-            <Button onClick={handleDelete} color="red" radius="xl">Delete this ride</Button>
+          {/* Conditional buttons */}
+          {userId === ride.driverId && (
+          <Flex direction="row" gap="md">
+              <Button onClick={handleDelete} color="red" radius="xl">Delete this ride</Button>
+              <br />
+              <Button onClick={handleUpdateRide} color="green" radius="xl">Update this ride</Button>
+              
+          </Flex>
           )}
-           {userId === ride.driverId && (
+          {userId !== ride.driverId && (
               <Button variant="filled" color="green" radius="xl" onClick={() => handleBookRide(ride._id)}>
                 Book ride
               </Button>
             )}
+
         </>
       )}
     </Container>
