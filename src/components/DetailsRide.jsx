@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { API_URL } from "../config/api";
 import axios from "axios";
 import { Flex, Button, Container, Card, Text, Title, Divider } from "@mantine/core";
 
@@ -17,7 +16,7 @@ function RideDetails() {
   useEffect(() => {
     console.log('cosa')
     axios
-      .get(`${API_URL}/api/ride/${rideId}`, {
+      .get(`${import.meta.env.VITE_API_URL}/api/ride/${rideId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => setRide(response.data))
@@ -25,7 +24,7 @@ function RideDetails() {
   }, [rideId]);
 
   const handleDelete = () => {
-    axios.delete(`${API_URL}/api/ride/${rideId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+    axios.delete(`${import.meta.env.VITE_API_URL}/api/ride/${rideId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(() => {
         setSuccessMessage("Ride successfully deleted!");
         setTimeout(() => navigate("/"), 2000);

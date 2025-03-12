@@ -1,7 +1,6 @@
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { Button, Card, TextInput, Popover } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { API_URL } from "../config/api";
 import axios from "axios";
 import "../assets/Booking.css"
 import SearchRide from "./SearchRide";
@@ -32,7 +31,7 @@ function SearchResults() {
         }
 
         const storedToken = localStorage.getItem('authToken');
-        axios.get(`${API_URL}/api/ride`, { headers: { Authorization: `Bearer ${storedToken}` } })
+        axios.get(`${import.meta.env.VITE_API_URL}/api/ride`, { headers: { Authorization: `Bearer ${storedToken}` } })
             .then((response) => {
                 setRides(response.data);
                 filteredResult(response.data, origin, destination);

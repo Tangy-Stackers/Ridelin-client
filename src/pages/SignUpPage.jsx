@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate,useLocation,useSearchParams } from "react-router-dom";
-import { API_URL } from "../config/api";
 import { Button, Group,PasswordInput, TextInput } from "@mantine/core";
 
 
@@ -48,7 +47,7 @@ function SignUp() {
             return;
         }
         //Creating account on API
-        axios.post(`${API_URL}/auth/signup`, SignUpData)
+        axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`, SignUpData)
             .then(response => {
                 setAlertMessage("Account created successfully! Login to continue");
                 setShowAlert(true);

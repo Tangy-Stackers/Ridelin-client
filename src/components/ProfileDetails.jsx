@@ -18,7 +18,7 @@ const UserProfile = () => {
             return;
         }
 
-        axios.get(`${API_URL}/api/user/${userId}`, {
+        axios.get(`${import.meta.env.VITE_API_URL}/api/user/${userId}`, {
             headers: { Authorization: `Bearer ${storedToken}` }
         })
             .then((response) => {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { API_URL } from "../config/api";
+
 
 const UpdateUserProfile = () => {
     const [user, setUser] = useState({
@@ -23,7 +23,7 @@ const UpdateUserProfile = () => {
 
         if (userId) {
             axios
-                .get(`${API_URL}/api/user/${userId}`, {
+                .get(`${import.meta.env.VITE_API_URL}/api/user/${userId}`, {
                     headers: { Authorization: `Bearer ${storedToken}` },
                 })
                 .then((response) => {
@@ -53,7 +53,7 @@ const UpdateUserProfile = () => {
         const updatedData = { ...user };
 
         axios
-            .patch(`${API_URL}/api/user/${userId}`, updatedData, {
+            .patch(`${import.meta.env.VITE_API_URL}/api/user/${userId}`, updatedData, {
                 headers: { Authorization: `Bearer ${storedToken}` },
             })
             .then((response) => {

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { API_URL } from "../config/api";
 import axios from "axios";
-// import "./Booking.css";
+import "../assets/Booking.css";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mantine/core";
 
@@ -15,7 +14,7 @@ function ListOfBooking() {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .get(`${API_URL}/api/bookings`, {
+      .get(`${import.meta.env.VITE_API_URL}/api/bookings`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => setBookings(response.data))
@@ -26,11 +25,13 @@ function ListOfBooking() {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .get(`${API_URL}/api/user/${userId}`, {
+      .get(`${import.meta.env.VITE_API_URL}/api/user/${userId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
-      .then((response) => { console.log(response.data) 
-        setUsers(response.data)})
+      .then((response) => {
+        console.log(response.data)
+        setUsers(response.data)
+      })
       .catch((error) => console.log(error));
   };
   const handleEdit = (bookingId) => {
@@ -50,10 +51,10 @@ function ListOfBooking() {
           <div key={booking._id}>
             <label className="booking">
               <h3> Booking_id: {booking._id} </h3>
-              <label>Passenger:  {users.name} 
+              <label>Passenger:  {users.name}
                 <p>Date:{new Date(booking.bookingDate).toLocaleString()}</p>
                 <p>Seats Booked:{booking.seatsBooked}</p>
-                </label>
+              </label>
 
               {booking.ride && (
                 <label className="rideInfo">
@@ -67,10 +68,10 @@ function ListOfBooking() {
                 </label>
 
               )}
-              
+
               <label className={booking.status}>Status:{booking.status}</label>
-              <Button  variant="filled" color="red" radius="xl"
-               onClick={() => handleEdit(booking._id)}>Edit Booking</Button>
+              <Button variant="filled" color="red" radius="xl"
+                onClick={() => handleEdit(booking._id)}>Edit Booking</Button>
             </label>
           </div>
         ))

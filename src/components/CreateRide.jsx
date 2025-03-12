@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { API_URL } from "../config/api";
-import { Alert, Button, TextInput, Popover, Radio, Group } from "@mantine/core";
+import { Button, TextInput, Popover, Radio, Group } from "@mantine/core";
 import { DatePicker, TimeInput } from '@mantine/dates';
 import { dateFormatter } from "../utils/dateFormatter";
 
@@ -50,7 +49,7 @@ function CreateRide() {
 
         //Creating Ride on API
 
-        axios.post(`${API_URL}/api/ride`, CreateRideData,
+        axios.post(`${import.meta.env.VITE_API_URL}/api/ride`, CreateRideData,
             { headers: { Authorization: `Bearer ${storedToken}` } }
         )
 
