@@ -1,7 +1,6 @@
 
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { API_URL } from "../config/api";
 import { Button } from "@mantine/core";
 
 function Footer(){

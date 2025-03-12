@@ -16,7 +16,6 @@ import HomePage from "./pages/Homepage";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import '../src/index.css';
 import DashboardPage from "./pages/DashboardPage";
-import UserProfileUpdate from "./components/UpdateUserProfile";
 import UpdateUserProfile from "./components/UpdateUserProfile";
 
 function App() {

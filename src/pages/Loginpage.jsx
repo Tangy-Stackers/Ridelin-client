@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react"
 import { Link, useNavigate,useSearchParams } from "react-router-dom";
-import { API_URL } from "../config/api";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import { useForm } from "@mantine/form";
@@ -40,11 +39,11 @@ function Loginpage() {
            e.preventDefault();
            const { email, password } = form.values;
            const requestBody = { email, password };
-        //    console.log(email);
-        //    console.log(password);
-           axios.post(`${API_URL}/auth/login`, requestBody)
+           console.log(email);
+           console.log(password);
+           axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, requestBody)
                .then((response) => {
-                //    console.log('JWT token', response.data.authToken);
+                   console.log('JWT token', response.data.authToken);
                    storeToken(response.data.authToken);
                    authenticateUser();
                    navigate('/dashboard');

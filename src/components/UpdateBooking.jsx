@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { API_URL } from "../config/api";
-// import "./Booking.css";
+import "../assets/Booking.css";
 import { Button, Group, Notification, Radio, TextInput } from "@mantine/core";
 
 function UpdateBooking() {
@@ -20,7 +19,7 @@ function UpdateBooking() {
    useEffect(() => {
         const storedToken = localStorage.getItem('authToken');
        
-        axios.get(`${API_URL}/api/bookings/${bookingId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+        axios.get(`${import.meta.env.VITE_API_URL}/api/bookings/${bookingId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
             .then((response) => {
                 
                 const booking = response.data;
@@ -65,7 +64,7 @@ console.log(destination)
         const requestBody = { boardingPoint, destination, seatsBooked };
         const storedToken = localStorage.getItem('authToken');
 
-        axios.patch(`${API_URL}/api/bookings/${bookingId}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` }, })
+        axios.patch(`${import.meta.env.VITE_API_URL}/api/bookings/${bookingId}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` }, })
             .then((response) => {
                 navigate(`/bookings`)
             }).catch((error) => console.log(error));
@@ -76,7 +75,7 @@ console.log(destination)
     const deleteBooking = () => {
         const storedToken = localStorage.getItem('authToken');
 
-        axios.delete(`${API_URL}/api/bookings/${bookingId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+        axios.delete(`${import.meta.env.VITE_API_URL}/api/bookings/${bookingId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
             .then(() => navigate("/bookings"))
             .catch((error) => console.log(error));
     };

@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { API_URL } from "../config/api";
 import { Button, TextInput, Alert } from "@mantine/core";
 
 function CreateBooking() {
@@ -27,7 +26,7 @@ function CreateBooking() {
     useEffect(() => {
         if (userId) {
             axios
-                .get(`${API_URL}/api/user/${userId}`, {
+                .get(`${import.meta.env.VITE_API_URL}/api/user/${userId}`, {
                     headers: { Authorization: `Bearer ${storedToken}` },
                 })
                 .then((response) => {
@@ -40,7 +39,7 @@ function CreateBooking() {
     useEffect(() => {
         if (selectedRideId) {
             axios
-                .get(`${API_URL}/api/ride/${selectedRideId}`, {
+                .get(`${import.meta.env.VITE_API_URL}/api/ride/${selectedRideId}`, {
                     headers: { Authorization: `Bearer ${storedToken}` },
                 })
                 .then((response) => {
@@ -80,7 +79,7 @@ function CreateBooking() {
         };
         console.log(requestBody)
         axios
-            .post(`${API_URL}/api/book`, requestBody, {
+            .post(`${import.meta.env.VITE_API_URL}/api/book`, requestBody, {
                 headers: { Authorization: `Bearer ${storedToken}` },
             })
             .then(() => {
