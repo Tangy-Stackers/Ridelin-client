@@ -49,6 +49,10 @@ function RideDetails() {
         <p>Name: {ride.driverId?.name || "N/A"}</p>
           <p>Email: {ride.driverId?.email || "N/A"}</p>
           <p>Phone: {ride.driverId?.phone || "N/A"}</p>
+          <p>Travel Date: {ride.traveldate || "N/A"}</p>
+          <p>Start time: {ride.startTime || "N/A"}</p>
+          <p>End time (approx): {ride.endTime || "N/A"}</p>
+          <p>Distance: {ride.distance || "N/A"}</p>
         {userId === ride.driverId && (
     <button onClick={()=>{handleDelete()}}>Delete this ride</button>
   )}
