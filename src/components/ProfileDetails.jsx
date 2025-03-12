@@ -43,7 +43,7 @@ const UserProfile = () => {
                     <p>✉️<b>Email:</b> {profileDetails.email}</p>
                     <p>📞<b>Phone Number:</b>{profileDetails.phone}</p>
                     <p>💭 <b>About me:</b> {profileDetails.about}</p>
-                    <Button onClick={handleUpdate}>Edit profile</Button>
+                    <Button color="indigo" radius="md" mt="lg" onClick={handleUpdate}>Edit profile</Button>
                 </div>
             ) : (
                 <p>Loading...</p>

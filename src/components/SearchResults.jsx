@@ -1,6 +1,5 @@
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { Button, Card, TextInput, Popover } from "@mantine/core";
-import { DatePicker } from '@mantine/dates';
 import { useEffect, useState } from "react";
 import { API_URL } from "../config/api";
 import axios from "axios";
@@ -84,7 +83,7 @@ function SearchResults() {
                             <p>Destination: {ride.destination}</p>
                             <p>Travel Date: {new Date(ride.travelDate).toLocaleString()}</p>
                             <p>Driver: {ride.driverId}</p>
-                            <button onClick={() => { handleGoToDetails(ride._id) }}> More Details </button>
+                            <Button color="indigo" radius="md" mt="lg" onClick={() => { handleGoToDetails(ride._id) }}> More Details </Button>
                         </Card>
                     ))
                 )}
