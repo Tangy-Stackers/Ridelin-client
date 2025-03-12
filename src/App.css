@@ -24,6 +24,7 @@ h2,h3 {
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
+    background-color: #FAF3F1;
 }
 
 .card {
@@ -31,7 +32,7 @@ h2,h3 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(242, 222, 214);
+    background-color: #FAF3F1;
     padding-top: 30px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
