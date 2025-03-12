@@ -79,30 +79,33 @@ const UpdateUserProfile = () => {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Name</label>
-                    <input
+                    <TextInput
                         type="text"
                         name="name"
                         value={user.name}
                         onChange={handleChange}
                         required
                     />
+
                 </div>
 
                 <div>
                     <label>Phone</label>
-                    <input
+                    <TextInput
                         type="text"
-                        name="phone"
+                        name="name"
                         value={user.phone}
                         onChange={handleChange}
+                        required
                     />
+
                 </div>
 
                 <div>
                     <label>Profile Image URL</label>
-                    <input
+                    <TextInput
                         type="text"
-                        name="image"
+                        name="name"
                         value={user.image}
                         onChange={handleChange}
                     />
@@ -110,17 +113,20 @@ const UpdateUserProfile = () => {
 
                 <div>
                     <label>About Me</label>
-                    <textarea
+                    <Textarea
                         name="about"
                         value={user.about}
                         onChange={handleChange}
-                        maxLength="500"
+                        maxLength={500}
+                        placeholder="Write something about yourself..."
+                        minRows={4}
+                        maxRows={6}
                     />
                 </div>
 
-                <button type="submit" disabled={isLoading}>
+                <Button color="indigo" radius="md" mt="lg" type="submit" disabled={isLoading}>
                     {isLoading ? "Updating..." : "Update Profile"}
-                </button>
+                </Button>
             </form>
         </div>
     );

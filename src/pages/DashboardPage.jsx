@@ -6,6 +6,7 @@ import { API_URL } from "../config/api";
 import axios from "axios";
 import "../assets/Booking.css";
 import SearchRide from "../components/SearchRide";
+import ListOfBooking from "../components/ListOfBooking";
 import { AuthContext } from "../context/auth.context";
 
 
@@ -35,10 +36,7 @@ function DashBoardPage() {
     const handleGoToDetails = (rideId) => {
         navigate(`/ride/${rideId}`);
     }
-
-
-    
-    
+   
       if(!user){
         navigate("/")
       }
@@ -48,7 +46,8 @@ function DashBoardPage() {
 
             <SearchRide />
 
-            
+            <ListOfBooking />
+
             <div className="rideResults">
                 {rides.length === 0 ? (
                     <p>No rides found for your search.</p>
@@ -59,7 +58,7 @@ function DashBoardPage() {
                             <p>Origin: {ride.origin}-----Destination: {ride.destination}</p>
                             <p>Travel Date: {new Date(ride.travelDate).toLocaleString()}</p>
                             <p>Driver: {ride.driverId}</p>
-                            <button onClick={()=>{handleGoToDetails(ride._id)}}> More Details </button>
+                            <Button color="indigo" radius="md" mt="lg" onClick={()=>{handleGoToDetails(ride._id)}}> More Details </Button>
                         </Card>
                     ))
                 )}

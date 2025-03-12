@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../config/api";
-import { Alert, Button, TextInput, Popover } from "@mantine/core";
+import { Alert, Button, TextInput, Popover, Radio, Group } from "@mantine/core";
 import { DatePicker, TimeInput } from '@mantine/dates';
 import { dateFormatter } from "../utils/dateFormatter";
 
@@ -72,7 +72,7 @@ function CreateRide() {
             <label><h2> 🚗 Ride  Details: </h2>
                 <div className="mb-4">
                     <label className="block text-sm font-medium">📍 Start location:</label>
-                    <input
+                    <TextInput
                         type="text"
                         name="origin"
                         value={CreateRideData.origin}
@@ -84,7 +84,7 @@ function CreateRide() {
 
                 <div className="mb-4">
                     <label className="block text-sm font-medium"> 📍 End location:</label>
-                    <input
+                    <TextInput
                         type="text"
                         name="destination"
                         value={CreateRideData.destination}
@@ -142,7 +142,7 @@ function CreateRide() {
             <label><h2>🛑 Additional Info: </h2>
                 <div className="mb-4">
                     <label className="block text-sm font-medium">📏 Approx. Distance:km</label>
-                    <input
+                    <TextInput
                         type="text"
                         name="distance"
                         value={CreateRideData.distance}
@@ -150,12 +150,13 @@ function CreateRide() {
                         className="w-full border p-2 rounded"
                         required
                     />
+
                 </div>
 
                 <div className="mb-4">
                     <label className="block text-sm font-medium">🪑 Seats Available: </label>
-                    <input
-                        type="number"
+                    <TextInput
+                        type="text"
                         name="seatsAvailable"
                         value={CreateRideData.seatsAvailable}
                         onChange={handleChange}
@@ -166,7 +167,7 @@ function CreateRide() {
 
                 <div className="mb-4">
                     <label className="block text-sm font-medium">💰 Price (per person):€</label>
-                    <input
+                    <TextInput
                         type="text"
                         name="price"
                         value={CreateRideData.price}
@@ -174,12 +175,13 @@ function CreateRide() {
                         className="w-full border p-2 rounded"
                         required
                     />
+
                 </div>
             </label>
             <label><h2>🚘 Vehicle Details:</h2>
                 <div className="mb-4">
                     <label className="block text-sm font-medium">🚙 Vehicle Type: </label>
-                    <input
+                    <TextInput
                         type="text"
                         name="vehicle"
                         value={CreateRideData.vehicle}
@@ -190,81 +192,83 @@ function CreateRide() {
                 </div>
                 <div className="mb-4">
                     <label className="block text-sm font-medium">🔢 License Plate:</label>
-                    <input
+                    <TextInput
                         type="text"
                         name="licensePlate"
                         value={CreateRideData.licensePlate}
                         onChange={handleChange}
                         className="w-full border p-2 rounded"
-                        required
+
                     />
+
                 </div>
             </label>
             <label><h2>Preferences: </h2>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium">🎶 Music:</label>
-                    <div className="radio">
-                        <input
+                    <label className="radio-btn">🎶 Music:</label>
+                    <Group>
+                        <Radio
                             type="radio"
                             name="music"
                             value="true"
                             checked={CreateRideData.music === "true"}
                             onChange={handleChange}
-                        /> Yes
-                        <input
+
+                        />Yes
+                        <Radio
                             type="radio"
                             name="music"
                             value="false"
                             checked={CreateRideData.music === "false"}
                             onChange={handleChange}
-                        /> No
 
-                    </div>
+                        /> No
+                    </Group>
+
                 </div>
 
                 <div className="mb-4">
-                    <label className="block text-sm font-medium">🚬 Smoking Allowed:</label>
-                    <div className="radio">
-                        <input
+                    <label className="radio-btn">🚬 Smoking Allowed:</label>
+                    <Group>
+                        <Radio
                             type="radio"
                             name="smokingAllowed"
                             value="true"
                             checked={CreateRideData.smokingAllowed === "true"}
                             onChange={handleChange}
-                        /> Yes
 
-                        <input
+                        />Yes
+                        <Radio
                             type="radio"
                             name="smokingAllowed"
                             value="false"
                             checked={CreateRideData.smokingAllowed === "false"}
                             onChange={handleChange}
-                        /> No
 
-                    </div>
+                        /> No
+                    </Group>
                 </div>
 
                 <div className="mb-4">
-                    <label className="block text-sm font-medium">🐶 Pets Allowed:</label>
-                    <div className="flex gap-4">
-
-                        <input
+                    <label className="radio-btn">🐶 Pets Allowed:</label>
+                    <Group>
+                        <Radio
                             type="radio"
                             name="petsAllowed"
                             value="true"
                             checked={CreateRideData.petsAllowed === "true"}
                             onChange={handleChange}
-                        /> Yes
 
-                        <input
+                        />Yes
+                        <Radio
                             type="radio"
                             name="petsAllowed"
                             value="false"
                             checked={CreateRideData.petsAllowed === "false"}
                             onChange={handleChange}
-                        /> No
 
-                    </div>
+                        /> No
+                    </Group>
                 </div>
             </label>
             <Button type="submit" variant="filled" size="md" radius="lg">Submit</Button>
