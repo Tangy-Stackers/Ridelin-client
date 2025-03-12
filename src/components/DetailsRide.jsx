@@ -5,12 +5,12 @@ import axios from "axios";
 import { Button, Container, Card, Text, Title, Group, Flex } from "@mantine/core";
 
 function RideDetails() {
-  const [ride, setRide] = useState(null);
+  const [ride, setRide] = useState([]);
   const [successMessage, setSuccessMessage] = useState("");
   const { rideId } = useParams();
   const navigate = useNavigate();
 
-  const userId = localStorage.getItem("userId");
+  const userId = localStorage.getItem('userId');
   const storedToken = localStorage.getItem("authToken");
 
   useEffect(() => {
@@ -23,13 +23,10 @@ function RideDetails() {
   }, [rideId]);
 
   const handleDelete = () => {
-    axios
-      .delete(`${API_URL}/api/ride/${rideId}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
+    axios.delete(`${API_URL}/api/ride/${rideId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(() => {
-        setSuccessMessage("Ride successfully deleted!");
-        setTimeout(() => navigate("/"), 2000);
+        setSuccessMessage("Ride successfully deleted!"); // Set success message
+        setTimeout(() => navigate("/"), 2000); // Redirect after 2s
       })
       .catch((error) => console.log(error));
   };
@@ -39,62 +36,42 @@ function RideDetails() {
   };
 
   return (
+    <div>
+      <h1>Ride Details</h1>
+      {ride === null ? (
+        <p>ride not found </p>
+      ) : (
+        <div key={ride._id}>
+          <h3>Origin: {ride.origin} ----------------- Destination: {ride.destination}</h3>
+          <p>Travel Date: {new Date(ride.travelDate).toLocaleString()}</p>
+          <p>Start time: {ride.startTime || "N/A"}</p>
+          <p>End time (approx): {ride.endTime || "N/A"}</p>
+          <p>Waypoints : {ride.waypoints || "N/A"}</p>
+          <label>
+            <h3>Driver Details:</h3>
+            <p>Name: {ride.driverId?.name || "N/A"}</p>
+            <p>Email: {ride.driverId?.email || "N/A"}</p>
+            <p>Phone: {ride.driverId?.phone || "N/A"}</p>
+          </label>
+          <label>
+            <p>Vehicle: {ride.vehicle || "N/A"}</p>
+            <p>LicensePlate: {ride.licensePlate || "N/A"}</p>
+          </label>
+          <label> Preferences:
+            <p>Music: {ride.music !== undefined ? (ride.music ? "Yes" : "No") : "N/A"}</p>
+            <p>Smoking Allowed: {ride.smokingAllowed !== undefined ? (ride.smokingAllowed ? "Yes" : "No") : "N/A"}</p>
+            <p>Pets Allowed: {ride.petsAllowed !== undefined ? (ride.petsAllowed ? "Yes" : "No") : "N/A"}</p>
+          </label>
+          {userId === ride.driverId && (
+            <Button onClick={() => { handleDelete() }}>Delete this ride</Button>
+          )}
 
-    <Container size="sm" py="xl">
-        <Title align="center">Ride Details</Title>
-        {successMessage && <Text align="center">{successMessage}</Text>}
-        {ride === null ? (
-          <Text align="center">Ride not found</Text>
-        ) : (
-          <Card  color="#FAF3F1" shadow="sm" padding="lg" radius="md" withBorder>
-            <Flex justify="center" align="center" gap="md" direction="row" wrap="wrap">
-              <Flex direction="column" align="center">
-                <Text>From:</Text>
-                <Title order={3}>{ride.origin}</Title>
-              </Flex>
-              <Text>→</Text>
-              <Flex direction="column" align="center">
-                <Text>To:</Text>
-                <Title order={3}>{ride.destination}</Title>
-              </Flex>
-            </Flex>
-            <br />
-            <Text>Your Driver is:
-              <Text fw={700}>{ride.driverId?.name || "Information not Available"}</Text>
-            </Text>
-            <Text>Email:
-              <Text fw={700}>{ride.driverId?.email || "Information not Available"}</Text>
-            </Text>
-            <Text>Phone:
-              <Text fw={700} >{ride.driverId?.phone || "Information not Available"}</Text>
-            </Text>
-            <Text>Travel Date:
-              <Text fw={700}> {ride.traveldate || "Information not Available"}</Text>
-            </Text>
-            <Text>Start Time:
-              <Text fw={700} >{ride.startTime || "Information not Available"}</Text>
-            </Text>
-            <Text>End Time (estimated):
-              <Text fw={700} >{ride.endTime || "Information not Available"}</Text>
-            </Text>
-            <Text>Distance:
-              <Text fw={700} >{ride.distance || "Information not Available"}</Text>
-            </Text>
-            <Group position="right" mt="md">
-              {userId === ride.driverId && (
-                <Button variant="outline" color="red" onClick={handleDelete}>
-                  Delete this ride
-                </Button>
-              )}
-              <Button variant="filled" color="green" radius="xl" onClick={() => handleBookRide(ride._id)}>
-                Book Ride
-              </Button>
+          <Button variant="filled" color="red" radius="xl" onClick={() => handleBookRide(ride._id)}>
+            Book ride</Button>
 
-            </Group>
-          </Card>
-        )}
-    </Container>
-
+        </div>
+      )}
+    </div>
   );
 }
 

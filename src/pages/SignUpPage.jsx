@@ -57,7 +57,7 @@ function SignUp() {
                     setShowAlert(false);
                     navigate(`/login?success=1`);
                    
-                }, 4000);
+                }, 1000);
             })
             .catch((e )=> {
                 console.log(" Error creating the new account ...", e)
