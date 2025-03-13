@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
 import { Button } from "@mantine/core";
-import "../App.css";
+import "../assets/App.css";
 
 
 

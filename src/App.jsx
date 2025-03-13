@@ -13,7 +13,7 @@ import UpdateBooking from "./components/UpdateBooking";
 import ProfileDetails from "./components/ProfileDetails";
 import HomePage from "./pages/Homepage";
 import SearchResultsPage from "./pages/SearchResultsPage";
-import '../src/index.css';
+import "./index.css";
 import DashboardPage from "./pages/DashboardPage";
 import UpdateUserProfile from "./components/UpdateUserProfile";
 
