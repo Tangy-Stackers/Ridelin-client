@@ -61,7 +61,10 @@ function HomePage() {
       <Title order={2} mt={50} align="center">
         Why us?
       </Title>
-      <Group spacing="lg" mt={27} mb={27} align="center" position="center" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+      <Group 
+        spacing="lg" mt={24} mb={24} align="center" position="center" 
+        style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+
         <Card shadow="sm" padding="lg" radius="md" withBorder>
 
           <Text size="lg">💰 <strong>Save Money</strong></Text>
