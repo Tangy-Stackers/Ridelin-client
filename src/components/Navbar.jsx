@@ -14,7 +14,7 @@ function Navbar() {
     return (
         <>
             <nav>
-                <div>
+                <div className="navbar">
                     <Flex
                         h={150}
                         w={2000}
