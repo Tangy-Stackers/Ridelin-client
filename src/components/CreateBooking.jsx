@@ -85,7 +85,7 @@ function CreateBooking() {
             .then(() => {
                 setShowAlert(true);
                 setTimeout(() => {
-                    navigate("/"); // Redirect after 6 seconds
+                    navigate("/dashboard"); // Redirect after 6 seconds
                 }, 500);
             })
             .catch((error) => {
@@ -125,8 +125,9 @@ function CreateBooking() {
                     <p> Name: {ride.driverId?.name || "N/A"}</p>
                     <p> Email: {ride.driverId?.email || "N/A"}</p>
                     <p> Phone: {ride.driverId?.phone || "N/A"}</p>
-                    <p>Travel Date: {ride.traveldate || "N/A"}</p>
-                    <p>Start Time: {ride.starttime || "N/A"}</p>
+                    <p>Travel Date: {new Date(ride.travelDate).toISOString().split('T')[0]}</p>
+                   
+                    <p>Start Time: {ride.startTime || "N/A"} hrs</p>
                     <p>Origin: {ride.origin || "N/A"}</p>
                     <p>Destination: {ride.destination || "N/A"}</p>
                 </label>

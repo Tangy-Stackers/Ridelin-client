@@ -9,7 +9,7 @@ function CreateRide() {
     const userId = localStorage.getItem('userId')
     const storedToken = localStorage.getItem("authToken");
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
-    const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedDate, setSelectedDate] = useState("");
 
     const navigate = useNavigate();
 
@@ -92,7 +92,17 @@ function CreateRide() {
                         required
                     />
                 </div>
-
+                <div className="mb-4">
+                    <label className="block text-sm font-medium"> 📍 Waypoint:</label>
+                    <TextInput
+                        type="text"
+                        name="waypoints"
+                        value={CreateRideData.waypoints}
+                        onChange={handleChange}
+                        className="w-full border p-2 rounded"
+                        required
+                    />
+                </div>
                 <div className="mb-4">
                     <label className="block text-sm font-medium"> 📅 Travel Date:</label>
                     <Popover opened={isDatePickerOpen} onClose={() => setIsDatePickerOpen(false)} position="bottom" withArrow>
@@ -106,9 +116,14 @@ function CreateRide() {
                         </Popover.Target>
                         <Popover.Dropdown>
                             <DatePicker
-                                value={selectedDate}
+                                value={selectedDate} // Directly use the Date object
                                 onChange={(date) => {
+                                    console.log("Selected Date Type:", typeof date, date);
                                     setSelectedDate(date);
+                                    SetCreateRideData(prevData => ({
+                                        ...prevData,
+                                        travelDate: date.toISOString().split("T")[0] // Extracts only YYYY-MM-DD
+                                    }));
                                     setIsDatePickerOpen(false);
                                 }}
                             />
