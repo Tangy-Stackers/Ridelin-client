@@ -17,7 +17,10 @@ function ListOfBooking() {
       .get(`${import.meta.env.VITE_API_URL}/api/bookings`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
-      .then((response) => setBookings(response.data))
+      .then((response) => {
+        console.log(response.data)
+        setBookings(response.data)
+      })
       .catch((error) => console.log(error));
   };
 
@@ -50,7 +53,6 @@ function ListOfBooking() {
         bookings.map((booking) => (
           <div key={booking._id}>
             <label className="booking">
-              <h3> Booking_id: {booking._id} </h3>
               <label>Passenger:  {users.name}
                 <p>Date:{new Date(booking.bookingDate).toLocaleString()}</p>
                 <p>Seats Booked:{booking.seatsBooked}</p>
@@ -58,13 +60,13 @@ function ListOfBooking() {
 
               {booking.ride && (
                 <label className="rideInfo">
-                  <p>Ride_id:{booking.ride._id}</p>
+
                   <p>Origin:{booking.ride.origin}</p>
                   <p>Destination:{booking.ride.destination}</p>
                   <p>Travel Date:{new Date(booking.ride.travelDate).toLocaleString()}</p>
-                  <p>Start Time:{booking.ride.StartTime}</p>
-                  <p>End Time:{booking.ride.EndTime}</p>
-                  <p>Driver_id:{booking.ride.driverId}</p>
+                  <p>Start Time:{booking.ride.startTime} hrs</p>
+                  <p>End Time:{booking.ride.endTime} hrs</p>
+
                 </label>
 
               )}
