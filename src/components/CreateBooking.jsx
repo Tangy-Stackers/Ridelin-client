@@ -86,7 +86,7 @@ function CreateBooking() {
                 setShowAlert(true);
                 setTimeout(() => {
                     navigate("/"); // Redirect after 6 seconds
-                }, 6000);
+                }, 500);
             })
             .catch((error) => {
                 console.log("Error creating booking:", error);

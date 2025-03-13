@@ -6,7 +6,6 @@ import CreateRide from "./components/CreateRide";
 import DetailsRide from "./components/DetailsRide";
 import SearchRide from "./components/SearchRide";
 import UpdateRide from "./components/UpdateRide";
-import Footer from "./components/Footer";
 import CreateBooking from "./components/CreateBooking";
 import Navbar from "./components/Navbar";
 import ListOfBooking from "./components/ListOfBooking";
@@ -40,7 +39,7 @@ function App() {
           <Route path="/bookings" element={<ListOfBooking />} />
           <Route path="/rides" element={<SearchResultsPage />} />
         </Routes>
-        <Footer />
+        
 
       </div>
     </>
