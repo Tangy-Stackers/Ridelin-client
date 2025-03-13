@@ -35,7 +35,10 @@ function DashBoardPage() {
 
     return (
         <Container size="md" py="xl">
-            <Title order={2} align="center" mb="lg">Available Rides</Title>
+            <>
+            <Title order={2} align="center" mb="lg">Welcome to Ridelin </Title>
+            <Title order={4} align="center" mb="lg">Were are we travel today, {user.name}?</Title>
+            </>
             
             <SearchRide />
             <ListOfBooking />
