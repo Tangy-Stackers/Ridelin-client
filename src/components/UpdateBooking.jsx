@@ -37,6 +37,7 @@ function UpdateBooking() {
         if (value === destination) {
             setErrorMessage("Boarding point and destination cannot be the same.");
         } else {
+            console.log(value)
             setErrorMessage("");
             setBoardingPoint(value);
         }
@@ -46,6 +47,7 @@ function UpdateBooking() {
         if (value === boardingPoint) {
             setErrorMessage("Boarding point and destination cannot be the same.");
         } else {
+            console.log(value)
             setErrorMessage("");
             setDestination(value);
         }
@@ -59,7 +61,7 @@ function UpdateBooking() {
         }
         const requestBody = { boardingPoint, destination, status, seatsBooked };
         const storedToken = localStorage.getItem('authToken');
-
+console.log(requestBody)
         axios.patch(`${import.meta.env.VITE_API_URL}/api/bookings/${bookingId}`, requestBody, {
             headers: { Authorization: `Bearer ${storedToken}` },
         })

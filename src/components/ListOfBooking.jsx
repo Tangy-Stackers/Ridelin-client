@@ -80,7 +80,7 @@ function ListOfBooking() {
           <div className="embla__viewport" ref={emblaRef}>
             <div className="embla__container">
               {bookings.map((booking) => (
-                <div className="embla__slide" key={booking._id}>
+                <div className="embla__slides" key={booking._id}>
                  
                       <label className="booking">
                         <label>
