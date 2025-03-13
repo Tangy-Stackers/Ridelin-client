@@ -6,11 +6,23 @@ body {
     background-size: fill;
     padding: 0;
     margin: 0;
+    display: flex;
+    justify-content:center ;
+}
+
+button,
+select {
+  padding: 5px 10px;
+  min-width: 50px;
+  margin: 5px;
+  font-size: 18px;
 }
 
 h1,
 h2,h3 {
     text-align: center;
+    font-weight: bold;
+    unicode-bidi: isolate;
 }
 
 .searchInputs {
