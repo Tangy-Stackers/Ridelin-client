@@ -1,10 +1,10 @@
 import axios from "axios";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, TextInput, Popover, Radio, Group, Container, Paper, Title, Divider, Stack, Flex } from "@mantine/core";
 import { DatePicker, TimeInput } from '@mantine/dates';
 import { dateFormatter } from "../utils/dateFormatter";
-import { AuthContext } from "../context/auth.context";
+
 
 function CreateRide() {
     const userId = localStorage.getItem('userId');
