@@ -11,9 +11,8 @@ function HomePage() {
 
   if (user) {
     navigate("/dashboard")
-    if (user) {
-      navigate("/dashboard");
-    }
+  }
+    
 
     return (
       <Container size="lg" py={40}>
@@ -70,5 +69,4 @@ function HomePage() {
       </Container>
     );
   }
-}
-  export default HomePage;
+export default HomePage;
