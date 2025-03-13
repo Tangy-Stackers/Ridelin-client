@@ -66,7 +66,7 @@ console.log(destination)
 
         axios.patch(`${import.meta.env.VITE_API_URL}/api/bookings/${bookingId}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` }, })
             .then((response) => {
-                navigate(`/bookings`)
+                navigate(`/dashboard`)
             }).catch((error) => console.log(error));
     };
 
@@ -76,7 +76,7 @@ console.log(destination)
         const storedToken = localStorage.getItem('authToken');
 
         axios.delete(`${import.meta.env.VITE_API_URL}/api/bookings/${bookingId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
-            .then(() => navigate("/bookings"))
+            .then(() => navigate("/dashboard"))
             .catch((error) => console.log(error));
     };
 

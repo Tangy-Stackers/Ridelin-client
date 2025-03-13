@@ -14,7 +14,6 @@ function RideDetails() {
   const userName = localStorage.getItem('userName');
 
   useEffect(() => {
-    console.log('cosa')
     axios
       .get(`${import.meta.env.VITE_API_URL}/api/ride/${rideId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -60,12 +59,6 @@ function RideDetails() {
         <>
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'bottom', gap: '1rem' }}>
             <Title order={1}>{ride.origin} → {ride.destination}</Title>
-            {/* Show Book Ride button only if userId does not match the driverId */}
-            {userId !== ride.driverId && (
-              <Button variant="filled" color="green" radius="xl" onClick={() => handleBookRide(ride._id)}>
-                Book ride
-              </Button>
-            )}
           </div>
           <br />
           <Flex gap="lg" direction="row" align="flex-start" justify="space-between" style={{ width: "100%" }}>

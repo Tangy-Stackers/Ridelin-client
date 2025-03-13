@@ -53,19 +53,18 @@ function ListOfBooking() {
         bookings.map((booking) => (
           <div key={booking._id}>
             <label className="booking">
-              <label>Passenger:  {users.name}
-                <p>Date:{new Date(booking.bookingDate).toLocaleString()}</p>
-                <p>Seats Booked:{booking.seatsBooked}</p>
+              <label>Passenger: {users.name}
+                <p>Seats Booked: {booking.seatsBooked}</p>
               </label>
 
               {booking.ride && (
                 <label className="rideInfo">
 
-                  <p>Origin:{booking.ride.origin}</p>
-                  <p>Destination:{booking.ride.destination}</p>
-                  <p>Travel Date:{new Date(booking.ride.travelDate).toLocaleString()}</p>
-                  <p>Start Time:{booking.ride.startTime} hrs</p>
-                  <p>End Time:{booking.ride.endTime} hrs</p>
+                  <p>Origin: {booking.ride.origin}</p>
+                  <p>Destination: {booking.ride.destination}</p>
+                  <p>Travel Date: {new Date(booking.ride.travelDate).toISOString().split('T')[0]}</p>
+                  <p>Start Time: {booking.ride.startTime} hrs</p>
+                  <p>End Time: {booking.ride.endTime} hrs</p>
 
                 </label>
 
