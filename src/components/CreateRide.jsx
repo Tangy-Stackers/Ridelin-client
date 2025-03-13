@@ -57,7 +57,7 @@ function CreateRide() {
     };
 
     return (
-        <Container px={24} size="sm">
+        <Container px={24} size="lg">
             <>
                 <br />
                 <Title order={2} align="center">Create a Ride</Title>
@@ -74,8 +74,8 @@ function CreateRide() {
                 wrap="wrap"
             >
 
-                <form onSubmit={handleSubmit} >
-                    <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap",align:"center" }}>
+                <form onSubmit={handleSubmit} style={{display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }} >
+                    <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
 
                         <Paper shadow="xs" p="xl" radius="md" withBorder>
 
@@ -121,32 +121,34 @@ function CreateRide() {
                             <TextInput label="💰 Price (per person) (€)" name="price" value={CreateRideData.price} onChange={handleChange} required />
                             <TextInput label="🚙 Vehicle Type" name="vehicle" value={CreateRideData.vehicle} onChange={handleChange} required />
                             <TextInput label="🔢 License Plate" name="licensePlate" value={CreateRideData.licensePlate} onChange={handleChange} />
-
                         </Paper>
                         <Paper shadow="xs" p="xl" radius="md" withBorder>
-                            <div style={{ direction:"row" }}>
-                            <Group>
-                                <Radio.Group label="🎶 Music">
-                                    <Radio value="true" label="Yes" checked={CreateRideData.music === "true"} onChange={handleChange} />
-                                    <Radio value="false" label="No" checked={CreateRideData.music === "false"} onChange={handleChange} />
-                                </Radio.Group>
-                            </Group>
-                            <Group>
-                                <Radio.Group label="🚬 Smoking Allowed">
-                                    <Radio value="true" label="Yes" checked={CreateRideData.smokingAllowed === "true"} onChange={handleChange} />
-                                    <Radio value="false" label="No" checked={CreateRideData.smokingAllowed === "false"} onChange={handleChange} />
-                                </Radio.Group>
-                            </Group>
-                            <Group>
-                                <Radio.Group label="🐶 Pets Allowed">
-                                    <Radio value="true" label="Yes" checked={CreateRideData.petsAllowed === "true"} onChange={handleChange} />
-                                    <Radio value="false" label="No" checked={CreateRideData.petsAllowed === "false"} onChange={handleChange} />
-                                </Radio.Group>
-                            </Group>
-                            </div>
+                            <Flex direction="row" gap="lg" wrap="wrap">
+                                <Group>
+                                    <Radio.Group label="🎶 Music">
+                                        <Radio value="true" label="Yes" checked={CreateRideData.music === "true"} onChange={handleChange} />
+                                        <Radio value="false" label="No" checked={CreateRideData.music === "false"} onChange={handleChange} />
+                                    </Radio.Group>
+                                </Group>
+                                <Group>
+                                    <Radio.Group label="🚬 Smoking Allowed">
+                                        <Radio value="true" label="Yes" checked={CreateRideData.smokingAllowed === "true"} onChange={handleChange} />
+                                        <Radio value="false" label="No" checked={CreateRideData.smokingAllowed === "false"} onChange={handleChange} />
+                                    </Radio.Group>
+                                </Group>
+                                <Group>
+                                    <Radio.Group label="🐶 Pets Allowed">
+                                        <Radio value="true" label="Yes" checked={CreateRideData.petsAllowed === "true"} onChange={handleChange} />
+                                        <Radio value="false" label="No" checked={CreateRideData.petsAllowed === "false"} onChange={handleChange} />
+                                    </Radio.Group>
+                                </Group>
+                            </Flex>
                         </Paper>
+
                     </div>
-                    <Button type="submit" variant="filled" size="md" radius="lg">Submit</Button>
+                    <Button type="submit" variant="filled" color={"#FF5733"} size="md" radius="xl">
+                        Submit
+                    </Button>
 
                 </form>
             </Flex>
