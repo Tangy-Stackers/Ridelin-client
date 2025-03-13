@@ -16,7 +16,7 @@ function Navbar() {
             <nav>
                 <div className="navbar">
                     <Flex
-                        h={150}
+                        h={100}
                         w={2000}
                         align="center"
                         justify="space-between"
@@ -30,7 +30,7 @@ function Navbar() {
                         {/* Centered Title Section */}
                         <Flex direction="column" align="center">
                             <h1><strong><i>Ridelin</i></strong></h1>
-                            <h3>Your carpooling partner</h3>
+                          
                         </Flex>
 
                         {/* Right-Aligned Buttons */}

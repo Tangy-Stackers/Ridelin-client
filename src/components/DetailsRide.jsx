@@ -61,23 +61,23 @@ function RideDetails() {
             <Title order={1}>{ride.origin} → {ride.destination}</Title>
           </div>
           <br />
-          <Flex gap="lg" direction="row" align="flex-start" justify="space-between" style={{ width: "100%" }}>
+          <Flex gap="xl" direction="row" align="flex-start" justify="space-between" style={{ width: "100%" }}>
             {/* Left Column */}
             <div style={{ flex: 1 }}>
               <Card color="#FAF3F1" shadow="sm" padding="lg" radius="md" withBorder>
-                <Title order={4}>General Information</Title>
+                <Title order={4}align="center">Travel information</Title>
                 <Text style={isValidDate ? { opacity: 1 } : { opacity: 0.5 }}>
-                  Travel Date: {isValidDate ? travelDate.toLocaleString() : 'Invalid Date'}
+                📅 Travel Date: {isValidDate ? travelDate.toLocaleString() : 'Invalid Date'}
                 </Text>
-                <Text style={getOpacity(ride.startTime)}>Start Time: {ride.startTime || "Not Available"}</Text>
-                <Text style={getOpacity(ride.endTime)}>End Time (approx): {ride.endTime || "Not Available"}</Text>
-                <Text style={getOpacity(ride.waypoints)}>Waypoints: {ride.waypoints || "Not Available"}</Text>
+                <Text style={getOpacity(ride.startTime)}>⏰ Start Time: {ride.startTime || "Not Available"}</Text>
+                <Text style={getOpacity(ride.endTime)}> ⌛ End Time (approx): {ride.endTime || "Not Available"}</Text>
+                <Text style={getOpacity(ride.waypoints)}>📍 Waypoints: {ride.waypoints || "Not Available"}</Text>
 
-                <Divider my={10} />
-                <Title order={4}>Driver Details</Title>
-                <Text style={getOpacity(ride.driverId?.name)}>Name: {ride.driverId?.name || "Not Available"}</Text>
-                <Text style={getOpacity(ride.driverId?.email)}>Email: {ride.driverId?.email || "Not Available"}</Text>
-                <Text style={getOpacity(ride.driverId?.phone)}>Phone: {ride.driverId?.phone || "Not Available"}</Text>
+                <Divider my={20} />
+                <Title order={4}align="center">Driver Details</Title>
+                <Text style={getOpacity(ride.driverId?.name)}>👤 Name: {ride.driverId?.name || "Not Available"}</Text>
+                <Text style={getOpacity(ride.driverId?.email)}>✉️ Email: {ride.driverId?.email || "Not Available"}</Text>
+                <Text style={getOpacity(ride.driverId?.phone)}>☎️ Phone: {ride.driverId?.phone || "Not Available"}</Text>
               </Card>
             </div>
 
@@ -86,21 +86,22 @@ function RideDetails() {
 
             {/* Right Column */}
             <div style={{ flex: 1 }}>
+           
               <Card color="#FAF3F1" shadow="sm" padding="lg" radius="md" withBorder>
-                <Title order={4}>Vehicle Information</Title>
-                <Text style={getOpacity(ride.vehicle)}>Vehicle Type: {ride.vehicle || "Information not Available"}</Text>
-                <Text style={getOpacity(ride.licensePlate)}>License Plate: {ride.licensePlate || "Not Available"}</Text>
+                <Title order={4}align="center">Vehicle Information</Title>
+                <Text style={getOpacity(ride.vehicle)}>🚙 Vehicle Type: {ride.vehicle || "Information not Available"}</Text>
+                <Text style={getOpacity(ride.licensePlate)}>🔢 License Plate: {ride.licensePlate || "Not Available"}</Text>
 
-                <Divider my={10} />
-                <Title order={4}>Preferences</Title>
+                <Divider my={20} />
+                <Title order={4} align="center">Preferences</Title>
                 <Text style={getOpacity(ride.music !== undefined ? ride.music : "Not Available")}>
-                  Music: {ride.music !== undefined ? (ride.music ? "Yes" : "No") : "Not Available"}
+                🎶 Music: {ride.music !== undefined ? (ride.music ? "Yes" : "No") : "Not Available"}
                 </Text>
                 <Text style={getOpacity(ride.smokingAllowed !== undefined ? ride.smokingAllowed : "Not Available")}>
-                  Smoking Allowed: {ride.smokingAllowed !== undefined ? (ride.smokingAllowed ? "Yes" : "No") : "Not Available"}
+                🚬Smoking Allowed: {ride.smokingAllowed !== undefined ? (ride.smokingAllowed ? "Yes" : "No") : "Not Available"}
                 </Text>
                 <Text style={getOpacity(ride.petsAllowed !== undefined ? ride.petsAllowed : "Not Available")}>
-                  Pets Allowed: {ride.petsAllowed !== undefined ? (ride.petsAllowed ? "Yes" : "No") : "Not Available"}
+                🐶Pets Allowed: {ride.petsAllowed !== undefined ? (ride.petsAllowed ? "Yes" : "No") : "Not Available"}
                 </Text>
               </Card>
             </div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "../assets/Booking.css";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@mantine/core";
+import { Button, Grid } from "@mantine/core";
 
 function ListOfBooking() {
   const [bookings, setBookings] = useState([]);
@@ -47,11 +47,13 @@ function ListOfBooking() {
 
   return (
     <div className="BookingsList">
-
+<h2>My Bookings</h2>
       {bookings.length === 0 ? (
         <p>No bookings available.</p>) : (
         bookings.map((booking) => (
           <div key={booking._id}>
+            <Grid>
+            <Grid.Col span={15}>
             <label className="booking">
               <label>Passenger: {users.name}
                 <p>Seats Booked: {booking.seatsBooked}</p>
@@ -71,10 +73,12 @@ function ListOfBooking() {
               )}
 
               <label className={booking.status}>Status:{booking.status}</label>
-              
+
               <Button variant="filled" color="red" radius="xl"
                 onClick={() => handleEdit(booking._id)}>Edit Booking</Button>
             </label>
+            </Grid.Col>
+            </Grid>
           </div>
         ))
       )}
