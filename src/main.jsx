@@ -17,5 +17,5 @@ createRoot(document.getElementById('root')).render(
         </MantineProvider>
       </AuthProviderWrapper>
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 )
