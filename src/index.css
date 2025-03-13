@@ -2,29 +2,15 @@
   font-family: system-ui, Avenir, Helvetica, Ari;
   width:100%;
 }
-/*
-body {
-  width: 100vw;
-  height: 100vh;
-  background: url('../assets/Background.png');
-  background-repeat: no-repeat;
-  background-size: fill;
-  display: flex;
-  justify-content:center ;
-}
+
+
  
 a {
   list-style: none;
   color: black;
 }
  
-button,
-select {
-  padding: 5px 10px;
-  min-width: 50px;
-  margin: 5px;
-  font-size: 18px;
-}
+
 
 
 
@@ -40,4 +26,3 @@ select {
     background-color: #f9f9f9;
   }
 }
-*/

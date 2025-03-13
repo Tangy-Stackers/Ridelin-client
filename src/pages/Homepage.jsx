@@ -10,6 +10,8 @@ function HomePage() {
   const { user } = useContext(AuthContext);
 
   if (user) {
+    navigate("/dashboard")
+  if (user) {
     navigate("/dashboard");
   }
 
