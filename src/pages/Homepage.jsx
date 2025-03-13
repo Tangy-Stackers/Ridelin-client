@@ -47,21 +47,21 @@ function HomePage() {
         <Group spacing="lg" mt={27} mb={27} align="center" position="center" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
         <Card shadow="sm" padding="lg" radius="md" withBorder>
          
-            <Text weight={700} size="lg">💰 Save Money</Text>
+          <Text  size="lg">💰 <strong>Save Money</strong></Text>
          
           <Text>Share rides and cut down on fuel expenses.</Text>
         </Card>
 
         <Card shadow="sm" padding="lg" radius="md" withBorder>
         
-            <Text weight={700} size="lg">🌱 Drive Less, Breathe More</Text>
+          <Text size="lg">🌱<strong>Drive Less, Breathe More</strong> </Text>
          
           <Text>Reduce traffic and CO₂, shrinking your carbon footprint.</Text>
         </Card>
 
         <Card shadow="sm" padding="lg" radius="md" withBorder>
           
-            <Text weight={700} size="lg">🤝 Meet New People</Text>
+          <Text size="lg">🤝 <strong>Meet New People</strong></Text>
           
           <Text>Connect with fellow travelers and build community.</Text>
         </Card>
