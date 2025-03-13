@@ -65,19 +65,22 @@ function RideDetails() {
             {/* Left Column */}
             <div style={{ flex: 1 }}>
               <Card color="#FAF3F1" shadow="sm" padding="lg" radius="md" withBorder>
+              <Flex direction="column" gap="md">
                 <Title order={4}align="center">Travel information</Title>
                 <Text style={isValidDate ? { opacity: 1 } : { opacity: 0.5 }}>
                 📅 Travel Date: {isValidDate ? travelDate.toLocaleString() : 'Invalid Date'}
                 </Text>
-                <Text style={getOpacity(ride.startTime)}>⏰ Start Time: {ride.startTime || "Not Available"}</Text>
-                <Text style={getOpacity(ride.endTime)}> ⌛ End Time (approx): {ride.endTime || "Not Available"}</Text>
-                <Text style={getOpacity(ride.waypoints)}>📍 Waypoints: {ride.waypoints || "Not Available"}</Text>
+                <Text style={getOpacity(ride.startTime)}>⏰ Start Time: {ride.startTime || "Not Available"} hrs</Text>
+                <Text style={getOpacity(ride.endTime)}> ⌛ End Time (approx): {ride.endTime || "Not Available"} hrs</Text>
+                <Text style={getOpacity(ride.waypoints)}>🛣️ Waypoints: {ride.waypoints || "Not Available"}</Text>
 
                 <Divider my={20} />
+             
                 <Title order={4}align="center">Driver Details</Title>
                 <Text style={getOpacity(ride.driverId?.name)}>👤 Name: {ride.driverId?.name || "Not Available"}</Text>
                 <Text style={getOpacity(ride.driverId?.email)}>✉️ Email: {ride.driverId?.email || "Not Available"}</Text>
                 <Text style={getOpacity(ride.driverId?.phone)}>☎️ Phone: {ride.driverId?.phone || "Not Available"}</Text>
+                </Flex>
               </Card>
             </div>
 
@@ -85,9 +88,10 @@ function RideDetails() {
             <Divider orientation="vertical" my={10} style={{ height: "100%" }} />
 
             {/* Right Column */}
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, marginTop: '30px' }} >
            
               <Card color="#FAF3F1" shadow="sm" padding="lg" radius="md" withBorder>
+              <Flex direction="column" gap="md">
                 <Title order={4}align="center">Vehicle Information</Title>
                 <Text style={getOpacity(ride.vehicle)}>🚙 Vehicle Type: {ride.vehicle || "Information not Available"}</Text>
                 <Text style={getOpacity(ride.licensePlate)}>🔢 License Plate: {ride.licensePlate || "Not Available"}</Text>
@@ -103,8 +107,11 @@ function RideDetails() {
                 <Text style={getOpacity(ride.petsAllowed !== undefined ? ride.petsAllowed : "Not Available")}>
                 🐶Pets Allowed: {ride.petsAllowed !== undefined ? (ride.petsAllowed ? "Yes" : "No") : "Not Available"}
                 </Text>
+                </Flex>
               </Card>
+
             </div>
+          
           </Flex>
           <br />
 

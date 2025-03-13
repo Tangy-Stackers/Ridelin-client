@@ -57,7 +57,7 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
 
     return (
         <>
-            {/*  <h3>Search for a Ride</h3>*/}
+           
             <div className="searchRide">
                 <div className="searchInputs">
                     <TextInput

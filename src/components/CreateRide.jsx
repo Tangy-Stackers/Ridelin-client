@@ -82,7 +82,7 @@ function CreateRide() {
                 </div>
 
                 <div className="mb-4">
-                    <label className="block text-sm font-medium"> 📍 End location:</label>
+                    <label className="block text-sm font-medium"> 🎯 End location:</label>
                     <TextInput
                         type="text"
                         name="destination"
@@ -93,7 +93,7 @@ function CreateRide() {
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-sm font-medium"> 📍 Waypoint:</label>
+                    <label className="block text-sm font-medium"> 🛣️ Waypoint:</label>
                     <TextInput
                         type="text"
                         name="waypoints"

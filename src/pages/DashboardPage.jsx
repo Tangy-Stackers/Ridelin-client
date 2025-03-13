@@ -41,7 +41,7 @@ function DashBoardPage() {
 
     return (
         <div className="">
-
+                 <h2>Search your Ride</h2>
             <SearchRide />
 
             <ListOfBooking />
