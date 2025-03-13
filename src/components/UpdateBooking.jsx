@@ -6,6 +6,7 @@ import { Button, Group, Notification, Radio, TextInput } from "@mantine/core";
 
 function UpdateBooking() {
     const [seatsBooked, setSeatsBooked] = useState("");
+    const [status, setStatus] = useState("pending");
     const [boardingPoint, setBoardingPoint] = useState("");
     const [destination, setDestination] = useState("");
     const [waypoints, setWaypoints] = useState([]);
@@ -16,12 +17,12 @@ function UpdateBooking() {
     const navigate = useNavigate();
     const { bookingId } = useParams();
 
-   useEffect(() => {
+    useEffect(() => {
         const storedToken = localStorage.getItem('authToken');
-       
+
         axios.get(`${import.meta.env.VITE_API_URL}/api/bookings/${bookingId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
             .then((response) => {
-                
+
                 const booking = response.data;
                 console.log(booking)
                 setOrigin(booking.ride.origin);
@@ -29,7 +30,8 @@ function UpdateBooking() {
                 setDestination(booking.ride.destination);
                 console.log(booking.ride.destination);
                 setSeatsBooked(booking.seatsBooked);
-                setWaypoints(booking.ride.waypoints || [] );
+                setStatus(booking.status);
+                setWaypoints(booking.ride.waypoints || []);
             })
             .catch((error) => console.log(error));
     }, [bookingId]);
@@ -39,7 +41,7 @@ function UpdateBooking() {
             setErrorMessage("Boarding point and destination cannot be the same.");
         } else {
             setErrorMessage(""); // Clear error
-            setBoardingPoint(value); 
+            setBoardingPoint(value);
         }
     };
 
@@ -49,28 +51,32 @@ function UpdateBooking() {
             setErrorMessage("Boarding point and destination cannot be the same.");
         } else {
             setErrorMessage(""); // Clear error
-            setDestination(value); 
+            setDestination(value);
         }
     };
+
+    
     const handleUpdate = (e) => {
         e.preventDefault();
 
-console.log(boardingPoint);
-console.log(destination)
+        console.log(boardingPoint);
+        console.log(destination);
+        console.log("Status: ", status);
         if (boardingPoint === destination) {
             setErrorMessage("Boarding point and destination cannot be the same.");
             return;
         }
-        const requestBody = { boardingPoint, destination, seatsBooked };
+        const requestBody = { boardingPoint, destination, status, seatsBooked };
         const storedToken = localStorage.getItem('authToken');
 
         axios.patch(`${import.meta.env.VITE_API_URL}/api/bookings/${bookingId}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` }, })
             .then((response) => {
+                console.log(response.data); 
                 navigate(`/dashboard`)
             }).catch((error) => console.log(error));
     };
 
-   
+
 
     const deleteBooking = () => {
         const storedToken = localStorage.getItem('authToken');
@@ -91,9 +97,15 @@ console.log(destination)
                         value={seatsBooked} onChange={(e) => { setSeatsBooked(e.target.value) }}
                     />
                 </label>
-
-               {/* Boarding point (origin or waypoint) */}
-               <label>Boarding at:</label>
+                <label>Status:
+                    <select value={status} onChange={(e) => {console.log(e.target.value); setStatus(e.target.value)}}>
+                        <option value="pending">Pending</option>
+                        <option value="confirmed">Confirmed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </label>
+                {/* Boarding point (origin or waypoint) */}
+                <label>Boarding at:</label>
                 <Group>
                     <Radio
                         label={origin}  // Display the city name for origin
@@ -135,7 +147,7 @@ console.log(destination)
                         label="Waypoint"
                         value="waypoint"
                         checked={destinationType === "waypoint"}
-                        onChange={() =>setDestinationType("waypoint")}
+                        onChange={() => setDestinationType("waypoint")}
                     />
                 </Group>
 

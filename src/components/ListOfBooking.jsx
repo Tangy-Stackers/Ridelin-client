@@ -71,6 +71,7 @@ function ListOfBooking() {
               )}
 
               <label className={booking.status}>Status:{booking.status}</label>
+              
               <Button variant="filled" color="red" radius="xl"
                 onClick={() => handleEdit(booking._id)}>Edit Booking</Button>
             </label>
