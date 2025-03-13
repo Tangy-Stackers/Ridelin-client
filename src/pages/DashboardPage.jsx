@@ -53,7 +53,6 @@ function DashBoardPage() {
                 ) : (
                     rides.map((ride) => (
                         <Card key={ride._id} shadow="sm" padding="lg" radius="md" withBorder mb="md">
-                            <Text weight={500}>Ride ID: {ride._id}</Text>
                             <Text>Origin: {ride.origin} — Destination: {ride.destination}</Text>
                             <Text>Travel Date: {ride.travelDate && !isNaN(new Date(ride.travelDate))
                                 ? new Date(ride.travelDate).toISOString().split('T')[0] : 'Invalid Date'}
