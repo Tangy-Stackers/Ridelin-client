@@ -136,11 +136,11 @@ function UpdateBooking() {
                         />
                     )}
                     {errorMessage && (
-                        <Notification color="red" disallowClose>{errorMessage}</Notification>
+                        <Notification color="red" withCloseButton={false}>{errorMessage}</Notification>
                     )}
                     <Space h="md" />
                     <Group>
-                        <Button type="submit" color="green" radius={"xl"}>Update Booking 🛠️</Button>
+                        <Button type="submit" color="green" radius={"xl"} onClick={handleUpdate}>Update Booking 🛠️</Button>
                         <Space h="xl" />
                         <Button color="red" radius={"xl"} onClick={deleteBooking}>Delete Booking 🗑️</Button>
                     </Group>

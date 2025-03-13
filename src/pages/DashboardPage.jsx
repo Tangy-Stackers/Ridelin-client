@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Card, Text, Container, Title } from "@mantine/core";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import "@mantine/core/styles.css";
 import SearchRide from "../components/SearchRide";
@@ -9,10 +9,11 @@ import { AuthContext } from "../context/auth.context";
 
 // Show booking rides
 function DashBoardPage() {
-    const { user } = useContext(AuthContext);
+    const userName = localStorage.getItem('userName');
     const location = useLocation();
     const navigate = useNavigate();
     const [rides, setRides] = useState([]);
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         const storedToken = localStorage.getItem('authToken');
@@ -37,7 +38,7 @@ function DashBoardPage() {
         <Container size="md" py="xl">
             <>
             <Title order={2} align="center" mb="lg">Welcome to Ridelin </Title>
-            <Title order={4} align="center" mb="lg">Were are we travel today, {user.name}?</Title>
+            <Title order={4} align="center" mb="lg">Were are we travel today, {userName}?</Title>
             </>
             
             <SearchRide />
