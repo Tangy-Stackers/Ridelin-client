@@ -1,9 +1,9 @@
 import { Card, Text, Container, Title, Center, Stack, Group } from "@mantine/core";
 import SearchRide from "../components/SearchRide";
-import "../App.css";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import "../assets/App.css";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -15,9 +15,9 @@ function HomePage() {
     
 
     return (
-      <Container size="lg" py={40}>
+      <Container size="xl" py={40} >
         <Center>
-          <Title order={1} italic>
+          <Title order={1}>
             Welcome to Ridelin
           </Title>
         </Center>
@@ -44,28 +44,28 @@ function HomePage() {
         <Title order={2} mt={50} align="center">
           Why us?
         </Title>
-        <Group spacing="lg" mt={27} align="center" position="center">
-          <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Card.Section>
-              <Text weight={700} size="lg">💰 Save Money</Text>
-            </Card.Section>
-            <Text>Share rides and cut down on fuel expenses.</Text>
-          </Card>
+        <Group spacing="lg" mt={27} mb={27} align="center" position="center" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+        <Card shadow="sm" padding="lg" radius="md" withBorder>
+         
+            <Text weight={700} size="lg">💰 Save Money</Text>
+         
+          <Text>Share rides and cut down on fuel expenses.</Text>
+        </Card>
 
-          <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Card.Section>
-              <Text weight={700} size="lg">🌱 Drive Less, Breathe More</Text>
-            </Card.Section>
-            <Text>Reduce traffic and CO₂, shrinking your carbon footprint.</Text>
-          </Card>
+        <Card shadow="sm" padding="lg" radius="md" withBorder>
+        
+            <Text weight={700} size="lg">🌱 Drive Less, Breathe More</Text>
+         
+          <Text>Reduce traffic and CO₂, shrinking your carbon footprint.</Text>
+        </Card>
 
-          <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Card.Section>
-              <Text weight={700} size="lg">🤝 Meet New People</Text>
-            </Card.Section>
-            <Text>Connect with fellow travelers and build community.</Text>
-          </Card>
-        </Group>
+        <Card shadow="sm" padding="lg" radius="md" withBorder>
+          
+            <Text weight={700} size="lg">🤝 Meet New People</Text>
+          
+          <Text>Connect with fellow travelers and build community.</Text>
+        </Card>
+      </Group>
       </Container>
     );
   }
