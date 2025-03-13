@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, TextInput, Popover, Radio, Group, Container, Paper, Title, Divider, Stack, Flex } from "@mantine/core";
+import { Button, TextInput, Popover, RadioGroup, Radio, Group, Container, Paper, Title, Divider, Stack, Flex } from "@mantine/core";
 import { DatePicker, TimeInput } from '@mantine/dates';
 import { dateFormatter } from "../utils/dateFormatter";
 
@@ -28,9 +28,9 @@ function CreateRide() {
         distance: "",
         vehicle: "",
         licensePlate: "",
-        music: "",
-        smokingAllowed: "",
-        petsAllowed: "",
+        music: "false",
+        smokingAllowed: "false",
+        petsAllowed: "false",
         waypoints: [],
         driverId: userId,
     });
@@ -42,6 +42,13 @@ function CreateRide() {
         });
     };
 
+    const handleChangeRadio = (item, value) => {
+        SetCreateRideData({
+            ...CreateRideData,
+            [item]: value,
+        });
+
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -49,7 +56,7 @@ function CreateRide() {
             { headers: { Authorization: `Bearer ${storedToken}` } }
         )
             .then((response) => {
-                console.log('Successful ride created', response.data);
+                // console.log('Successful ride created', response.data);
                 const newRideId = response.data._id;
                 navigate(`/ride/${newRideId}`);
             })
@@ -74,7 +81,7 @@ function CreateRide() {
                 wrap="wrap"
             >
 
-                <form onSubmit={handleSubmit} style={{display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }} >
+                <form onSubmit={handleSubmit} style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }} >
                     <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
 
                         <Paper shadow="xs" p="xl" radius="md" withBorder>
@@ -125,23 +132,62 @@ function CreateRide() {
                         <Paper shadow="xs" p="xl" radius="md" withBorder>
                             <Flex direction="row" gap="lg" wrap="wrap">
                                 <Group>
-                                    <Radio.Group label="🎶 Music">
-                                        <Radio value="true" label="Yes" checked={CreateRideData.music === "true"} onChange={handleChange} />
-                                        <Radio value="false" label="No" checked={CreateRideData.music === "false"} onChange={handleChange} />
-                                    </Radio.Group>
+                                    <RadioGroup
+                                        label="🎶 Music"
+                                        value={CreateRideData.music}
+                                        onChange={(value) => handleChangeRadio("music", value)}
+                                        name="music"
+                                    >
+                                        <Radio
+                                            value="true"
+                                            label="Yes"
+                                        />
+                                        <Radio
+                                            value="false"
+                                            label="No"
+                                        />
+                                    </RadioGroup>
                                 </Group>
+
                                 <Group>
-                                    <Radio.Group label="🚬 Smoking Allowed">
-                                        <Radio value="true" label="Yes" checked={CreateRideData.smokingAllowed === "true"} onChange={handleChange} />
-                                        <Radio value="false" label="No" checked={CreateRideData.smokingAllowed === "false"} onChange={handleChange} />
-                                    </Radio.Group>
+                                    <RadioGroup
+                                        label="🚬 Smoking Allowed"
+                                        value={CreateRideData.smokingAllowed}
+                                        onChange={(value) => handleChangeRadio("smokingAllowed", value)}
+                                        name="smokingAllowed"
+                                    >
+                                        <Radio
+                                            value="true"
+                                            label="Yes"
+                                          
+                                        />
+                                        <Radio
+                                            value="false"
+                                            label="No"
+                                          
+                                        />
+                                    </RadioGroup>
+
                                 </Group>
+
                                 <Group>
-                                    <Radio.Group label="🐶 Pets Allowed">
-                                        <Radio value="true" label="Yes" checked={CreateRideData.petsAllowed === "true"} onChange={handleChange} />
-                                        <Radio value="false" label="No" checked={CreateRideData.petsAllowed === "false"} onChange={handleChange} />
-                                    </Radio.Group>
+                                    <RadioGroup 
+                                        label="🐶 Pets Allowed"
+                                        value={CreateRideData.petsAllowed}
+                                        onChange={(value) => handleChangeRadio("petsAllowed", value)}
+                                        name="petsAllowed"
+                                        >
+                                        <Radio
+                                            value="true"
+                                            label="Yes"
+                                        />
+                                        <Radio
+                                            value="false"
+                                            label="No"
+                                        />
+                                    </RadioGroup>
                                 </Group>
+
                             </Flex>
                         </Paper>
 
