@@ -57,6 +57,7 @@ function RideDetails() {
         <Text align="center" color="red">Ride not found</Text>
       ) : (
         <>
+       
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'bottom', gap: '1rem' }}>
             <Title order={1}>{ride.origin} → {ride.destination}</Title>
           </div>
@@ -116,7 +117,7 @@ function RideDetails() {
           <br />
 
           {/* Conditional buttons */}
-          {userId === ride.driverId && (
+          {userId === ride.driverId._id && (
           <Flex direction="row" gap="md">
               <Button onClick={handleDelete} color="red" radius="xl">Delete this ride</Button>
               <br />
@@ -124,7 +125,7 @@ function RideDetails() {
               
           </Flex>
           )}
-          {userId !== ride.driverId && (
+          {userId !== ride.driverId._id && (
               <Button variant="filled" color="green" radius="xl" onClick={() => handleBookRide(ride._id)}>
                 Book ride
               </Button>
