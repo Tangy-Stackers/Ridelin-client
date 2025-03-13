@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
-import { Button, Stack, Flex } from "@mantine/core";
+import { Button, Flex,Container,Title } from "@mantine/core";
 import "../assets/App.css";
 
 
@@ -29,7 +29,14 @@ function Navbar() {
 
                         {/* Centered Title Section */}
                         <Flex direction="column" align="center">
-                            <h1><strong><i>Ridelin</i></strong></h1>
+                             <Container >
+                                            <Title order={1} size={40} c={"#000000"} shadow="sm">
+                                                <strong><i>
+                                                 Ridelin
+                                                 </i> </strong>
+                                            </Title>
+                                        </Container>
+                    
                           
                         </Flex>
 
