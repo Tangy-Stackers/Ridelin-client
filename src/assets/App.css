@@ -2,6 +2,7 @@ body {
     width: 100vw !important;
     height: 100vh !important;
     background: url('./src/assets/Background.png') !important;
+  
     background-repeat: no-repeat !important;
     background-size: cover !important;
     display: flex !important;
