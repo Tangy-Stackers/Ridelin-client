@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, TextInput, Popover, RadioGroup, Radio, Group, Container, Paper, Title, Divider, Stack, Flex, Box } from "@mantine/core";
 import { DatePicker, TimeInput } from '@mantine/dates';
 import { dateFormatter } from "../utils/dateFormatter";
-import Sidebar from "./sidebar";
+import Sidebar from "./Sidebar";
 
 
 function CreateRide() {
