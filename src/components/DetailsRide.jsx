@@ -123,7 +123,7 @@ function RideDetails() {
           <br />
 
           {/* Conditional buttons */}
-          {userId === ride.driverId._id && (
+          {userId === ride.driverId && (
           <Flex direction="row" gap="md">
               <Button onClick={handleDelete} color="red" radius="xl">Delete this ride</Button>              
           </Flex>
