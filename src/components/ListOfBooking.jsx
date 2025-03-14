@@ -92,6 +92,7 @@ function ListOfBooking() {
                           <label className="rideInfo">
                             <p>Origin: {booking.ride.origin}</p>
                             <p>Destination: {booking.ride.destination}</p>
+                            <p>Waypoint: {booking.ride.waypoints}</p>
                             <p>
                               Travel Date:{" "}
                               {new Date(booking.ride.travelDate)
