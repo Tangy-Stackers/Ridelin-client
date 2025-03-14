@@ -128,7 +128,7 @@ function RideDetails() {
               <Button onClick={handleDelete} color="red" radius="xl">Delete this ride</Button>              
           </Flex>
           )}
-          {userId !== ride.driverId._id && (
+          {userId !== ride.driverId && (
               <Button variant="filled" color="green" radius="xl" onClick={() => handleBookRide(ride._id)}>
                 Book ride
               </Button>
