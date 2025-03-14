@@ -62,8 +62,8 @@ const UpdateUserProfile = () => {
                 setIsLoading(false);
                 setSuccessMessage("Profile updated successfully!");
                 setTimeout(() => {
-                    navigate("/");
-                }, 3000);
+                    navigate("/dashboard");
+                }, 1000);
             })
             .catch((error) => {
                 setIsLoading(false);
@@ -101,8 +101,8 @@ const UpdateUserProfile = () => {
                             <div>
                                 <label>Phone</label>
                                 <TextInput
-                                    type="text"
-                                    name="name"
+                                    type="number"
+                                    name="phone"
                                     value={user.phone}
                                     onChange={handleChange}
                                     required
@@ -113,8 +113,8 @@ const UpdateUserProfile = () => {
                             <div>
                                 <label>Profile Image URL</label>
                                 <TextInput
-                                    type="text"
-                                    name="name"
+                                    type="url"
+                                    name="image"
                                     value={user.image}
                                     onChange={handleChange}
                                 />
