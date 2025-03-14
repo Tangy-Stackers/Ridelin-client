@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Flex, Button, Container, Card, Text, Title, Divider, Box } from "@mantine/core";
-import Sidebar from "./sidebar";
+import Sidebar from "./Sidebar";
 
 function RideDetails() {
   const [ride, setRide] = useState(null);

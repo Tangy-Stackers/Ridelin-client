@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Box, Button, Flex } from "@mantine/core";
 import { Link, useNavigate } from "react-router-dom";
-import Sidebar from "./sidebar";
+import Sidebar from "./Sidebar";
 
 
 

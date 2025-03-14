@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button, TextInput, Alert, Container, Text, Title, Flex, Card, Divider, Box } from "@mantine/core";
-import Sidebar from "./sidebar";
+import Sidebar from "./Sidebar";
 
 function CreateBooking() {
     const [users, setUsers] = useState(null);

@@ -7,7 +7,7 @@ import SearchRide from "../components/SearchRide";
 import ListOfBooking from "../components/ListOfBooking";
 import { AuthContext } from "../context/auth.context";
 import useEmblaCarousel from 'embla-carousel-react';
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/Sidebar";
 
 // Show booking rides
 function DashBoardPage() {
