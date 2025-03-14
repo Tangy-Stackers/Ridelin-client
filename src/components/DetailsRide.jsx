@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Flex, Button, Container, Card, Text, Title, Divider } from "@mantine/core";
+import { Flex, Button, Container, Card, Text, Title, Divider, Box } from "@mantine/core";
+import Sidebar from "./sidebar";
 
 function RideDetails() {
   const [ride, setRide] = useState(null);
@@ -48,6 +49,11 @@ function RideDetails() {
   const getOpacity = (value) => (value === "Not Available" || value === null || value === undefined || value === "") ? { opacity: 0.5 } : { opacity: 1 };
 
   return (
+    <Flex style={{ height: "100vh" }}>
+    <Box w="250px">
+        <Sidebar />
+    </Box>
+    <Flex justify="center" style={{ flex: 0.75 }}>
     <Container size="md" mt={20} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
       <Title align="center" mb={20}>Ride Details</Title>
       <Text>Where are we traveling today, <strong>{userName}</strong>?</Text>
@@ -119,10 +125,7 @@ function RideDetails() {
           {/* Conditional buttons */}
           {userId === ride.driverId._id && (
           <Flex direction="row" gap="md">
-              <Button onClick={handleDelete} color="red" radius="xl">Delete this ride</Button>
-              <br />
-              <Button onClick={handleUpdateRide} color="green" radius="xl">Update this ride</Button>
-              
+              <Button onClick={handleDelete} color="red" radius="xl">Delete this ride</Button>              
           </Flex>
           )}
           {userId !== ride.driverId._id && (
@@ -134,6 +137,8 @@ function RideDetails() {
         </>
       )}
     </Container>
+    </Flex>
+    </Flex>
   );
 }
 
