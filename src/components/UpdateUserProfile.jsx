@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "./sidebar";
+import { Box, Button, Flex, Textarea, TextInput } from "@mantine/core";
 
 
 const UpdateUserProfile = () => {
@@ -70,65 +72,75 @@ const UpdateUserProfile = () => {
     };
 
     return (
-        <div className="profile-update-form">
-            <h2>Update Your Profile</h2>
+        <>
 
-            {errorMessage && <div className="error-message">{errorMessage}</div>}
-            {successMessage && <div className="success-message">{successMessage}</div>}
+            <Flex style={{ height: "100vh" }}>
+                <Box w="250px">
+                    <Sidebar />
+                </Box>
+                <Flex justify="center" style={{ flex: 0.75 }}>
+                    <div className="profile-update-form">
+                        <h2>Update Your Profile</h2>
 
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Name</label>
-                    <TextInput
-                        type="text"
-                        name="name"
-                        value={user.name}
-                        onChange={handleChange}
-                        required
-                    />
+                        {errorMessage && <div className="error-message">{errorMessage}</div>}
+                        {successMessage && <div className="success-message">{successMessage}</div>}
 
-                </div>
+                        <form onSubmit={handleSubmit}>
+                            <div>
+                                <label>Name</label>
+                                <TextInput
+                                    type="text"
+                                    name="name"
+                                    value={user.name}
+                                    onChange={handleChange}
+                                    required
+                                />
 
-                <div>
-                    <label>Phone</label>
-                    <TextInput
-                        type="text"
-                        name="name"
-                        value={user.phone}
-                        onChange={handleChange}
-                        required
-                    />
+                            </div>
 
-                </div>
+                            <div>
+                                <label>Phone</label>
+                                <TextInput
+                                    type="text"
+                                    name="name"
+                                    value={user.phone}
+                                    onChange={handleChange}
+                                    required
+                                />
 
-                <div>
-                    <label>Profile Image URL</label>
-                    <TextInput
-                        type="text"
-                        name="name"
-                        value={user.image}
-                        onChange={handleChange}
-                    />
-                </div>
+                            </div>
 
-                <div>
-                    <label>About Me</label>
-                    <Textarea
-                        name="about"
-                        value={user.about}
-                        onChange={handleChange}
-                        maxLength={500}
-                        placeholder="Write something about yourself..."
-                        minRows={4}
-                        maxRows={6}
-                    />
-                </div>
+                            <div>
+                                <label>Profile Image URL</label>
+                                <TextInput
+                                    type="text"
+                                    name="name"
+                                    value={user.image}
+                                    onChange={handleChange}
+                                />
+                            </div>
 
-                <Button color="indigo" radius="md" mt="lg" type="submit" disabled={isLoading}>
-                    {isLoading ? "Updating..." : "Update Profile"}
-                </Button>
-            </form>
-        </div>
+                            <div>
+                                <label>About Me</label>
+                                <Textarea
+                                    name="about"
+                                    value={user.about}
+                                    onChange={handleChange}
+                                    maxLength={500}
+                                    placeholder="Write something about yourself..."
+                                    minRows={4}
+                                    maxRows={6}
+                                />
+                            </div>
+
+                            <Button color="indigo" radius="md" mt="lg" type="submit" disabled={isLoading}>
+                                {isLoading ? "Updating..." : "Update Profile"}
+                            </Button>
+                        </form>
+                    </div>
+                </Flex>
+            </Flex>
+        </>
     );
 };
 

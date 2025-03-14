@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "../config/api";
-import { Button } from "@mantine/core";
+import { Box, Button, Flex } from "@mantine/core";
 import { Link, useNavigate } from "react-router-dom";
+import Sidebar from "./sidebar";
 
 
 
@@ -34,23 +35,34 @@ const UserProfile = () => {
         navigate(`/user/${userId}/edit`);
     }
 
-    return (
+    return (<>
+        <Flex style={{ height: "100vh" }}>
+        <Box w="250px">
+            <Sidebar/>
+        </Box>
+        <Flex justify="center" style={{ flex: 0.75 }}>
         <div>
             {profileDetails ? (
                 <div className="UserDetails">
-                 <img className="img" src={profileDetails.image} alt="User Profile" />
+                    <img className="img" src={profileDetails.image} alt="User Profile" />
                     <h1>{profileDetails.name}</h1>
                     <p>✉️<b>Email:</b> {profileDetails.email}</p>
                     <p>📞<b>Phone Number:</b>{profileDetails.phone}</p>
-                    <p>💭 <b>About me:</b> {profileDetails.about}</p>
+                    <p style={{ width: "600px", wordWrap: "break-word" }}>
+                        💭 <b>About me:</b> {profileDetails.about}
+                    </p>
                     <Button color="indigo" radius="md" mt="lg" onClick={handleUpdate}>Edit profile</Button>
                 </div>
             ) : (
                 <p>Loading...</p>
             )}
-            
+
 
         </div>
+        </Flex>
+
+        </Flex>
+        </>
     );
 };
 

@@ -44,14 +44,12 @@ function Navbar() {
                         <Flex gap="md" flex={1} justify="flex-end" mr="50px">
                             {isLoggedIn ? (
                                 <>
-                                    <Link to="/dashboard">
-                                        <Button variant="filled" color="red" radius="xl">Dashboard</Button>
-                                    </Link>
-                                    <Link to="/createride">
-                                        <Button variant="filled" color="red" radius="xl">Create Ride</Button>
-                                    </Link>
-                                    <Button onClick={logOutUser} variant="filled" color="red" radius="xl">Logout</Button>
-                                    <span><b><i>Hi {user && user.name}!</i></b></span>
+                                   {/* <Link to="/dashboard">
+                                        <Button variant="filled" color="red" radius="xl"> 📋 Dashboard</Button>
+                                    </Link>*/}
+                                   <span><b><i>Hi {user && user.name}!</i></b></span>
+                                    <Button onClick={logOutUser} variant="filled" color="red" radius="xl"> ⏻ Logout</Button>
+                                   
                                 </>
                             ) : (
                                 <>

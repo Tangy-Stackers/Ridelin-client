@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Button, Card, Text, Container, Title } from "@mantine/core";
+import { Button, Card, Text, Container, Title, Flex } from "@mantine/core";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import "@mantine/core/styles.css";
@@ -57,14 +57,15 @@ function DashBoardPage() {
 
   return (
 <>
-<Sidebar />
 
-    <Container size="md" py="xl">
-  
+<Flex>
+  <Sidebar />
+  <Container size="md" py="xl">
+    <SearchRide />
+    <ListOfBooking />
 
-      <SearchRide />
-      <ListOfBooking />
 
+    
       {rides.length === 0 ? (
         <>
           <Text align="center" color="dimmed"> We don't have rides to show for you.</Text>
@@ -101,7 +102,8 @@ function DashBoardPage() {
           </div>
         </div>
       )}
-    </Container >
+   </Container>
+   </Flex>
     </>
   );
 }
