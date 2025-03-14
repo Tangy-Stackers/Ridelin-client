@@ -37,7 +37,7 @@ function Sidebar() {
                 <Link to="/createride">
                     <Button variant="light" color="red" radius="xl"> ➕ Create Ride</Button>
                 </Link>
-                <Button onClick={goToProfile} variant="light" color="red" radius="md" mt="lg"> 🧑‍💻 Go to Profile </Button>
+                <Button onClick={goToProfile} variant="light" color="red" radius="xl" > 🧑‍💻 Go to Profile </Button>
 
             </Flex>
             </Box>

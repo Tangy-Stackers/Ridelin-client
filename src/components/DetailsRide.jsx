@@ -53,8 +53,8 @@ function RideDetails() {
     <Box w="250px">
         <Sidebar />
     </Box>
-    <Flex justify="center" style={{ flex: 0.75 }}>
-    <Container size="md" mt={20} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+    <Flex justify="center" style={{ flex: 0.75, transform: 'translateY(-50px)' }}>
+    <Container size="md" mt={0} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
       <Title align="center" mb={20}>Ride Details</Title>
       <Text>Where are we traveling today, <strong>{userName}</strong>?</Text>
       <br />

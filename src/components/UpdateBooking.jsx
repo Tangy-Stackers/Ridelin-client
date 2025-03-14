@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Button, Group, Notification, Radio, TextInput, Select, Title, Container, Card, Space, Divider,Flex } from "@mantine/core";
+import { Button, Group, Notification, Radio, TextInput, Select, Title, Container, Card, Space, Divider,Flex, Box } from "@mantine/core";
+import Sidebar from "./Sidebar";
 
 function UpdateBooking() {
     const [seatsBooked, setSeatsBooked] = useState("");
@@ -79,6 +80,13 @@ console.log(requestBody)
     };
 
     return (
+        <>
+        <Flex style={{ height: "100vh" }}>
+    <Box w="250px">
+        <Sidebar />
+        
+    </Box>
+    <Flex justify="center" style={{ flex: 0.75, transform: 'translateY(10px)' }}>
         <Container>
             <>
                 <br />
@@ -150,6 +158,9 @@ console.log(requestBody)
             </Card>
             </Flex>
         </Container>
+        </Flex>
+        </Flex>
+        </>
     );
 }
 

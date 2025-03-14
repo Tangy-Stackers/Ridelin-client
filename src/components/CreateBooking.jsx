@@ -104,7 +104,7 @@ function CreateBooking() {
     <Box w="250px">
         <Sidebar />
     </Box>
-    <Flex justify="center" style={{ flex: 0.75 }}>
+    <Flex justify="center" style={{ flex: 0.75, transform: 'translateY(-80px)' }}>
         <Container size="sm" mt={10} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
             <Title align="center" mb={8}>Book your Ride</Title>
 

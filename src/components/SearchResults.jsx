@@ -1,9 +1,10 @@
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import { Button, Card, TextInput, Select, Container, Title, Stack, Flex } from "@mantine/core";
+import { Button, Card, TextInput, Select, Container, Title, Stack, Flex, Box } from "@mantine/core";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../assets/Booking.css";
 import SearchRide from "./SearchRide";
+import Sidebar from "./Sidebar";
 
 function SearchResults() {
     const location = useLocation();
@@ -64,6 +65,13 @@ function SearchResults() {
     };
     
     return (
+        <>
+         <Flex style={{ height: "100vh" }}>
+    <Box w="250px">
+        <Sidebar />
+    </Box>
+    <Flex justify="center" style={{ flex: 0.75, transform: 'translateY(10px)' }}>
+      
         <Container>
             <Title order={2} align="center" my="md">Search Results</Title>
             <SearchRide 
@@ -98,16 +106,17 @@ function SearchResults() {
                 style={{ width: "100%" }}
             >
                 <Stack spacing="lg">
+                <Title order={4}> Available Rides </Title>
                     {filteredRides.length === 0 ? (
                         <p>No rides found for your search.</p>
-                    ) : (
+                    ) : ( 
                         filteredRides.map((ride) => (
+                          
                             <Card key={ride._id} shadow="sm" padding="lg" radius="md" withBorder>
-                                <Title order={4}>Ride ID: {ride._id}</Title>
+                              
                                 <p>Origin: {ride.origin}</p>
                                 <p>Destination: {ride.destination}</p>
                                 <p>Travel Date: {new Date(ride.travelDate).toLocaleString()}</p>
-                                <p>Driver: {ride.driverId}</p>
                                 <Button color="indigo" radius="md" mt="md" onClick={() => handleGoToDetails(ride._id)}>
                                     More Details
                                 </Button>
@@ -117,6 +126,9 @@ function SearchResults() {
                 </Stack>
             </Flex>
         </Container>
+        </Flex> 
+         </Flex>
+        </>
     );
 }
 
