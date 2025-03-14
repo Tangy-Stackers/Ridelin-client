@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Button, TextInput, Alert, Container, Text, Title, Flex, Card, Divider } from "@mantine/core";
+import { Button, TextInput, Alert, Container, Text, Title, Flex, Card, Divider, Box } from "@mantine/core";
+import Sidebar from "./sidebar";
 
 function CreateBooking() {
     const [users, setUsers] = useState(null);
@@ -98,6 +99,12 @@ function CreateBooking() {
     const getOpacity = (value) => (value === "Not Available" || value === null || value === undefined || value === "") ? { opacity: 0.5 } : { opacity: 1 };
 
     return (
+
+        <Flex style={{ height: "100vh" }}>
+    <Box w="250px">
+        <Sidebar />
+    </Box>
+    <Flex justify="center" style={{ flex: 0.75 }}>
         <Container size="sm" mt={10} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
             <Title align="center" mb={8}>Book your Ride</Title>
 
@@ -173,6 +180,8 @@ function CreateBooking() {
 
             {!canBook && <p>You cannot book your own ride.</p>}
         </Container>
+        </Flex>
+        </Flex>
     );
 };
 

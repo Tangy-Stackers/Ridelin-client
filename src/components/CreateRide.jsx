@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, TextInput, Popover, RadioGroup, Radio, Group, Container, Paper, Title, Divider, Stack, Flex } from "@mantine/core";
+import { Button, TextInput, Popover, RadioGroup, Radio, Group, Container, Paper, Title, Divider, Stack, Flex, Box } from "@mantine/core";
 import { DatePicker, TimeInput } from '@mantine/dates';
 import { dateFormatter } from "../utils/dateFormatter";
+import Sidebar from "./sidebar";
 
 
 function CreateRide() {
@@ -64,6 +65,11 @@ function CreateRide() {
     };
 
     return (
+        <Flex style={{ height: "100vh" }}>
+        <Box w="250px">
+            <Sidebar/>
+        </Box>
+        <Flex justify="center" style={{ flex: 0.75 }}>
         <Container px={24} size="lg">
             <>
                 <br />
@@ -199,6 +205,8 @@ function CreateRide() {
                 </form>
             </Flex>
         </Container>
+        </Flex>
+        </Flex>
     );
 }
 
