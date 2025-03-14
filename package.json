@@ -20,7 +20,7 @@
     "cors": "^2.8.5",
     "country-state-city": "^3.2.1",
     "dayjs": "^1.11.13",
-    "embla-carousel-react": "^7.1.0",
+    "embla-carousel-react": "^8.5.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
