@@ -124,15 +124,14 @@ console.log("ride is ",ride.driverId);
           <br />
 
           {/* Conditional buttons */}
-          {String(userId) === String(ride.driverId?._id) ? (
+          {String(userId) === String(ride.driverId?._id) &&(
           <Flex direction="row" gap="md">
               <Button onClick={handleDelete} color="red" radius="xl">Delete this ride</Button>     
                <Button color="green" radius="xl">Edit ride</Button>         
           </Flex>
-          ) : (
-  <p>Not the driver</p>
-          )}
-          {userId !== ride.driverId && (
+           )}
+           
+          {userId !== ride.driverId?._id && (
               <Button variant="filled" color="green" radius="xl" onClick={() => handleBookRide(ride._id)}>
                 Book ride
               </Button>
