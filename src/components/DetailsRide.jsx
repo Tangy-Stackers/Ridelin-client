@@ -13,7 +13,8 @@ function RideDetails() {
   const userId = localStorage.getItem('userId');
   const storedToken = localStorage.getItem("authToken");
   const userName = localStorage.getItem('userName');
-
+console.log("user is ",userId);
+console.log("ride is ",ride.driverId);
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/api/ride/${rideId}`, {
@@ -123,11 +124,13 @@ function RideDetails() {
           <br />
 
           {/* Conditional buttons */}
-          {userId === ride.driverId && (
+          {String(userId) === String(ride.driverId?._id) ? (
           <Flex direction="row" gap="md">
               <Button onClick={handleDelete} color="red" radius="xl">Delete this ride</Button>     
                <Button color="green" radius="xl">Edit ride</Button>         
           </Flex>
+          ) : (
+  <p>Not the driver</p>
           )}
           {userId !== ride.driverId && (
               <Button variant="filled" color="green" radius="xl" onClick={() => handleBookRide(ride._id)}>
