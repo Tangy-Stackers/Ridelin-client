@@ -18,9 +18,9 @@ function Sidebar() {
 
 
     return (
-        <>
+    
         <div className="sidebar">
-            <Box w ="300px">
+            <Box w ="400px">
             <Flex
                 mih={50}
                 gap="xs"
@@ -30,6 +30,7 @@ function Sidebar() {
                 wrap="wrap"
                 m="xl"
                 p="lg"
+                ml="lg"
             >
                 <Link to="/dashboard">
                     <Button variant="light" color="red" radius="xl"pl="lg"> 📋 Dashboard</Button>
@@ -44,7 +45,7 @@ function Sidebar() {
             
         </div>
       
-         </>
+         
     );
 }
 

@@ -41,13 +41,13 @@ function Navbar() {
                         </Flex>
 
                         {/* Right-Aligned Buttons */}
-                        <Flex gap="md" flex={1} justify="flex-end" mr="150px">
+                        <Flex gap="md" flex={1} justify="flex-end" mr="160px">
                             {isLoggedIn ? (
                                 <>
                                    {/* <Link to="/dashboard">
                                         <Button variant="filled" color="red" radius="xl"> 📋 Dashboard</Button>
                                     </Link>*/}
-                                   <span fz="xl"><b><i>Hi {user && user.name}!</i></b></span>
+                                   <span><b><i>Hi {user && user.name}!</i></b></span>
                                     <Button onClick={logOutUser} variant="filled" color="red" radius="xl"> ⏻ Logout</Button>
                                    
                                 </>
