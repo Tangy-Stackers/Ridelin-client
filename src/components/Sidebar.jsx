@@ -32,12 +32,12 @@ function Sidebar() {
                 p="lg"
             >
                 <Link to="/dashboard">
-                    <Button variant="light" color="red" radius="xl"> 📋 Dashboard</Button>
+                    <Button variant="light" color="red" radius="xl"pl="lg"> 📋 Dashboard</Button>
                 </Link>
                 <Link to="/createride">
-                    <Button variant="light" color="red" radius="xl"> ➕ Create Ride</Button>
+                    <Button variant="light" color="red" radius="xl"pl="lg"> ➕ Create Ride</Button>
                 </Link>
-                <Button onClick={goToProfile} variant="light" color="red" radius="xl" > 🧑‍💻 Go to Profile </Button>
+                <Button onClick={goToProfile} variant="light" color="red" radius="xl" pl="lg"> 🧑‍💻 Go to Profile </Button>
 
             </Flex>
             </Box>

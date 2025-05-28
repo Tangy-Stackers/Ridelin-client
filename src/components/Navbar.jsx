@@ -47,7 +47,7 @@ function Navbar() {
                                    {/* <Link to="/dashboard">
                                         <Button variant="filled" color="red" radius="xl"> 📋 Dashboard</Button>
                                     </Link>*/}
-                                   <span><b><i>Hi {user && user.name}!</i></b></span>
+                                   <span fz="xl"><b><i>Hi {user && user.name}!</i></b></span>
                                     <Button onClick={logOutUser} variant="filled" color="red" radius="xl"> ⏻ Logout</Button>
                                    
                                 </>
