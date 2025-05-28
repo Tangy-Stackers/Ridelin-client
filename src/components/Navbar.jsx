@@ -41,7 +41,7 @@ function Navbar() {
                         </Flex>
 
                         {/* Right-Aligned Buttons */}
-                        <Flex gap="md" flex={1} justify="flex-end" mr="50px">
+                        <Flex gap="md" flex={1} justify="flex-end" mr="150px">
                             {isLoggedIn ? (
                                 <>
                                    {/* <Link to="/dashboard">
