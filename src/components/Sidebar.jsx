@@ -30,8 +30,7 @@ function Sidebar() {
                 wrap="wrap"
                 m="xl"
                 p="lg"
-                ml="lg"
-            >
+                >
                 <Link to="/dashboard">
                     <Button variant="light" color="red" radius="xl"pl="lg"> 📋 Dashboard</Button>
                 </Link>
