@@ -20,7 +20,7 @@ function Sidebar() {
     return (
     
         <div className="sidebar">
-            <Box w ="400px">
+            <Box w ="400px" pl={80}>
             <Flex
                 mih={50}
                 gap="xs"
