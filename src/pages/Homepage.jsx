@@ -22,7 +22,7 @@ function HomePage() {
         </Title>
       </Center>
       <br />
-      <Center>
+    {/*  <Center>
         <Title order={1} size={90} c={"#FF5733"} shadow="sm">
           <strong>
             Welcome to Ridelin
@@ -33,7 +33,7 @@ function HomePage() {
         <Title order={3} align="center" weight={500} c={"#0D0402"}>
           The Future of Commuting
         </Title>
-      </Center>
+      </Center>*/}
 
 
       <Center mt={20}>

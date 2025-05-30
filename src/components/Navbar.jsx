@@ -34,6 +34,7 @@ function Navbar() {
                                                 <strong><i>
                                                  Ridelin
                                                  </i> </strong>
+                                                 <p size={40} c={"#000000"}> <b>The future of commuting</b></p>
                                             </Title>
                                         </Container>
                     
