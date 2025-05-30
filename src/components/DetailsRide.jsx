@@ -13,8 +13,7 @@ function RideDetails() {
   const userId = localStorage.getItem('userId');
   const storedToken = localStorage.getItem("authToken");
   const userName = localStorage.getItem('userName');
-console.log("user is ",userId);
-console.log("ride is ",ride.driverId);
+
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/api/ride/${rideId}`, {
@@ -39,7 +38,7 @@ console.log("ride is ",ride.driverId);
 
   const handleUpdateRide = () => {
     // Navigate to the update ride page
-    navigate("/updateride"); // Change this to the appropriate route path
+    navigate("/updateride"); 
   };
 
   // Check if the travelDate is valid
