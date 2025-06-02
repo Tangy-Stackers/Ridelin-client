@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Alert, Button, TextInput, Popover } from "@mantine/core";
+import { Stack, Group, Alert, Button, TextInput, Popover } from "@mantine/core";
 import { DatePicker } from '@mantine/dates';
 import { dateFormatter } from "../utils/dateFormatter";
 
@@ -57,64 +57,68 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
 
     return (
 
-        <div className="searchRide">
-            <div className="searchInputs">
-                <TextInput
-                    variant="filled"
-                    size="xl"
-                    label="Origin"
-                    withAsterisk
-                    value={origin}
-                    placeholder="Enter Origin"
-                    onChange={(e) => setOrigin(e.target.value)}
-                />
-                <TextInput
-                    variant="filled"
-                    size="xl"
-                    label="Destination"
-                    withAsterisk
-                    value={destination}
-                    placeholder="Enter Destination"
-                    onChange={(e) => setDestination(e.target.value)}
-                />
-                <Popover
-                    opened={isDatePickerOpen}
-                    onClose={() => setIsDatePickerOpen(false)}
-                    position="bottom"
-                    withArrow
-                >
-                    <Popover.Target>
-                        <TextInput
-                            variant="filled"
-                            size="xl"
-                            label="Travel Date"
-                            withAsterisk
-                            value={selectedDate ? dateFormatter(selectedDate) : ""}
+        <>
+            <Stack align="center" spacing="lg" p="xl"
+                style={{ backgroundColor: '#d8c2f2', borderRadius: '12px' }}>
+                <Group grow align="flex-end">
+                    <TextInput
+                        variant="filled"
+                        size="xl"
+                        label="Origin"
+                        withAsterisk
+                        value={origin}
+                        placeholder="Enter Origin"
+                        onChange={(e) => setOrigin(e.target.value)}
+                    />
+                    <TextInput
+                        variant="filled"
+                        size="xl"
+                        label="Destination"
+                        withAsterisk
+                        value={destination}
+                        placeholder="Enter Destination"
+                        onChange={(e) => setDestination(e.target.value)}
+                    />
+                    <Popover
+                        opened={isDatePickerOpen}
+                        onClose={() => setIsDatePickerOpen(false)}
+                        position="bottom"
+                        withArrow
+                    >
+                        <Popover.Target>
+                            <TextInput
+                                variant="filled"
+                                size="xl"
+                                label="Travel Date"
+                                withAsterisk
+                                value={selectedDate ? dateFormatter(selectedDate) : ""}
 
-                            placeholder="Select a Date"
-                            onClick={() => setIsDatePickerOpen(true)} // Open on click
-                            readOnly
-                        />
-                    </Popover.Target>
-                    <Popover.Dropdown>
-                        <DatePicker
-                            value={selectedDate}
-                            onChange={(date) => {
-                                setSelectedDate(date);
-                                setIsDatePickerOpen(false); // Close when date is selected
-                            }}
-                            classNames={{
-                                calendarBase: "small-calendar",
-                                day: "small-calendar-day",
-                                month: "small-calendar-month",
-                                weekday: "small-calendar-weekday"
-                            }}
-                        />
-                    </Popover.Dropdown>
-                </Popover>
-                 <Button onClick={() => handleSearch()} color="indigo" radius="md" mt="lg">Search</Button>
-            </div>
-           
+                                placeholder="Select a Date"
+                                onClick={() => setIsDatePickerOpen(true)} // Open on click
+                                readOnly
+                            />
+                        </Popover.Target>
+                        <Popover.Dropdown>
+                            <DatePicker
+                                value={selectedDate}
+                                onChange={(date) => {
+                                    setSelectedDate(date);
+                                    setIsDatePickerOpen(false); // Close when date is selected
+                                }}
+                                classNames={{
+                                    calendarBase: "small-calendar",
+                                    day: "small-calendar-day",
+                                    month: "small-calendar-month",
+                                    weekday: "small-calendar-weekday"
+                                }}
+                            />
+                        </Popover.Dropdown>
+                    </Popover>
+                </Group>
+                <Button onClick={() => handleSearch()} color="indigo" radius="md" size="xl">Search</Button>
+            </Stack>
+
+
             {showAlert && (
                 <Alert
                     variant="light"
@@ -126,8 +130,8 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
                     {alertMessage}
                 </Alert>
             )}
-        </div>
 
+        </>
     );
 }
 export default SearchRide;
