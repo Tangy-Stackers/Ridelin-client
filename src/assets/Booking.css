@@ -213,12 +213,12 @@
 }
 
 .embla__container {
-  display: flex; /* ✅ Aligns items side by side */
-  gap: 1rem; /* Adds spacing between slides */
+  display: flex; 
+  gap: 1rem; 
 }
 /* bookings */
 .embla__slides {
-  flex: 0 0 30%; /* ✅ Adjusts width of each slide */
+  flex: 0 0 30%; /* Adjusts width of each slide */
   min-width: 300px; /* Prevents slides from shrinking too much */
   padding: 10px;
   border-radius: 10px;
@@ -226,7 +226,7 @@
 }
 /* rides*/
 .embla__slide {
-  flex: 0 0 30%; /* ✅ Adjusts width of each slide */
+  flex: 0 0 30%; /* Adjusts width of each slide */
   min-width: 300px; /* Prevents slides from shrinking too much */
   padding: 10px;
   background-color: #ade2e4;

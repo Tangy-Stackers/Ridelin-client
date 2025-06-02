@@ -34,8 +34,7 @@ h2,h3 {
 
 .searchInputs {
     display: flex;
-
-    padding: 5px;
+    padding: 10px;
 }
 
 .cards-container {
@@ -66,9 +65,11 @@ h2,h3 {
 
 }
 .searchInputs {
-    background-color: darkseagreen;
-    gap: 10px;
-    padding: 20px;
+    background-color: rgb(77, 128, 35);
+    width: 1000px;
+    height:200px;
+    gap: 20px;
+    padding: 30px;
     border-radius: 5px;
 }
 .UserDetails{

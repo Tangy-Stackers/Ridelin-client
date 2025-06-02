@@ -16,7 +16,7 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
     const [showAlert, setShowAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
     const navigate = useNavigate();
-    
+
     const handleSearch = () => {
         const isLoggedIn = localStorage.getItem('authToken')
         if (!origin || !destination) {
@@ -34,8 +34,8 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
             setTimeout(() => {
                 setShowAlert(false);
                 navigate('/login');
-            ;
-        }, 5000);
+                ;
+            }, 5000);
         }
     };
 
@@ -56,69 +56,78 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
 
 
     return (
-        <>
-           
-            <div className="searchRide">
-                <div className="searchInputs">
-                    <TextInput
-                        label="Origin"
-                        value={origin}
-                        placeholder="Enter Origin"
-                        onChange={(e) => setOrigin(e.target.value)}
-                    />
-                    <TextInput
-                        label="Destination"
-                        value={destination}
-                        placeholder="Enter Destination"
-                        onChange={(e) => setDestination(e.target.value)}
-                    />
-                    <Popover
-                        opened={isDatePickerOpen}
-                        onClose={() => setIsDatePickerOpen(false)}
-                        position="bottom"
-                        withArrow
-                    >
-                        <Popover.Target>
-                            <TextInput
-                                label="Travel Date"
-                                value={selectedDate ? dateFormatter(selectedDate) : ""}
 
-                                placeholder="Select a Date"
-                                onClick={() => setIsDatePickerOpen(true)} // Open on click
-                                readOnly
-                            />
-                        </Popover.Target>
-                        <Popover.Dropdown>
-                            <DatePicker
-                                value={selectedDate}
-                                onChange={(date) => {
-                                    setSelectedDate(date);
-                                    setIsDatePickerOpen(false); // Close when date is selected
-                                }}
-                                classNames={{
-                                    calendarBase: "small-calendar",
-                                    day: "small-calendar-day",
-                                    month: "small-calendar-month",
-                                    weekday: "small-calendar-weekday"
-                                }}
-                            />
-                        </Popover.Dropdown>
-                    </Popover>
-                </div>
-                <Button onClick={() => handleSearch()} color="indigo" radius="md" mt="lg">Search</Button>
-                {showAlert && (
-                    <Alert
-                        variant="light"
-                        color="red"
-                        radius="lg"
-                        withCloseButton title="Alert!"
-                        onClose={() => { setShowAlert(false); navigate('/login'); }}
-                    >
-                        {alertMessage}
-                    </Alert>
-                )}
+        <div className="searchRide">
+            <div className="searchInputs">
+                <TextInput
+                    variant="filled"
+                    size="xl"
+                    label="Origin"
+                    withAsterisk
+                    value={origin}
+                    placeholder="Enter Origin"
+                    onChange={(e) => setOrigin(e.target.value)}
+                />
+                <TextInput
+                    variant="filled"
+                    size="xl"
+                    label="Destination"
+                    withAsterisk
+                    value={destination}
+                    placeholder="Enter Destination"
+                    onChange={(e) => setDestination(e.target.value)}
+                />
+                <Popover
+                    opened={isDatePickerOpen}
+                    onClose={() => setIsDatePickerOpen(false)}
+                    position="bottom"
+                    withArrow
+                >
+                    <Popover.Target>
+                        <TextInput
+                            variant="filled"
+                            size="xl"
+                            label="Travel Date"
+                            withAsterisk
+                            value={selectedDate ? dateFormatter(selectedDate) : ""}
+
+                            placeholder="Select a Date"
+                            onClick={() => setIsDatePickerOpen(true)} // Open on click
+                            readOnly
+                        />
+                    </Popover.Target>
+                    <Popover.Dropdown>
+                        <DatePicker
+                            value={selectedDate}
+                            onChange={(date) => {
+                                setSelectedDate(date);
+                                setIsDatePickerOpen(false); // Close when date is selected
+                            }}
+                            classNames={{
+                                calendarBase: "small-calendar",
+                                day: "small-calendar-day",
+                                month: "small-calendar-month",
+                                weekday: "small-calendar-weekday"
+                            }}
+                        />
+                    </Popover.Dropdown>
+                </Popover>
+                 <Button onClick={() => handleSearch()} color="indigo" radius="md" mt="lg">Search</Button>
             </div>
-        </>
+           
+            {showAlert && (
+                <Alert
+                    variant="light"
+                    color="red"
+                    radius="lg"
+                    withCloseButton title="Alert!"
+                    onClose={() => { setShowAlert(false); navigate('/login'); }}
+                >
+                    {alertMessage}
+                </Alert>
+            )}
+        </div>
+
     );
 }
 export default SearchRide;
