@@ -59,7 +59,7 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
 
         <>
             <Stack align="center" spacing="lg" p="xl"
-                style={{ backgroundColor: '#d8c2f2', borderRadius: '12px' }}>
+                style={{ backgroundColor: '#b497d6', borderRadius: '12px' }}>
                 <Group grow align="flex-end">
                     <TextInput
                         variant="filled"

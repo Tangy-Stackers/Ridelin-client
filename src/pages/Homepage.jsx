@@ -18,7 +18,7 @@ function HomePage() {
     <Container size="xl" py={40} >
       <Center>
         <Title order={4} align="center">
-          Share a Ride, Save Money, Meet New People, and Make a Difference
+         <Text size="xl">Share a Ride, Save Money, Meet New People, and Make a Difference</Text> 
         </Title>
       </Center>
       <br />

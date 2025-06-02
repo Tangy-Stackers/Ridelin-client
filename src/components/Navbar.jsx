@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
-import { Button, Flex,Container,Title } from "@mantine/core";
+import { Text, Button, Flex,Container,Title } from "@mantine/core";
 import "../assets/App.css";
 
 
@@ -34,7 +34,7 @@ function Navbar() {
                                                 <strong><i>
                                                  Ridelin
                                                  </i> </strong>
-                                                 <p size={40} c={"#000000"}> <b>The future of commuting</b></p>
+                                                  <Title order={4}><Text fw={700} size="xl">The future of commuting</Text></Title>
                                             </Title>
                                         </Container>
                     
@@ -55,10 +55,10 @@ function Navbar() {
                             ) : (
                                 <>
                                     <Link to="/signup">
-                                        <Button variant="filled" color="green" radius="xl">🤝Join us!</Button>
+                                        <Button variant="filled" color="green" radius="xl"><Text size="lg">🤝Join us!</Text></Button>
                                     </Link>
                                     <Link to="/login">
-                                        <Button variant="filled" color="green" radius="xl">👤Login</Button>
+                                        <Button variant="filled" color="green" radius="xl"><Text size="lg">👤Login</Text></Button>
                                     </Link>
                                 </>
                             )}
