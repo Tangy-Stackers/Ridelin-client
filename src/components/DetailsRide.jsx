@@ -37,7 +37,7 @@ function RideDetails() {
   };
 
   const handleUpdateRide = () => {
-    navigate(`/ride/${rideId}/edit`);
+    navigate(`/ride/${ride._id}/edit`);
   };
 
   // Check if the travelDate is valid
@@ -50,14 +50,13 @@ function RideDetails() {
   return (
     <Flex style={{ height: "100vh" }}>
       <Box w="250px">
-        <Sidebar />
-      </Box>
-      <Flex justify="center" style={{ flex: 0.75, transform: 'translateY(-50px)' }}>
-        <Container size="md" mt={0} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-          <Title align="center" mb={20}>Ride Details</Title>
-          <Text>Where are we traveling today, <strong>{userName}</strong>?</Text>
-          <br />
-
+          <Sidebar />
+    </Box>
+    <Flex justify="center" style={{ flex: 0.75, transform: 'translateY(-50px)' }}>
+    <Container size="md" mt={0} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+      <Title align="center" mb={20}>Ride Details</Title>
+      <Text>Where are we traveling today, <strong>{userName}</strong>?</Text>
+      <br />
           {ride === null ? (
             <Text align="center" color="red">Ride not found</Text>
           ) : (
@@ -139,7 +138,7 @@ function RideDetails() {
           )}
         </Container>
       </Flex>
-    </Flex>
+  </Flex>
   );
 }
 
