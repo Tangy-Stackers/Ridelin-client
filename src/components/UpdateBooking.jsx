@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Button, Group, Notification, Radio, TextInput, Select, Title, Container, Card, Space, Divider,Flex, Box } from "@mantine/core";
+import { Button, Group, Notification, Radio, TextInput, Select, Title, Container, Card, Space, Divider, Flex, Box } from "@mantine/core";
 import Sidebar from "./Sidebar";
 
 function UpdateBooking() {
@@ -62,7 +62,7 @@ function UpdateBooking() {
         }
         const requestBody = { boardingPoint, destination, status, seatsBooked };
         const storedToken = localStorage.getItem('authToken');
-console.log(requestBody)
+        console.log(requestBody)
         axios.patch(`${import.meta.env.VITE_API_URL}/api/bookings/${bookingId}`, requestBody, {
             headers: { Authorization: `Bearer ${storedToken}` },
         })
@@ -81,85 +81,85 @@ console.log(requestBody)
 
     return (
         <>
-        <Flex style={{ height: "100vh" }}>
-    <Box w="250px">
-        <Sidebar />
-        
-    </Box>
-    <Flex justify="center" style={{ flex: 0.75, transform: 'translateY(10px)' }}>
-        <Container>
-            <>
-                <br />
-                <Title order={2} align="center">Update Booking</Title>
-                <Divider my="md" />
-                <Title order={4} align="center" mb="lg">Were are we travel today, {userName}?</Title>
-            </>
+            <Flex style={{ height: "100vh" }}>
+                <Box w="250px">
+                    <Sidebar />
 
-            <Flex 
-                mih={50}
-                gap="lg"
-                justify="center"
-                align="center"
-                direction="row"
-                wrap="wrap"
-            >
-            <Card shadow="sm" padding="lg" radius="md" withBorder>
-                <Space h="md" />
-                <form onSubmit={handleUpdate}>
-                    <TextInput label="Seats Booked" value={seatsBooked} onChange={(e) => setSeatsBooked(e.target.value)} required />
-                    <Select
-                        label="Status"
-                        value={status}
-                        onChange={setStatus}
-                        data={[
-                            { value: "pending", label: "Pending" },
-                            { value: "confirmed", label: "Confirmed" },
-                            { value: "cancelled", label: "Cancelled" }
-                        ]}
-                    />
-                    <Space h="md" />
-                    <Title order={5}>Boarding at:</Title>
-                    <Group>
-                        <Radio label={origin} value="origin" checked={boardingPoint === origin} onChange={() => handleBoardingChange(origin)} />
-                        <Radio label="Waypoint" value="waypoint" checked={boardingPoint !== origin} onChange={() => setBoardingPoint("")} />
-                    </Group>
-                    {boardingPoint !== origin && (
-                        <Select
-                            placeholder="Select waypoint"
-                            value={boardingPoint}
-                            onChange={handleBoardingChange}
-                            data={waypoints.map((waypoint) => ({ value: waypoint, label: waypoint }))}
-                        />
-                    )}
-                    <Space h="md" />
-                    <Title order={5}>Destination:</Title>
-                    <Group>
-                        <Radio label={destination} value="destination" checked={destinationType === "destination"} onChange={() => setDestinationType("destination")} />
-                        <Radio label="Waypoint" value="waypoint" checked={destinationType === "waypoint"} onChange={() => setDestinationType("waypoint")} />
-                    </Group>
-                    {destinationType === "waypoint" && (
-                        <Select
-                            placeholder="Select waypoint"
-                            value={destination}
-                            onChange={handleDestinationChange}
-                            data={waypoints.map((waypoint) => ({ value: waypoint, label: waypoint }))}
-                        />
-                    )}
-                    {errorMessage && (
-                        <Notification color="red" withCloseButton={false}>{errorMessage}</Notification>
-                    )}
-                    <Space h="md" />
-                    <Group>
-                        <Button type="submit" color="green" radius={"xl"} onClick={handleUpdate}>Update Booking 🛠️</Button>
-                        <Space h="xl" />
-                        <Button color="red" radius={"xl"} onClick={deleteBooking}>Delete Booking 🗑️</Button>
-                    </Group>
-                </form>
-            </Card>
+                </Box>
+                <Flex justify="center" style={{ flex: 0.75, transform: 'translateY(10px)' }}>
+                    <Container>
+                        <>
+                            <br />
+                            <Title order={2} align="center">Update Booking</Title>
+                            <Divider my="md" />
+                            <Title order={4} align="center" mb="lg">Were are we travel today, {userName}?</Title>
+                        </>
+
+                        <Flex
+                            mih={50}
+                            gap="lg"
+                            justify="center"
+                            align="center"
+                            direction="row"
+                            wrap="wrap"
+                        >
+                            <Card shadow="sm" padding="lg" radius="md" withBorder>
+                                <Space h="md" />
+                                <form onSubmit={handleUpdate}>
+                                    <TextInput label="Seats Booked" value={seatsBooked} onChange={(e) => setSeatsBooked(e.target.value)} required />
+                                    <Select
+                                        label="Status"
+                                        value={status}
+                                        onChange={setStatus}
+                                        data={[
+                                            { value: "pending", label: "Pending" },
+                                            { value: "confirmed", label: "Confirmed" },
+                                            { value: "cancelled", label: "Cancelled" }
+                                        ]}
+                                    />
+                                    <Space h="md" />
+                                    <Title order={5}>Boarding at:</Title>
+                                    <Group>
+                                        <Radio label={origin} value="origin" checked={boardingPoint === origin} onChange={() => handleBoardingChange(origin)} />
+                                        <Radio label="Waypoint" value="waypoint" checked={boardingPoint !== origin} onChange={() => setBoardingPoint("")} />
+                                    </Group>
+                                    {boardingPoint !== origin && (
+                                        <Select
+                                            placeholder="Select waypoint"
+                                            value={boardingPoint}
+                                            onChange={handleBoardingChange}
+                                            data={waypoints.map((waypoint) => ({ value: waypoint, label: waypoint }))}
+                                        />
+                                    )}
+                                    <Space h="md" />
+                                    <Title order={5}>Destination:</Title>
+                                    <Group>
+                                        <Radio label={destination} value="destination" checked={destinationType === "destination"} onChange={() => setDestinationType("destination")} />
+                                        <Radio label="Waypoint" value="waypoint" checked={destinationType === "waypoint"} onChange={() => setDestinationType("waypoint")} />
+                                    </Group>
+                                    {destinationType === "waypoint" && (
+                                        <Select
+                                            placeholder="Select waypoint"
+                                            value={destination}
+                                            onChange={handleDestinationChange}
+                                            data={waypoints.map((waypoint) => ({ value: waypoint, label: waypoint }))}
+                                        />
+                                    )}
+                                    {errorMessage && (
+                                        <Notification color="red" withCloseButton={false}>{errorMessage}</Notification>
+                                    )}
+                                    <Space h="md" />
+                                    <Group>
+                                        <Button type="submit" color="green" radius={"xl"} onClick={handleUpdate}>Update Booking 🛠️</Button>
+                                        <Space h="xl" />
+                                        <Button color="red" radius={"xl"} onClick={deleteBooking}>Delete Booking 🗑️</Button>
+                                    </Group>
+                                </form>
+                            </Card>
+                        </Flex>
+                    </Container>
+                </Flex>
             </Flex>
-        </Container>
-        </Flex>
-        </Flex>
         </>
     );
 }
