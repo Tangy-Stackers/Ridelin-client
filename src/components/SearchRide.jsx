@@ -58,8 +58,8 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
     return (
 
         <>
-            <Stack align="center" spacing="lg" p="xl"
-                style={{ backgroundColor: '#b497d6', borderRadius: '12px' }}>
+            <Stack align="center" spacing="lg" p="md"
+                style={{ backgroundColor: '#ffd6d7', borderRadius: '12px' }}>
                 <Group grow align="flex-end">
                     <TextInput
                         variant="filled"
@@ -115,7 +115,7 @@ function SearchRide({ originValue, destinationValue, dateValue, navigateCallback
                         </Popover.Dropdown>
                     </Popover>
                 </Group>
-                <Button onClick={() => handleSearch()} color="indigo" radius="md" size="xl">Search</Button>
+                <Button onClick={() => handleSearch()} color="indigo" radius="md" size="md">Search</Button>
             </Stack>
 
 
